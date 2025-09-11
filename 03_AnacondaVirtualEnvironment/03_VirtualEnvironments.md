@@ -1,7 +1,3 @@
-Got it 👍 — here’s a **general-purpose README.md** (no mention of lectures), written like proper documentation:
-
----
-
 # Anaconda Virtual Environments
 
 Anaconda provides a built-in environment manager, making it easy to create and manage **isolated Python environments**.
@@ -56,7 +52,43 @@ When activated, the environment name appears in parentheses before the command p
 
 ---
 
-### 3. Install Packages into an Environment
+### 3. Using an Activated Environment
+
+Once an environment is activated:
+
+* Run Python:
+
+  ```bash
+  python
+  ```
+
+  This opens the Python interpreter from the activated environment.
+
+* Run scripts:
+
+  ```bash
+  python my_script.py
+  ```
+
+* Install packages into this environment:
+
+  ```bash
+  conda install package_name
+  ```
+
+* Use Jupyter Notebook or Lab with this environment:
+
+  ```bash
+  jupyter notebook
+  # or
+  jupyter lab
+  ```
+
+  The notebook kernel will use the environment’s Python and packages.
+
+---
+
+### 4. Install Packages into an Environment
 
 ```bash
 conda install pandas
@@ -66,7 +98,7 @@ This installs **pandas** only in the currently active environment.
 
 ---
 
-### 4. Create an Environment with a Specific Python Version
+### 5. Create an Environment with a Specific Python Version
 
 ```bash
 conda create --name mypython3 python=3.5 numpy
@@ -81,7 +113,7 @@ conda create --name mypython3 python=3.5 numpy
 
 ---
 
-### 5. List All Environments
+### 6. List All Environments
 
 ```bash
 conda info --envs
@@ -103,14 +135,15 @@ The `*` marks the active environment.
 
 * **Clone an environment**
 
-  ```bash
-  conda create --name newenv --clone fluffy
-  ```
+```bash
+conda create --name newenv --clone fluffy
+```
+
 * **Remove an environment**
 
-  ```bash
-  conda remove --name fluffy --all
-  ```
+```bash
+conda remove --name fluffy --all
+```
 
 ---
 
@@ -119,14 +152,12 @@ The `*` marks the active environment.
 * Use a dedicated environment per project.
 * Example for a data science project:
 
-  ```bash
-  conda create --name mydatascience python=3.9 numpy pandas matplotlib scikit-learn jupyter
-  ```
+```bash
+conda create --name mydatascience python=3.9 numpy pandas matplotlib scikit-learn jupyter
+```
 
 ---
 
 ## 📌 Resources
 
 * [Managing Environments — Conda Documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-
-
