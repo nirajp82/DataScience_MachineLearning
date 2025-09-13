@@ -12,10 +12,9 @@
 6.  [Using `np.eye(n)` – Identity Matrix](#6-using-npen--identity-matrix)
 7.  [Random Arrays](#7-random-arrays)
 8.  [Array Attributes and Methods](#8-array-attributes-and-methods)
-9.  [Indexing and Slicing](#9-indexing-and-slicing)
-10. [Vectorized Operations](#10-vectorized-operations)
-11. [The `axis` Parameter](#11-the-axis-parameter)
-12. [Key Takeaways](#12-key-takeaways)
+9. [Vectorized Operations](#10-vectorized-operations)
+10. [The `axis` Parameter](#11-the-axis-parameter)
+11. [Key Takeaways](#12-key-takeaways)
 -----
 
 ### **1. Creating Arrays from Python Lists**
@@ -421,67 +420,7 @@ print("Array data type:", arr.dtype) # Output: int64
 
 -----
 
-### **9. Indexing and Slicing**
-
-  * Accessing and modifying parts of an array is a fundamental operation. It's similar to Python lists but with powerful multi-dimensional support.
-
-#### **1D Arrays**
-
-```python
-arr = np.arange(10) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-# Get the third element (index 2)
-print("Third element:", arr[2]) # Output: 2
-
-# Slice from index 3 up to (but not including) 7
-print("Slice [3:7]:", arr[3:7]) # Output: [3 4 5 6]
-
-# Get the last element using negative indexing
-print("Last element:", arr[-1]) # Output: 9
-```
-
-#### **2D Arrays (Matrices)**
-
-  * Use the syntax `[row, column]`.
-
-<!-- end list -->
-
-```python
-mat = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-print("Original Matrix:\n", mat)
-
-# Get the element at row 1, column 2 (value 6)
-print("\nElement at [1, 2]:", mat[1, 2]) # Output: 6
-
-# Get the entire first row
-print("First row:", mat[0]) # Output: [1 2 3]
-
-# Get the entire second column
-print("Second column:", mat[:, 1]) # Output: [2 5 8]
-
-# Get a sub-matrix (rows 1 & 2, columns 0 & 1)
-print("Sub-matrix:\n", mat[1:3, 0:2])
-# Output:
-# [[4 5]
-#  [7 8]]
-```
-
-#### **Boolean Indexing**
-
-  * This is a powerful technique to select elements based on a condition.
-
-<!-- end list -->
-
-```python
-arr = np.arange(1, 11) # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-# Select all elements greater than 5
-greater_than_5 = arr[arr > 5]
-print("Elements > 5:", greater_than_5) # Output: [ 6 7 8 9 10]
-```
-
------
-
-### **10. Vectorized Operations**
+### **9. Vectorized Operations**
 
   * NumPy supports **element-wise operations** without loops, which is critical for AI/ML.
 
@@ -565,7 +504,7 @@ Step by step:
 
 -----
 
-### **11. The `axis` Parameter**
+### **10. The `axis` Parameter**
 
   * The `axis` parameter is a key concept in NumPy that allows you to perform an operation along a specific dimension of a multi-dimensional array.
 
@@ -600,7 +539,7 @@ This parameter is essential for calculating statistics (like mean, sum, std dev)
 
 -----
 
-### **12. Key Takeaways**
+### **11. Key Takeaways**
 
   * **NumPy is for numerical computing:** It is faster and more memory-efficient than Python lists for mathematical operations.
   * **Vectorization is key:** Always prefer NumPy's built-in vectorized operations over Python loops for speed.
