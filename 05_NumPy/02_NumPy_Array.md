@@ -8,7 +8,12 @@
 import numpy as np
 
 arr = np.array([1, 2, 3])           # 1D array (vector)
-mat = np.array([[1,2,3],[4,5,6]])  # 2D array (matrix)
+my_mat = [[1,2,3],[4,5,6],[7,8,9]]
+np.array(my_mat) # This converts a nested Python list (list of lists) into a 2D NumPy array (matrix):
+
+Output my_mat: array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
 ```
 
 **Explanation:**
