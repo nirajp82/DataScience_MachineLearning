@@ -196,64 +196,82 @@ print("Step size:", step)
 * `linspace` → continuous ranges, plotting, AI/ML input sequences
 ---
 
+---
+
 ### **6. Using `np.eye(n)`**
 
+* The `numpy.eye()` function creates an **identity matrix**, which is a square matrix with ones on the diagonal and zeros elsewhere.
+* **Syntax:**
+
 ```python
-np.eye(3)
-# Output: [[1. 0. 0.]
-#          [0. 1. 0.]
-#          [0. 0. 1.]]
+numpy.eye(N, M=None, k=0, dtype=float, order='C')
+```
+
+**Parameters:**
+
+* `N` → number of rows
+* `M` → number of columns (optional, defaults to N)
+* `k` → diagonal offset (0 for main diagonal, positive → above, negative → below)
+* `dtype` → data type of elements
+* `order` → memory layout (C or F)
+
+**Example:**
+
+```python
+import numpy as np
+
+# 3x3 identity matrix
+id_mat = np.eye(3)
+print(id_mat)
+# Output:
+# [[1. 0. 0.]
+#  [0. 1. 0.]
+#  [0. 0. 1.]]
 ```
 
 **Explanation:**
 
-* Creates an **identity matrix** → ones on the diagonal, zeros elsewhere.
-* `3` → 3x3 square matrix.
+* Identity matrix → ones on the diagonal, zeros elsewhere.
 * Useful in linear algebra, e.g., multiplying a matrix by identity keeps it unchanged.
+* Can specify `k` to shift the diagonal.
 
 ---
 
 ### **7. Random Arrays**
 
-**Uniform random numbers:**
+**Uniform Random Numbers:**
 
 ```python
-np.random.rand(4)    # Output: [0.42 0.13 0.87 0.66] (example)
-np.random.rand(3,3)  # 3x3 matrix of random numbers between 0 and 1
+np.random.rand(4)      # 1D array, 4 random numbers between 0 and 1
+np.random.rand(3,3)    # 3x3 matrix of random numbers between 0 and 1
+```
+
+**Standard Normal Distribution:**
+
+```python
+np.random.randn(5)     # 1D array of 5 numbers from standard normal (mean=0, std=1)
+```
+
+**Random Integers:**
+
+```python
+np.random.randint(1, 100, 10)  # 10 random integers from 1 to 99
 ```
 
 **Explanation:**
 
-* Generates **random numbers between 0 and 1**.
-* `4` → 1D array, `3,3` → 2D matrix.
-* Used in AI/ML to **initialize weights randomly**.
-
-**Standard normal distribution:**
-
-```python
-np.random.randn(5)   # Output: [ 0.5, -1.2, 0.3, 0.0, 2.1] (example)
-```
-
-**Explanation:**
-
-* Numbers are from a **Gaussian distribution** (mean=0, standard deviation=1).
-* Important for **neural network weight initialization**.
-
-**Random integers:**
-
-```python
-np.random.randint(1, 100, 10)
-# Output: [12, 45, 78, 23, 56, 89, 10, 34, 67, 90] (example)
-```
-
-**Explanation:**
-
-* Generates **random integers** from `low` (inclusive) to `high` (exclusive).
-* Here: 10 numbers from 1 to 99.
+* `rand()` → uniform distribution (0–1)
+* `randn()` → Gaussian distribution (mean=0, std=1)
+* `randint(low, high, size)` → random integers in \[low, high)
+* Essential in AI/ML for **weight initialization, simulations, or creating random datasets**
 
 ---
 
 ### **8. Array Attributes**
+
+* Arrays have properties that tell you about their **size, shape, and type**.
+
+**Example:**
 
 ```python
 arr = np.array([[1,2,3],[4,5,6]])
@@ -265,49 +283,72 @@ arr.dtype   # Output: int64
 
 **Explanation:**
 
-* `.shape` → tells you the dimensions → 2 rows, 3 columns.
-* `.size` → total elements → 2×3 = 6.
-* `.dtype` → type of elements → integer, float, etc.
+* `.shape` → dimensions of the array (rows × columns)
+* `.size` → total number of elements (2×3 = 6)
+* `.dtype` → data type of elements (int, float, etc.)
+* Always useful to check before feeding data into ML models.
 
 ---
 
 ### **9. Array Methods**
 
+**Common Methods:**
+
 ```python
 arr = np.array([1, 2, 3, 4, 5])
 
-arr.reshape((5,1))   # Convert 1D → 2D column vector
-arr.max()            # 5 → maximum value
-arr.min()            # 1 → minimum value
-arr.argmax()         # 4 → index of maximum
-arr.argmin()         # 0 → index of minimum
+# Reshape 1D → 2D column vector
+arr2d = arr.reshape((5,1))
+print(arr2d)
+# Output: [[1]
+#          [2]
+#          [3]
+#          [4]
+#          [5]]
+
+# Find max/min and their indices
+print(arr.max())      # 5
+print(arr.min())      # 1
+print(arr.argmax())   # 4
+print(arr.argmin())   # 0
 ```
 
 **Explanation:**
 
-* `reshape` →  Reshape doesn’t change the data, only how it’s organized in rows/columns.
-* `max` / `min` → find largest/smallest number.
-* `argmax` / `argmin` → find **position/index** of largest/smallest value.
+* `reshape(new_shape)` → changes shape without altering data
+* `max()` / `min()` → largest/smallest value
+* `argmax()` / `argmin()` → position of largest/smallest value
+* Essential for **data preprocessing and feature analysis**
 
 ---
 
 ### **10. Vectorized Operations**
 
+* NumPy supports **element-wise operations** without loops, which is critical for AI/ML.
+
+**Example:**
+
 ```python
 x = np.array([1, 2, 3])
 y = np.array([4, 5, 6])
-z = x + y    # Output: [5, 7, 9]
+
+z = x + y
+print(z)  # Output: [5 7 9]
+
+z = x * y
+print(z)  # Output: [4 10 18]
 ```
 
 **Explanation:**
 
-* Arithmetic is **element-wise**, unlike Python lists where you would need a loop.
-* Very useful in AI/ML for **fast calculations over entire datasets**.
+* Arithmetic operations are applied **to each element individually**.
+* Avoids Python loops → much faster for large arrays.
+* Works for **vectors, matrices, and higher-dimensional tensors**.
 
 ---
 
-✅ **Tip for beginners:**
+✅ **Tips for Beginners:**
 
-* Always check `shape` and `dtype` before feeding arrays into ML models.
-* Prefer NumPy functions over loops for speed and memory efficiency.
-
+* Always check `.shape` and `.dtype` before using arrays in ML models.
+* Prefer NumPy vectorized operations over Python loops for **speed and efficiency**.
+* Combine attributes, methods, and random arrays to **prepare datasets and initialize weights** efficiently.
