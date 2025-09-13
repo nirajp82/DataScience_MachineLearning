@@ -183,7 +183,17 @@ print("Step size:", step)
 * Unlike `np.arange`, which uses a fixed **step**, `linspace` divides the interval into **equal parts**.
 * Useful in AI/ML for **feature ranges, plotting, or generating continuous input sequences**.
 
+**Quick Comparison: `np.arange` vs `np.linspace`**
 
+| Function                        | How it works                                                                        | Use case                             |
+| ------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------ |
+| `np.arange(start, stop, step)`  | Sequence with **fixed step size**, stop excluded                                    | When you know the step size          |
+| `np.linspace(start, stop, num)` | Sequence with **specific number of evenly spaced values**, stop included by default | When you need exact number of points |
+
+**Tip:**
+
+* `arange` → discrete intervals
+* `linspace` → continuous ranges, plotting, AI/ML input sequences
 ---
 
 ### **6. Using `np.eye(n)`**
