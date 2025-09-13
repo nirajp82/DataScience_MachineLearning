@@ -128,3 +128,5 @@ arr.argmin()                  # index of min value
 
 * Always check **shape and dtype** before feeding arrays into ML models.
 * Use **vectorized operations** instead of iteration for large datasets.
+
+<img width="1024" height="1536" alt="NumPy_Array_CheetSheet" src="https://github.com/user-attachments/assets/7f53d1eb-df15-4c24-9271-f97e638f9401" />
