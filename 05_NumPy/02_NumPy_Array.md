@@ -112,7 +112,7 @@ np.zeros((2,3))   # Output: array([[0., 0., 0.],
 **Explanation:**
 
 * Creates arrays **filled with zeros**.
-* `5` → 1D array of 5 zeros.
+* `3` → 1D array of 3 zeros.
 * `(2,3)` → 2 rows and 3 columns of zeros → useful for initializing weights or placeholders in ML.
 
 ---
@@ -120,10 +120,10 @@ np.zeros((2,3))   # Output: array([[0., 0., 0.],
 ### **4. Using `np.ones(shape)`**
 
 ```python
-np.ones(4)        # Output: [1, 1, 1, 1]
-np.ones((3,2))    # Output: [[1. 1.]
-                   #          [1. 1.]
-                   #          [1. 1.]]
+np.ones(4)        # Output: array([1., 1., 1., 1.])
+np.ones((3,2))    # Output: array([[1., 1.],
+                   #               [1., 1.],
+                   #               [1., 1.]])
 ```
 
 **Explanation:**
