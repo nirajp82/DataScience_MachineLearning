@@ -1,26 +1,21 @@
-My apologies for the repeated errors. I will be extra careful and ensure that the document is complete and accurate, including all the specific details you've provided. Thank you for your patience.
-
-Here is the fully regenerated document, with all sections and notes preserved.
-
 # **NumPy Arrays: Examples Explained for Beginners**
 
 -----
 
 ## Table of Contents
 
-1.  [Creating Arrays from Python Lists](https://www.google.com/search?q=%231-creating-arrays-from-python-lists)
-2.  [Using `np.arange(start, stop, step)`](https://www.google.com/search?q=%232-using-nparangestart-stop-step)
-3.  [Using `np.zeros(shape)`](https://www.google.com/search?q=%233-using-npzerosshape)
-4.  [Using `np.ones(shape)`](https://www.google.com/search?q=%234-using-nponesshape)
-5.  [`np.linspace(start, stop, num_points)` – Linear Space (evenly spaced numbers)](https://www.google.com/search?q=%235-nplinspacestart-stop-numpoints--linear-space-evenly-spaced-numbers)
-6.  [Using `np.eye(n)` – Identity Matrix](https://www.google.com/search?q=%236-using-npeyn--identity-matrix)
-7.  [Random Arrays](https://www.google.com/search?q=%237-random-arrays)
-8.  [Array Attributes and Methods](https://www.google.com/search?q=%238-array-attributes-and-methods)
-9.  [Indexing and Slicing](https://www.google.com/search?q=%239-indexing-and-slicing)
-10. [Vectorized Operations](https://www.google.com/search?q=%2310-vectorized-operations)
-11. [The `axis` Parameter](https://www.google.com/search?q=%2311-the-axis-parameter)
-12. [Key Takeaways](https://www.google.com/search?q=%2312-key-takeaways)
-
+1.  [Creating Arrays from Python Lists](#1-creating-arrays-from-python-lists)
+2.  [Using `np.arange(start, stop, step)`](#2-using-nparangestart-stop-step)
+3.  [Using `np.zeros(shape)`](#3-using-npzerosshape)
+4.  [Using `np.ones(shape)`](#4-using-nponesshape)
+5.  [`np.linspace(start, stop, num_points)` – Linear Space (evenly spaced numbers)](#5-nplinspace-start-stop-num_points--linear-space-evenly-spaced-numbers)
+6.  [Using `np.eye(n)` – Identity Matrix](#6-using-npen--identity-matrix)
+7.  [Random Arrays](#7-random-arrays)
+8.  [Array Attributes and Methods](#8-array-attributes-and-methods)
+9.  [Indexing and Slicing](#9-indexing-and-slicing)
+10. [Vectorized Operations](#10-vectorized-operations)
+11. [The `axis` Parameter](#11-the-axis-parameter)
+12. [Key Takeaways](#12-key-takeaways)
 -----
 
 ### **1. Creating Arrays from Python Lists**
