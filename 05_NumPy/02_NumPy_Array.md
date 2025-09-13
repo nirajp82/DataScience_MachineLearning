@@ -7,8 +7,8 @@
 2. [Using `np.arange(start, stop, step)`](#2-using-nparangestart-stop-step)  
 3. [Using `np.zeros(shape)`](#3-using-npzerosshape)  
 4. [Using `np.ones(shape)`](#4-using-nponesshape)  
-5. [`np.linspace(start, stop, num_points)`](#5-nplinspacestart-stop-numpoints)  
-6. [Using `np.eye(n)`](#6-using-npeyn)  
+5. [`np.linspace(start, stop, num_points)` – Linear Space (evenly spaced numbers)](#5-nplinspacestart-stop-numpoints--linear-space-evenly-spaced-numbers)  
+6. [Using `np.eye(n)` – Identity Matrix](#6-using-npeyn--identity-matrix)  
 7. [Random Arrays](#7-random-arrays)  
 8. [Array Attributes](#8-array-attributes)  
 9. [Array Methods](#9-array-methods)  
@@ -150,7 +150,7 @@ np.ones((3,2))    # Output: array([[1., 1.],
 
 ---
 
-### **5. `np.linspace(start, stop, num_points)`** - Liner + Space
+### **5. `np.linspace(start, stop, num_points)` – Linear Space (evenly spaced numbers)**
 
 * The `numpy.linspace()` function generates an array of **evenly spaced numbers** over a specified interval.
 * **Syntax:**
@@ -213,7 +213,7 @@ print("Step size:", step)
 
 ---
 
-### **6. Using `np.eye(n)`**
+### **6. Using `np.eye(n)` – Identity Matrix**
 
 * The `numpy.eye()` function creates an **identity matrix**, which is a square matrix with ones on the diagonal and zeros elsewhere.
 * **Syntax:**
