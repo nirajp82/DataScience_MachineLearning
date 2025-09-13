@@ -2,6 +2,21 @@
 
 ---
 
+## **Table of Contents**
+
+1. [Creating Arrays from Python Lists](#1-creating-arrays-from-python-lists)
+2. [Using `np.arange(start, stop, step)`](#2-using-nparangestart-stop-step)
+3. [Using `np.zeros(shape)`](#3-using-npzerosshape)
+4. [Using `np.ones(shape)`](#4-using-nponesshape)
+5. [`np.linspace(start, stop, num_points)`](#5-nplinspacestart-stop-numpoints)
+6. [Using `np.eye(n)`](#6-using-npeyn)
+7. [Random Arrays](#7-random-arrays)
+8. [Array Attributes](#8-array-attributes)
+9. [Array Methods](#9-array-methods)
+10. [Vectorized Operations](#10-vectorized-operations)
+
+---
+
 ### **1. Creating Arrays from Python Lists**
 
 ```python
@@ -37,57 +52,60 @@ numpy_arr
 
 1.1. **Vectorized Operations**
 
-   * With NumPy arrays, arithmetic is element-wise.
+* With NumPy arrays, arithmetic is element-wise.
 
-   ```python
-   # Python list
-   my_list * 2        # [1, 2, 3, 1, 2, 3] → just repeats list
-   # NumPy array
-   numpy_arr * 2           # [2, 4, 6] → multiplies each element
+```python
+# Python list
+my_list * 2        # [1, 2, 3, 1, 2, 3] → just repeats list
+# NumPy array
+numpy_arr * 2           # [2, 4, 6] → multiplies each element
 
-   my_list + my_list   # Output: [1, 2, 3, 1, 2, 3] → concatenates lists
-   numpy_arr + numpy_arr         # Output: [2, 4, 6]         → adds element-wise
-   ```
+my_list + my_list   # Output: [1, 2, 3, 1, 2, 3] → concatenates lists
+numpy_arr + numpy_arr         # Output: [2, 4, 6]         → adds element-wise
+```
 
-   ✅ This is critical in AI/ML where you apply operations to **entire feature vectors or matrices** at once.
+✅ This is critical in AI/ML where you apply operations to **entire feature vectors or matrices** at once.
 
 1.2. **Better Performance & Memory Efficiency**
 
-   * NumPy arrays are stored in **contiguous memory**, unlike Python lists.
-   * This makes **large numerical computations faster**.
+* NumPy arrays are stored in **contiguous memory**, unlike Python lists.
+* This makes **large numerical computations faster**.
 
 1.3. **Access to Powerful NumPy Functions**
 
-   * You can use `.reshape()`, `.sum()`, `.mean()`, `.max()`, `.min()`, etc.
+* You can use `.reshape()`, `.sum()`, `.mean()`, `.max()`, `.min()`, etc.
 
-   ```python
-   numpy_arr.sum()     # 6
-   numpy_arr.mean()    # 2.0
-   numpy_arr.reshape((3,1))  # [[1],[2],[3]]
-   ```
+```python
+numpy_arr.sum()     # 6
+numpy_arr.mean()    # 2.0
+numpy_arr.reshape((3,1))  # [[1],[2],[3]]
+```
 
 1.4. **Multi-Dimensional Arrays**
 
-   * Lists are limited and nested lists become messy for 2D/3D data.
-   * NumPy handles **matrices and tensors** easily, which is essential in AI/ML.
+* Lists are limited and nested lists become messy for 2D/3D data.
+* NumPy handles **matrices and tensors** easily, which is essential in AI/ML.
 
-   ```python
-   mat_list = [[1,2],[3,4]]
-   np_mat = np.array(mat_list)  # 2x2 matrix
-   ```
+```python
+mat_list = [[1,2],[3,4]]
+np_mat = np.array(mat_list)  # 2x2 matrix
+```
 
 ##### ✅ **Summary**
 
 * **Python list:** simple, flexible, but slow for math on large datasets.
 * **NumPy array:** fast, memory-efficient, supports **vectorized math**, and is essential for AI/ML.
 * So converting `[1,2,3]` to a NumPy array gives you the **power to do math operations efficiently** on the array.
+
 ---
 
 ### **2. Using `np.arange(start, stop, step)`**
- - The most common way to create a sequence of numbers in NumPy is using `np.arange()`, which works very similarly to Python’s built-in `range()` function.
- - The name **`arange`** comes from **“array + range”**.
-   - `range()` in Python creates a sequence of numbers.
-   - `np.arange()` does the same thing but returns a **NumPy array** instead of a list.
+
+* The most common way to create a sequence of numbers in NumPy is using `np.arange()`, which works very similarly to Python’s built-in `range()` function.
+* The name **`arange`** comes from **“array + range”**.
+
+  * `range()` in Python creates a sequence of numbers.
+  * `np.arange()` does the same thing but returns a **NumPy array** instead of a list.
 
 ```python
 np.arange(0, 10, 2)  # Output: [0, 2, 4, 6, 8]
@@ -156,7 +174,7 @@ numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, ax
 ```python
 import numpy as np
 
-# 5 evenly spaced numbers between 0 and 10 (inclusive), Total 5 number will be elements will be in the array
+# 5 evenly spaced numbers between 0 and 10 (inclusive)
 arr1 = np.linspace(0, 10, num=5)
 print("Array 1:", arr1)
 # Output: array([ 0. ,  2.5,  5. ,  7.5, 10. ])
@@ -179,7 +197,7 @@ print("Step size:", step)
 
 * Generates **`num_points` evenly spaced numbers** between `start` and `stop`.
 * `endpoint=True` → includes the stop value; `False` → excludes it.
-* `retstep=True` → also returns the **step size** (distance between consecutive values).
+* `retstep=True` → also returns the **step size**.
 * Unlike `np.arange`, which uses a fixed **step**, `linspace` divides the interval into **equal parts**.
 * Useful in AI/ML for **feature ranges, plotting, or generating continuous input sequences**.
 
@@ -194,7 +212,6 @@ print("Step size:", step)
 
 * `arange` → discrete intervals
 * `linspace` → continuous ranges, plotting, AI/ML input sequences
----
 
 ---
 
@@ -232,7 +249,7 @@ print(id_mat)
 **Explanation:**
 
 * Identity matrix → ones on the diagonal, zeros elsewhere.
-* Useful in linear algebra, e.g., multiplying a matrix by identity keeps it unchanged.
+* Useful in linear algebra.
 * Can specify `k` to shift the diagonal.
 
 ---
