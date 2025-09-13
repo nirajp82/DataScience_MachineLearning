@@ -1,4 +1,4 @@
-### **NumPy Arrays
+### **NumPy Arrays**
 
 **1. What is a NumPy Array?**
 
