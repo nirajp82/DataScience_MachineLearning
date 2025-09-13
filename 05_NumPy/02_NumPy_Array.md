@@ -151,7 +151,7 @@ np.ones((3,2))    # Output: array([[1., 1.],
 
 ---
 
-### **5. `np.linspace(start, stop, num_points)`**
+### **5. `np.linspace(start, stop, num_points)`** - Liner + Space
 
 * The `numpy.linspace()` function generates an array of **evenly spaced numbers** over a specified interval.
 * **Syntax:**
