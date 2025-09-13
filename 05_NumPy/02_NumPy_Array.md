@@ -272,16 +272,16 @@ Here are the **3 most common functions**:
 
 ```python
 np.random.rand(5)      # 5 random numbers between 0 and 1
-# Example: array([0.12, 0.88, 0.56, 0.33, 0.77])
+# Example: array([0.98229518, 0.40535033, 0.9270507 , 0.71793652, 0.36953476])
+ Mean:  3.40216749/5= 0.680433498
 
 np.random.rand(2,3)    # 2x3 matrix
 # Example:
-array([[0.41, 0.97, 0.26],
-       [0.65, 0.12, 0.89]])
+array([[0.57336031, 0.32508759, 0.14469693],
+       [0.17932754, 0.64208865, 0.28887194]])
 ```
 
 👉 Use when you want **fair random numbers** in \[0,1].
-
 ---
 
 #### 7.2. **Standard Normal Distribution (`randn`)**
@@ -302,7 +302,11 @@ array([[0.41, 0.97, 0.26],
 
 ```python
 np.random.randn(5)     # 5 numbers from standard normal
-# Example: array([ 0.34, -1.21, 0.88, 2.01, -0.45])
+# Example: array([ 0.78889004,  1.40283174, -0.76172686, -0.58904814,  0.17117123])
+mean: 0.20
+
+- If you generate a very large number of samples, the mean will get closer to 0.
+- For small arrays, like your 5 numbers, the mean can be slightly positive or negative, depending on the random values.
 
 1. Dataset A: `[6, 6, 6, 6, 6]`
 
