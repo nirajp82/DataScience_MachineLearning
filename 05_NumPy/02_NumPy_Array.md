@@ -502,6 +502,8 @@ print("Element-wise multiplication (x * y):", z) # Output: [4 10 18]
 
   * Matrix multiplication is different. Each element in the resulting matrix is a dot product of a row from A with a column from B.
   * Do not confuse element-wise multiplication (`*`) with matrix multiplication (`@`).
+  * **How it works**: Take a **row** from the first matrix, a **column** from the second matrix, multiply corresponding numbers, and then **add them up**. That sum becomes the element in the result.
+
 
 <!-- end list -->
 
@@ -521,6 +523,14 @@ print("\nMatrix multiplication:\n", A @ B)
 # [[19 22]
 #  [43 50]]
 ```
+
+* **Step 1:** Take **first row of A** `[1, 2]`
+* **Step 2:** Take **first column of B** `[5, 7]`
+* **Step 3:** Multiply element-wise and add: `1*5 + 2*7 = 19` → this goes in the **top-left** of the result
+* **Step 4:** Take **first row of A** `[1, 2]` and **second column of B** `[6, 8]`
+* Multiply and add: `1*6 + 2*8 = 22` → top-right element
+* Repeat with the **second row of A** `[3, 4]` for bottom row of result.
+  
 Step by step:
 
 * **Row 1, Column 1:** `1*5 + 2*7 = 5 + 14 = 19`
