@@ -520,6 +520,12 @@ print("\nMatrix multiplication:\n", A @ B)
 # [[19 22]
 #  [43 50]]
 ```
+Step by step:
+
+* **Row 1, Column 1:** `1*5 + 2*7 = 5 + 14 = 19`
+* **Row 1, Column 2:** `1*6 + 2*8 = 6 + 16 = 22`
+* **Row 2, Column 1:** `3*5 + 4*7 = 15 + 28 = 43`
+* **Row 2, Column 2:** `3*6 + 4*8 = 18 + 32 = 50`
 
 **Explanation:**
 
