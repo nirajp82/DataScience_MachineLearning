@@ -1,7 +1,3 @@
-Got it! Let’s go **step by step**, explaining each example in a way someone completely new to NumPy can understand, linking it to Python concepts they may already know. I’ll include both the **code** and a **clear explanation**.
-
----
-
 # **NumPy Arrays: Examples Explained for Beginners**
 
 ---
