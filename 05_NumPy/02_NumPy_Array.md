@@ -372,10 +372,9 @@ np.random.randint(1, 100, 10)   # 10 random integers from 1 to 99
 
 * Arrays have properties that tell you about their **size, shape, and type**.
 
-
 **Explanation:**
 
-* `.reshape` → The numpy.reshape() function allows for changing the shape of a NumPy array without altering its underlying data. This is a fundamental operation in data manipulation
+#### 8.1 `.reshape` → The numpy.reshape() function allows for changing the shape of a NumPy array without altering its underlying data. This is a fundamental operation in data manipulation
   - To give a new shape to an existing array. The shape defines the number of elements along each dimension.
   - A new array object with the specified shape. The original array remains unchanged.
   - The data elements of the original array are maintained in the new array, just rearranged according to the new shape.
@@ -393,10 +392,33 @@ Output: array([[399, 299],
        [176, 594],
        [ 22, 749]], dtype=int32)
 ```
+#### 8.2 `.max()`, `.min()`, `.argmax()`, `.argmin()` → Find values and their locations
 
-* `.size` → total number of elements (2×3 = 6)
-* `.dtype` → data type of elements (int, float, etc.)
-* Always useful to check before feeding data into ML models.
+* `.max()` → Returns the **maximum value** in the array.
+* `.min()` → Returns the **minimum value** in the array.
+* `.argmax()` → Returns the **index of the maximum value**.
+* `.argmin()` → Returns the **index of the minimum value**.
+* * `.shape` → Returns the **dimensions** of the array.
+* `.dtype` → Returns the **data type** of the array elements.
+
+
+Example: (rows, columns) for 2D arrays, (length,) for 1D arrays.
+
+8.3 .dtype → Returns the data type of the array elements.
+
+Example: int32, float64, etc.
+
+**Example:**
+
+```python
+arr = np.array([10, 23, 49, 5, 17])
+
+print("Array:", arr)
+print("Max value:", arr.max())        # Output: 49
+print("Min value:", arr.min())        # Output: 5
+print("Index of max value:", arr.argmax())  # Output: 2
+print("Index of min value:", arr.argmin())  # Output: 3
+```
 
 ---
 
@@ -421,6 +443,9 @@ print(arr.max())      # 5
 print(arr.min())      # 1
 print(arr.argmax())   # 4
 print(arr.argmin())   # 0
+print(arr2d.shape)   # (5, 1)
+print(arr.shape)     # (5,)
+print(arr2d.dtype)    # int64
 ```
 
 **Explanation:**
