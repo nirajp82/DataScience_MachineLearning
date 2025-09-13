@@ -500,6 +500,7 @@ print("Element-wise multiplication (x * y):", z) # Output: [4 10 18]
 
 **Matrix Multiplication (`np.dot` or `@`)**
 
+  * Matrix multiplication is different. Each element in the resulting matrix is a dot product of a row from A with a column from B.
   * Do not confuse element-wise multiplication (`*`) with matrix multiplication (`@`).
 
 <!-- end list -->
