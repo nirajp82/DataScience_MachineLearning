@@ -230,7 +230,7 @@ arr.argmin()         # 0 → index of minimum
 
 **Explanation:**
 
-* `reshape` → change shape without changing data.
+* `reshape` →  Reshape doesn’t change the data, only how it’s organized in rows/columns.
 * `max` / `min` → find largest/smallest number.
 * `argmax` / `argmin` → find **position/index** of largest/smallest value.
 
