@@ -104,9 +104,9 @@ np.arange(0, 10, 2)  # Output: [0, 2, 4, 6, 8]
 ### **3. Using `np.zeros(shape)`**
 
 ```python
-np.zeros(5)       # Output: [0, 0, 0, 0, 0]
-np.zeros((2,3))   # Output: [[0. 0. 0.]
-                   #          [0. 0. 0.]]
+np.zeros(3)       # Output: array([0., 0., 0.])
+np.zeros((2,3))   # Output: array([[0., 0., 0.],
+                   #               [0., 0., 0.]])
 ```
 
 **Explanation:**
