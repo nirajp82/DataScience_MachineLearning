@@ -267,8 +267,8 @@ Here are the **3 most common functions**:
 
 #### 7.1. **Uniform Random Numbers (`rand`)**
 
-* Generates numbers **between 0 and 1**.
-* Every number has the **same chance** of appearing.
+* Generates random numbers **uniformly** between 0 and 1: `[0.0, 1.0)`.
+* Every number in this range has an **equal probability** of appearing.
 
 ```python
 np.random.rand(5)      # 5 random numbers between 0 and 1
@@ -286,7 +286,11 @@ array([[0.41, 0.97, 0.26],
 
 #### 7.2. **Standard Normal Distribution (`randn`)**
 
-* Generates numbers from a **bell curve** (Gaussian).
+* * Generates random numbers from a **standard normal (Gaussian) distribution**.
+* Mean = 0, Standard deviation = 1.
+* Numbers closer to 0 are **more likely**, and numbers farther from 0 are **less likely**.
+* Because the distribution includes both positive and negative numbers, the average (mean) of a large number of generated numbers tends to hover around 0.
+* The negative numbers balance out the positive numbers, so when you calculate the average, it comes close to 0.
 * Mean = 0, Standard Deviation = 1.
   - The mean is the "center" of the data.
   - The standard deviation (std) measures how spread out the numbers are from the mean.
