@@ -33,9 +33,9 @@ numpy_arr
 
 ---
 
-### **Why convert to NumPy array?**
+#### **Why convert to NumPy array?**
 
-1. **Vectorized Operations**
+1.1. **Vectorized Operations**
 
    * With NumPy arrays, arithmetic is element-wise.
 
@@ -51,12 +51,12 @@ numpy_arr
 
    ✅ This is critical in AI/ML where you apply operations to **entire feature vectors or matrices** at once.
 
-2. **Better Performance & Memory Efficiency**
+1.2. **Better Performance & Memory Efficiency**
 
    * NumPy arrays are stored in **contiguous memory**, unlike Python lists.
    * This makes **large numerical computations faster**.
 
-3. **Access to Powerful NumPy Functions**
+1.3. **Access to Powerful NumPy Functions**
 
    * You can use `.reshape()`, `.sum()`, `.mean()`, `.max()`, `.min()`, etc.
 
@@ -66,7 +66,7 @@ numpy_arr
    numpy_arr.reshape((3,1))  # [[1],[2],[3]]
    ```
 
-4. **Multi-Dimensional Arrays**
+1.4. **Multi-Dimensional Arrays**
 
    * Lists are limited and nested lists become messy for 2D/3D data.
    * NumPy handles **matrices and tensors** easily, which is essential in AI/ML.
@@ -80,11 +80,11 @@ numpy_arr
 
 * **Python list:** simple, flexible, but slow for math on large datasets.
 * **NumPy array:** fast, memory-efficient, supports **vectorized math**, and is essential for AI/ML.
-
-So converting `[1,2,3]` to a NumPy array gives you the **power to do math operations efficiently** on the array.
+* So converting `[1,2,3]` to a NumPy array gives you the **power to do math operations efficiently** on the array.
 ---
 
 ### **2. Using `np.arange(start, stop, step)`**
+ - The most common way to create a sequence of numbers in NumPy is using `np.arange()`, which works very similarly to Python’s built-in `range()` function.
 
 ```python
 np.arange(0, 10, 2)  # Output: [0, 2, 4, 6, 8]
