@@ -134,18 +134,55 @@ np.ones((3,2))    # Output: array([[1., 1.],
 
 ---
 
-### **5. Using `np.linspace(start, stop, num_points)`**
+### **5. `np.linspace(start, stop, num_points)`**
+
+* The `numpy.linspace()` function generates an array of **evenly spaced numbers** over a specified interval.
+* **Syntax:**
 
 ```python
-np.linspace(0, 5, 10)
-# Output: [0.         0.55555556 1.11111111 1.66666667 2.22222222 2.77777778 3.33333333 3.88888889 4.44444444 5.        ]
+numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0)
+```
+
+**Parameters:**
+
+* `start` → starting value of the sequence
+* `stop` → end value of the sequence
+* `num` → number of samples to generate (default 50)
+* `endpoint` → include `stop` in the array? (default True)
+* `retstep` → return step size along with array? (default False)
+* `dtype` → data type of the output array
+* `axis` → axis to store values if `start` or `stop` are array-like
+
+```python
+import numpy as np
+
+# 5 evenly spaced numbers between 0 and 10 (inclusive), Total 5 number will be elements will be in the array
+arr1 = np.linspace(0, 10, num=5)
+print("Array 1:", arr1)
+# Output: array([ 0. ,  2.5,  5. ,  7.5, 10. ])
+
+# 5 evenly spaced numbers between 0 and 10 (excluding 10)
+arr2 = np.linspace(0, 10, num=5, endpoint=False)
+print("Array 2:", arr2)
+# Output: [0. 2. 4. 6. 8.]
+
+# Get step size along with array
+arr3, step = np.linspace(0, 10, num=5, retstep=True)
+print("Array 3:", arr3)
+print("Step size:", step)
+# Output:
+# Array 3: [ 0.   2.5  5.   7.5 10. ]
+# Step size: 2.5
 ```
 
 **Explanation:**
 
 * Generates **`num_points` evenly spaced numbers** between `start` and `stop`.
-* Here: 10 numbers from 0 to 5, each equally spaced.
-* Unlike `arange`, which uses a fixed **step**, `linspace` divides the interval into equal pieces.
+* `endpoint=True` → includes the stop value; `False` → excludes it.
+* `retstep=True` → also returns the **step size** (distance between consecutive values).
+* Unlike `np.arange`, which uses a fixed **step**, `linspace` divides the interval into **equal parts**.
+* Useful in AI/ML for **feature ranges, plotting, or generating continuous input sequences**.
+
 
 ---
 
