@@ -1,14 +1,13 @@
 # **NumPy Arrays: Examples Explained for Beginners**
 
 ---
-
-## **Table of Contents**
+## Table of Contents
 
 1. [Creating Arrays from Python Lists](#1-creating-arrays-from-python-lists)  
 2. [Using `np.arange(start, stop, step)`](#2-using-nparangestart-stop-step)  
 3. [Using `np.zeros(shape)`](#3-using-npzerosshape)  
 4. [Using `np.ones(shape)`](#4-using-nponesshape)  
-5. [`np.linspace(start, stop, num_points)`](#5-nplinspace-start-stop-num_points)  
+5. [`np.linspace(start, stop, num_points)`](#5-nplinspacestart-stop-numpoints)  
 6. [Using `np.eye(n)`](#6-using-npeyn)  
 7. [Random Arrays](#7-random-arrays)  
 8. [Array Attributes](#8-array-attributes)  
