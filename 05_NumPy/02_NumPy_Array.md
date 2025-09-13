@@ -372,19 +372,28 @@ np.random.randint(1, 100, 10)   # 10 random integers from 1 to 99
 
 * Arrays have properties that tell you about their **size, shape, and type**.
 
-**Example:**
-
-```python
-arr = np.array([[1,2,3],[4,5,6]])
-
-arr.shape   # Output: (2, 3)
-arr.size    # Output: 6
-arr.dtype   # Output: int64
-```
 
 **Explanation:**
 
-* `.shape` → dimensions of the array (rows × columns)
+* `.reshape` → The numpy.reshape() function allows for changing the shape of a NumPy array without altering its underlying data. This is a fundamental operation in data manipulation
+  - To give a new shape to an existing array. The shape defines the number of elements along each dimension.
+  - A new array object with the specified shape. The original array remains unchanged.
+  - The data elements of the original array are maintained in the new array, just rearranged according to the new shape.
+  - The total number of elements in the new shape must be the same as the total number of elements in the original array.
+**Example:**
+
+```python
+randarr = np.random.randint(0,1000,8)
+print(randarr)
+Output: [399 299 797 685 176 594  22 749]
+
+randarr.reshape(4,2)
+Output: array([[399, 299],
+       [797, 685],
+       [176, 594],
+       [ 22, 749]], dtype=int32)
+```
+
 * `.size` → total number of elements (2×3 = 6)
 * `.dtype` → data type of elements (int, float, etc.)
 * Always useful to check before feeding data into ML models.
