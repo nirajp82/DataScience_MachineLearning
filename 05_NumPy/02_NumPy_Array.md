@@ -524,6 +524,25 @@ print("\nMatrix multiplication:\n", A @ B)
 #  [43 50]]
 ```
 
+---
+
+We have:
+
+$$
+A = 
+\begin{bmatrix} 
+1 & 2 \\ 
+3 & 4 
+\end{bmatrix}, \quad
+B = 
+\begin{bmatrix} 
+5 & 6 \\ 
+7 & 8 
+\end{bmatrix}
+$$
+
+---
+
 * **Step 1:** Take **first row of A** `[1, 2]`
 * **Step 2:** Take **first column of B** `[5, 7]`
 * **Step 3:** Multiply element-wise and add: `1*5 + 2*7 = 19` → this goes in the **top-left** of the result
