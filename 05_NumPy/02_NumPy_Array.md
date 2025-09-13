@@ -85,6 +85,9 @@ numpy_arr
 
 ### **2. Using `np.arange(start, stop, step)`**
  - The most common way to create a sequence of numbers in NumPy is using `np.arange()`, which works very similarly to Python’s built-in `range()` function.
+ - The name **`arange`** comes from **“array + range”**.
+       - * `range()` in Python creates a sequence of numbers.
+       - * `np.arange()` does the same thing but returns a **NumPy array** instead of a list.
 
 ```python
 np.arange(0, 10, 2)  # Output: [0, 2, 4, 6, 8]
