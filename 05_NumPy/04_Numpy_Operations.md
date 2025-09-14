@@ -295,7 +295,7 @@ np.isinf(arr_with_zeros)
 ## **13. Common Errors & Warnings**
 
 * **Shape mismatch:** occurs when performing element-wise ops or broadcasting incorrectly.
-* **Division by zero:** returns `inf` or `nan`, triggers warnings.
+* **Division by zero**: NumPy returns inf if numerator ≠ 0, nan if numerator = 0, and issues a warning instead of raising an exception.
 * **Invalid log / sqrt:** log(0) → `-inf`, sqrt(negative) → `nan`.
 
 ---
