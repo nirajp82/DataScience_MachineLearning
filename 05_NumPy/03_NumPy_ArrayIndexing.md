@@ -250,8 +250,11 @@ print(matrix[:, ::-1])  # reverse columns
 
 ```python
 sub_matrix = matrix[1:3, 1:3]
-print(sub_matrix)
-```
+print(sub_sub_matrix = matrix[1:3, 1:3]
+
+	•	Syntax: [start:stop:step] → slice from start (inclusive) to stop (exclusive).
+	•	First 1:3 (rows) → take rows 1 and 2.
+	•	Second 1:3 (columns) → take columns 1 and 2.
 
 **Output:**
 
