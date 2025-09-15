@@ -216,6 +216,14 @@ print(result)
 [[ 1  3]
  [ 9 11]]
 ```
+	•	Syntax: [start:stop:step] → here step (also called stride) controls how many elements to skip.
+
+matrix[::2, ::2]
+# Rows: take every 2nd row → 0, 2
+# Cols: take every 2nd col → 0, 2
+# Result:
+# [[ 1  3]
+#  [ 9 11]]
 
 **2. Negative slicing (reverse order)**
 
