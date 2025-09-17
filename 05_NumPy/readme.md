@@ -25,6 +25,7 @@
 | `np.identity()` | `np.identity(4)`              | `[[1. 0. 0. 0.] [0. 1. 0. 0.] [0. 0. 1. 0.] [0. 0. 0. 1.]]` | 2D      | ❌           | ✅           |
 | `np.array()`    | `np.array([1,2,3])`           | `[1 2 3]`                                                   | 1D      | ✅           | ✅           |
 | `np.array()`    | `np.array([[1,2,3],[4,5,6]])` | `[[1 2 3] [4 5 6]]`                                         | 1D      | ✅           | ✅           |
+```
 ---
 
 ## 0. Creating Arrays — 1D & 2D (with input → output)
