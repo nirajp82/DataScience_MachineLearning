@@ -43,6 +43,8 @@ These functions **support both 1D and 2D inputs** and **return either a 1D or 2D
 |                       | `np.tile([[1, 2]], 2)`             | `[[1 2] [1 2]]`                                                                 |
 | `np.repeat()`         | `np.repeat([1, 2], 3)`             | `[1 1 1 2 2 2]`                                                                 |
 |                       | `np.repeat([[1, 2]], 3)`           | `[[1 1 1] [2 2 2]]`                                                             |
+|                       | `np.repeat([1, 2], [3, 2])`        | `[1 1 1 2 2]`                                                                   |
+|       | `np.repeat(np.array([[1, 2], [3, 4]]), 2, axis=0)` | `[[1 2] [1 2] [3 4] [3 4]]`                                                     |
 
 #### **3. Supports Both 1D and 2D Inputs, Returns 1D Flattened Array**
 
