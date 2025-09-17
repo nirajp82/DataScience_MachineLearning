@@ -16,7 +16,8 @@ These functions will always return a **1D array** regardless of the input shape.
 | Function        | Example / Code         | Output                                |
 | --------------- | ---------------------- | ------------------------------------- |
 | `np.arange()`   | `np.arange(6)`         | `[0 1 2 3 4 5]`                       |
-| `np.linspace()` | `np.linspace(0, 1, 5)` | `[0.   0.25 0.5  0.75 1.]`            |
+|                 | `np.arange(0, 10, 2)`  | ` [0 2 4 6 8]`                        |
+| `np.linspace()` | `np.linspace(0, 1, 5)` | `[0.  0.25  0.5  0.75  1.]`           |
 | `np.logspace()` | `np.logspace(0, 2, 5)` | `[1. 3.16227766 10. 31.6227766 100.]` |
 
 ---
