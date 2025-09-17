@@ -8,6 +8,23 @@
 * **Use separate arguments** when specifying **sequence / range parameters**: `start, stop, step` or `start, stop, num_points`
   Examples: `np.arange(0, 10, 2)`, `np.linspace(0, 1, 5)`.
 
+## **NumPy functions table**:
+| Function        | Produces 1D | Produces 2D | Default | Example                            | Output                                                      |
+| --------------- | ----------- | ----------- | ------- | ---------------------------------- | ----------------------------------------------------------- |
+| `np.arange()`   | ✅           | ✅           | 1D      | `np.arange(6)`                     | `[0 1 2 3 4 5]`                                             |
+|                 |             |             |         | `np.arange(6).reshape(2,3)`        | `[[0 1 2] [3 4 5]]`                                         |
+| `np.linspace()` | ✅           | ❌           | 1D      | `np.linspace(0,1,5)`               | `[0.   0.25 0.5  0.75 1.  ]`                                |
+| `np.zeros()`    | ✅           | ✅           | 2D      | `np.zeros(3)` → 1D                 | `[0. 0. 0.]`                                                |
+|                 |             |             |         | `np.zeros((2,3))` → 2D             | `[[0. 0. 0.] [0. 0. 0.]]`                                   |
+| `np.ones()`     | ✅           | ✅           | 2D      | `np.ones(4)` → 1D                  | `[1. 1. 1. 1.]`                                             |
+|                 |             |             |         | `np.ones((2,2))` → 2D              | `[[1. 1.] [1. 1.]]`                                         |
+| `np.full()`     | ✅           | ✅           | 2D      | `np.full(3,7)` → 1D                | `[7 7 7]`                                                   |
+|                 |             |             |         | `np.full((2,3),7)` → 2D            | `[[7 7 7] [7 7 7]]`                                         |
+| `np.eye()`      | ❌           | ✅           | 2D      | `np.eye(3)`                        | `[[1. 0. 0.] [0. 1. 0.] [0. 0. 1.]]`                        |
+| `np.identity()` | ❌           | ✅           | 2D      | `np.identity(4)`                   | `[[1. 0. 0. 0.] [0. 1. 0. 0.] [0. 0. 1. 0.] [0. 0. 0. 1.]]` |
+| `np.array()`    | ✅           | ✅           | 1D      | `np.array([1,2,3])` → 1D           | `[1 2 3]`                                                   |
+|                 |             |             |         | `np.array([[1,2,3],[4,5,6]])` → 2D | `[[1 2 3] [4 5 6]]`                                         |
+
 ---
 
 ## 0. Creating Arrays — 1D & 2D (with input → output)
@@ -390,7 +407,7 @@ np.linalg.solve(B, b)   # Output: [-1.  1.]
 
 ## 13. `arange` vs `linspace`
 
-* `np.arange(start, stop, step)` — like Python's `range`, uses `step`. Good when step size is known.
+* `np.arange(start, stop, step)` — like Python's `range`, uses `step`. Good when step size is known. always produces 1D array.
 
   * Example: `np.arange(0,10,2) -> [0 2 4 6 8]`
 * `np.linspace(start, stop, num)` — specify the **number of points** you want evenly spaced from `start` to `stop` (inclusive by default).
