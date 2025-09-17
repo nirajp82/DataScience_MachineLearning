@@ -9,7 +9,6 @@
   Examples: `np.arange(0, 10, 2)`, `np.linspace(0, 1, 5)`.
 
 ## **NumPy functions table**:
-```python
 | Function              | Example / Code                  | Type | Produces 1D? | Produces 2D? | Output                                                                      |
 | --------------------- | ------------------------------- | ------- | ----------- | ----------- | --------------------------------------------------------------------------- |
 | `np.arange()`         | `np.arange(6)`                  | 1D      | ✅           | ❌           | `[0 1 2 3 4 5]`                                                             |
@@ -37,7 +36,6 @@
 | `np.repeat()`         | `np.repeat([1,2],3)`            | 1D      | ✅           | ✅ (reshape) | `[1 1 1 2 2 2]`                                                             |
 | `np.meshgrid()`       | `np.meshgrid([1,2],[3,4])`      | 2D      | ❌           | ✅           | `[[1 2][1 2]] [[3 3][4 4]]`                                                 |
 
-```
 ---
 
 ## 0. Creating Arrays — 1D & 2D (with input → output)
