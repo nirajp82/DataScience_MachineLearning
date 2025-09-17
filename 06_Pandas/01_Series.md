@@ -206,7 +206,23 @@ When you apply vectorized operations between Series, Pandas **aligns by index la
 ```python
 ser1 = pd.Series([1, 2, 3, 4], index=['USA', 'Germany', 'USSR', 'Japan'])
 ser2 = pd.Series([1, 2, 5, 4], index=['USA', 'Germany', 'Italy', 'Japan'])
+```
+```Output
+ser1:
+USA        1
+Germany    2
+USSR       3
+Japan      4
+dtype: int64
 
+ser2:
+USA        1
+Germany    2
+Italy      5
+Japan      4
+dtype: int64
+
+```python
 ser1 + ser2
 ```
 
