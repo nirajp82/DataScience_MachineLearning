@@ -13,7 +13,7 @@
 | Function        | Example / Code                | Output                        | Default | Produces 1D | Produces 2D |
 | --------------- | ----------------------------- | ----------------------------- | ------- | ----------- | ----------- |
 | `np.arange()`   | `np.arange(6)`                | `[0 1 2 3 4 5]`              | 1D      | ✅          | ❌          |
-| `np.arange()`   | `np.arange(6).reshape(2,3)`  | `[[0 1 2][3 4 5]]`           | 1D      | ✅          | ✅          |
+| `np.arange()`   | `np.arange(6).reshape(2,3)`  | `[[0 1 2][3 4 5]]`           | 1D      | ✅          |  Not directly          |
 | `np.linspace()` | `np.linspace(0,1,5)`         | `[0. 0.25 0.5 0.75 1.]`      | 1D      | ✅          | ❌          |
 | `np.zeros()`    | `np.zeros(3)`                 | `[0. 0. 0.]`                 | 2D      | ✅          | ✅          |
 | `np.zeros()`    | `np.zeros((2,3))`             | `[[0. 0. 0.][0. 0. 0.]]`     | 2D      | ✅          | ✅          |
