@@ -534,24 +534,20 @@ ser1.nunique() # Output: 4
 ### Example A — simple arithmetic & access
 
 ```python
-s = pd.Series([10, 20, 30], index=['A','B','C'])
-s2 = pd.Series({'A': 100, 'B': 200, 'C': 300})
+s = pd.Series([10, 20, 30], index=['A','B','C']) # 10
+s2 = pd.Series({'A': 100, 'B': 200, 'C': 300}) # 10
 
 print(s['A'])   # label access
 print(s[0])     # position access
 print(s + s2)
-```
 
-**Output**
-
-```
-10
-10
+#Output:
 A    110
 B    220
 C    330
 dtype: int64
 ```
+
 
 ### Example B — boolean and loc/iloc
 
