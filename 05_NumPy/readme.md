@@ -11,7 +11,7 @@
 ## **NumPy functions table**:
 | Function        | Produces 1D | Produces 2D | Default | Example                            | Output                                                      |
 | --------------- | ----------- | ----------- | ------- | ---------------------------------- | ----------------------------------------------------------- |
-| `np.arange()`   | ✅           | ✅           | 1D      | `np.arange(6)`                     | `[0 1 2 3 4 5]`                                             |
+| `np.arange()`   | ✅           | ❌          | 1D      | `np.arange(6)`                     | `[0 1 2 3 4 5]`                                             |
 |                 |             |             |         | `np.arange(6).reshape(2,3)`        | `[[0 1 2] [3 4 5]]`                                         |
 | `np.linspace()` | ✅           | ❌           | 1D      | `np.linspace(0,1,5)`               | `[0.   0.25 0.5  0.75 1.  ]`                                |
 | `np.zeros()`    | ✅           | ✅           | 2D      | `np.zeros(3)` → 1D                 | `[0. 0. 0.]`                                                |
