@@ -350,37 +350,185 @@ dtype: int64
 
 ## 8) Useful methods (quick summary)
 
-* `s.head(n)`, `s.tail(n)` — peek at data
-* `s.describe()` — summary stats for numeric series
-* `s.value_counts()` — counts for categorical values
-* `s.sort_index()` / `s.sort_values()` — sorting
-* `s.astype(dtype)` — convert dtype
-* `s.index`, `s.values`, `s.name` — metadata
-* `s.to_dict()` — convert to dict
-* `s.unique()`, `s.nunique()` — unique values
-
-Example: `describe()`
+##### 1️:`head(n)` — first n rows
 
 ```python
-pd.Series([10,20,30,40]).describe()
+ser1.head(2)
 ```
 
 **Output**
 
 ```
-count     4.000000
-mean     25.000000
-std      12.909944
-min      10.000000
-25%      17.500000
-50%      25.000000
-75%      32.500000
-max      40.000000
+USA        1
+Germany    2
+dtype: int64
+```
+
+---
+
+##### 2️:`tail(n)` — last n rows
+
+```python
+ser1.tail(2)
+```
+
+**Output**
+
+```
+USSR    3
+Japan   4
+dtype: int64
+```
+
+---
+
+##### 3️:`describe()` — summary stats
+
+```python
+ser1.describe()
+```
+
+**Output**
+
+```
+count    4.000000
+mean     2.500000
+std      1.290994
+min      1.000000
+25%      1.750000
+50%      2.500000
+75%      3.250000
+max      4.000000
 dtype: float64
 ```
 
 ---
 
+##### 4️:`value_counts()` — counts of each value
+
+```python
+ser1.value_counts()
+```
+
+**Output**
+
+```
+1    1
+2    1
+3    1
+4    1
+dtype: int64
+```
+
+---
+
+##### 5️:`sort_index()` — sort by index
+
+```python
+ser1.sort_index()
+```
+
+**Output**
+
+```
+Germany    2
+Japan      4
+USA        1
+USSR       3
+dtype: int64
+```
+
+##### `sort_values()` — sort by values
+
+```python
+ser1.sort_values()
+```
+
+**Output**
+
+```
+USA       1
+Germany   2
+USSR      3
+Japan     4
+dtype: int64
+```
+
+---
+
+##### 6️:`astype(dtype)` — convert dtype
+
+```python
+ser1.astype(float)
+```
+
+**Output**
+
+```
+USA       1.0
+Germany   2.0
+USSR      3.0
+Japan     4.0
+dtype: float64
+```
+
+---
+
+##### 7️: Metadata
+
+```python
+ser1.index
+```
+
+```
+Index(['USA', 'Germany', 'USSR', 'Japan'], dtype='object')
+```
+
+```python
+ser1.values
+```
+
+```
+array([1, 2, 3, 4])
+```
+
+```python
+ser1.name
+```
+
+```
+None
+```
+
+---
+
+##### 8️: `to_dict()` — convert to dictionary
+
+```python
+ser1.to_dict()
+```
+
+```
+{'USA': 1, 'Germany': 2, 'USSR': 3, 'Japan': 4}
+```
+
+---
+
+##### 9️: `unique()` — unique values
+
+```python
+ser1.unique()
+```
+
+```
+array([1, 2, 3, 4])
+```
+
+##### `nunique()` — count of unique values
+
+```python
+ser1.nunique() # Output: 4
+```
 ## 9) Quick practical examples (copy/paste + outputs)
 
 ### Example A — simple arithmetic & access
