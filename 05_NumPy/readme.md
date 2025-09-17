@@ -9,28 +9,8 @@
   Examples: `np.arange(0, 10, 2)`, `np.linspace(0, 1, 5)`.
 
 ---
-## **NumPy Functions Table (Grouped by Output Type)**
-
-Thank you for your patience! Let’s take some time to clarify everything properly.
-
-### Key Points to Address:
-
-1. **`flatten()`**:
-
-   * This function **always returns a 1D array**, regardless of the input shape (1D, 2D, etc.). So it **should NOT** be listed as supporting 2D arrays.
-2. **`ravel()`**:
-
-   * Similar to `flatten()`, `ravel()` **always returns a 1D array**. However, it **tries to return a view** of the original data when possible, rather than copying the data like `flatten()` does.
-   * It should also **not be listed as supporting 2D output**, but it’s important to note that it can still work on multi-dimensional arrays (like 2D or higher), flattening them into a 1D result.
-
-### Corrected Tables
-
----
-
-## **Corrected NumPy Functions Table (Grouped by Output Type)**
 
 ### **Supports Only 1D Output**
-
 | Function              | Example / Code                                                  | Produces 1D? | Produces 2D? | Output                                 |
 | --------------------- | --------------------------------------------------------------- | ------------ | ------------ | -------------------------------------- |
 | `np.array()`          | `np.array([1,2,3])` and `np.array([[1,2,3]])`                   | ✅            | ❌            | `[1 2 3]`                              |
