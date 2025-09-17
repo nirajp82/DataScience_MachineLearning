@@ -207,7 +207,8 @@ When you apply vectorized operations between Series, Pandas **aligns by index la
 ser1 = pd.Series([1, 2, 3, 4], index=['USA', 'Germany', 'USSR', 'Japan'])
 ser2 = pd.Series([1, 2, 5, 4], index=['USA', 'Germany', 'Italy', 'Japan'])
 ```
-```Output
+**Output**
+```
 ser1:
 USA        1
 Germany    2
@@ -221,6 +222,7 @@ Germany    2
 Italy      5
 Japan      4
 dtype: int64
+```
 
 ```python
 ser1 + ser2
@@ -236,11 +238,22 @@ USA        2.0
 USSR       NaN
 dtype: float64
 ```
+##### 📌 Pandas Series Arithmetic Rules
 
-Notes:
+* **Labels match → values are combined**
+  Example: `"USA"` → `1 + 1 = 2`
 
-* Result shows union of indices (values aligned by label).
-* Because of arithmetic, `int64` may be promoted to `float64` when `NaN` is present or to retain fractional results.
+* **Labels don’t match → result is `NaN`**
+  Example: `"USSR"` only in `ser1`, `"Italy"` only in `ser2` → `NaN`
+
+* **Result index = union of both indices**
+  → all labels from both Series show up
+
+* **Dtype promotion**
+
+  * All labels match and all results are integers → dtype stays int64
+  * If any label is missing (NaN appears) → dtype becomes float64 (because `NaN` can’t exist in pure `int64`)
+  * **Division (`/`) always returns `float64`**, even if no `NaN`
 
 ### Example: dtype promotion on division
 
