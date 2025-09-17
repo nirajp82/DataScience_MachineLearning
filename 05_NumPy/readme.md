@@ -12,7 +12,6 @@
 | Function              | Example / Code                  | Type | Produces 1D? | Produces 2D? | Output                                                                      |
 | --------------------- | ------------------------------- | ------- | ----------- | ----------- | --------------------------------------------------------------------------- |
 | `np.arange()`         | `np.arange(6)`                  | 1D      | ✅           | ❌           | `[0 1 2 3 4 5]`                                                             |
-| `np.arange()`         | `np.arange(6).reshape(2,3)`     | 1D      | ✅           | ✅ (reshape) | `[[0 1 2][3 4 5]]`                                                          |
 | `np.linspace()`       | `np.linspace(0,1,5)`            | 1D      | ✅           | ❌           | `[0. 0.25 0.5 0.75 1.]`                                                     |
 | `np.logspace()`       | `np.logspace(0,2,5)`            | 1D      | ✅           | ❌           | `[1. 3.16227766 10. 31.6227766 100.]`                                       |
 | `np.zeros()`          | `np.zeros(3)`                   | 2D      | ✅           | ✅           | `[0. 0. 0.]`                                                                |
@@ -25,15 +24,15 @@
 | `np.identity()`       | `np.identity(2)`                | 2D      | ❌           | ✅           | `[[1. 0.][0. 1.]]`                                                          |
 | `np.array()`          | `np.array([1,2,3])`             | 1D      | ✅           | ✅           | `[1 2 3]`                                                                   |
 | `np.array()`          | `np.array([[1,2,3],[4,5,6]])`   | 1D      | ✅           | ✅           | `[[1 2 3][4 5 6]]`                                                          |
-| `np.random.rand()`    | `np.random.rand(3)`             | 1D      | ✅           | ✅ (reshape) | `[0.5488135 0.71518937 0.60276338]`                                         |
+| `np.random.rand()`    | `np.random.rand(3)`             | 1D      | ✅           | ❌           | `[0.5488135 0.71518937 0.60276338]`                                         |
 | `np.random.rand()`    | `np.random.rand(2,3)`           | 2D      | ❌           | ✅           | `[[0.54488318 0.4236548 0.64589411][0.43758721 0.891773 0.96366276]]`       |
-| `np.random.randn()`   | `np.random.randn(3)`            | 1D      | ✅           | ✅ (reshape) | `[0.24196227 -1.91328024 -1.72491783]`                                      |
+| `np.random.randn()`   | `np.random.randn(3)`            | 1D      | ✅           | ❌ (reshape) | `[0.24196227 -1.91328024 -1.72491783]`                                      |
 | `np.random.randn()`   | `np.random.randn(2,3)`          | 2D      | ❌           | ✅           | `[[-0.56228753 -1.01283112 0.31424733][-0.90802408 -1.4123037 1.46564877]]` |
-| `np.random.randint()` | `np.random.randint(0,10,3)`     | 1D      | ✅           | ✅ (reshape) | `[5 0 3]`                                                                   |
+| `np.random.randint()` | `np.random.randint(0,10,3)`     | 1D      | ✅           | ❌ (reshape) | `[5 0 3]`                                                                   |
 | `np.random.randint()` | `np.random.randint(0,10,(2,3))` | 2D      | ❌           | ✅           | `[[7 9 3][5 2 4]]`                                                          |
-| `np.empty()`          | `np.empty(3)`                   | 1D      | ✅           | ✅ (reshape) | `[2.0e-322 0.0 1.0e-323]` (garbage values)                                  |
-| `np.tile()`           | `np.tile([1,2],2)`              | 1D      | ✅           | ✅ (reshape) | `[1 2 1 2]`                                                                 |
-| `np.repeat()`         | `np.repeat([1,2],3)`            | 1D      | ✅           | ✅ (reshape) | `[1 1 1 2 2 2]`                                                             |
+| `np.empty()`          | `np.empty(3)`                   | 1D      | ✅           | ❌ (reshape) | `[2.0e-322 0.0 1.0e-323]` (garbage values)                                  |
+| `np.tile()`           | `np.tile([1,2],2)`              | 1D      | ✅           | ❌ (reshape) | `[1 2 1 2]`                                                                 |
+| `np.repeat()`         | `np.repeat([1,2],3)`            | 1D      | ✅           | ❌ (reshape) | `[1 1 1 2 2 2]`                                                             |
 | `np.meshgrid()`       | `np.meshgrid([1,2],[3,4])`      | 2D      | ❌           | ✅           | `[[1 2][1 2]] [[3 3][4 4]]`                                                 |
 
 ---
