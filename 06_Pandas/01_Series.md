@@ -1,5 +1,5 @@
-# 📘 Pandas Series — Introduction, Fundamentals, Examples & Outputs
----
+# 📘 Pandas Series 
+
 ## 1) What is a Pandas `Series`? 
 * A **Series** is a **one-dimensional labeled array** built on top of NumPy arrays.
 * It combines features of arrays and dictionaries: **ordered values + an index (labels)**.
