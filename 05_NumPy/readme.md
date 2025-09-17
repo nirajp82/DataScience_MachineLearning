@@ -9,7 +9,7 @@
   Examples: `np.arange(0, 10, 2)`, `np.linspace(0, 1, 5)`.
 
 ## **NumPy functions table**:
-```
+```python
 | Function        | Example / Code                | Output                                                      | Default | Produces 1D | Produces 2D |
 | --------------- | ----------------------------- | ----------------------------------------------------------- | ------- | ----------- | ----------- |
 | `np.arange()`   | `np.arange(6)`                | `[0 1 2 3 4 5]`                                             | 1D      | ✅           | ❌           |
