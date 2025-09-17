@@ -126,6 +126,15 @@ Given `s = pd.Series([10,20,30], index=['A','B','C'])`:
 
 ```python
 ser1 = pd.Series([1, 2, 3, 4], index=['USA', 'Germany', 'USSR', 'Japan'])
+ser1
+```
+**Output**
+```
+USA        1
+Germany    2
+USSR       3
+Japan      4
+dtype: int64
 ```
 
 Label-based:
