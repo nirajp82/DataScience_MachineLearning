@@ -1,6 +1,6 @@
 # 📘 Pandas Series — Introduction, Fundamentals, Examples & Outputs
 ---
-## 1) What is a Pandas `Series`? (Short intro)
+## 1) What is a Pandas `Series`? 
 * A **Series** is a **one-dimensional labeled array** built on top of NumPy arrays.
 * It combines features of arrays and dictionaries: **ordered values + an index (labels)**.
 * Series are the building block for `DataFrame` (columns of a DataFrame are Series).
