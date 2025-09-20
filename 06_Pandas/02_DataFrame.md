@@ -83,7 +83,7 @@ It is the primary data structure in the Pandas library for Python, widely used f
 | Conditional selection (whole DataFrame) | `df[df > 0]`                                     | DataFrame                    |           |
 | Filter rows (single condition)          | `df[df['Age'] > 25]`                             | DataFrame                    |           |
 | Filter rows (multiple conditions)       | `df[(df['Age'] > 25) & (df['City']=="Chicago")]` | DataFrame                    |           |
-| OR condition                            | \`df\[(df\['Age'] > 25)                          | (df\['City']=="New York")]\` | DataFrame |
+| OR condition                            | `df[(df['Age'] > 25) \| (df['City'] == "New York")]`|  DataFrame | |
 | Filter + select column                  | `df[df['Age'] > 25]['Name']`                     | Series                       |           |
 | Filter + select multiple columns        | `df[df['Age'] > 25][['Name','City']]`            | DataFrame                    |           |
 | Reset index (not inplace)               | `df.reset_index()`                               | DataFrame                    |           |
