@@ -59,55 +59,104 @@ It is the primary data structure in the Pandas library for Python, widely used f
 
 ### Part 1 Quick Reference
 
-| Action                        | Code Example                           | Output Type |
-| ----------------------------- | -------------------------------------- | ----------- |
-| Select single column          | `df['Name']`                           | Series      |
-| Select multiple columns       | `df[['Name','Age']]`                   | DataFrame   |
-| Check type of selection       | `type(df['Name'])`                     | Series      |
-| Add new column                | `df['New'] = df['Age'] + 5`            | DataFrame   |
-| Drop column (not inplace)     | `df.drop('New', axis=1)`               | DataFrame   |
-| Drop column (permanent)       | `df.drop('New', axis=1, inplace=True)` | None        |
-| Drop row                      | `df.drop(1, axis=0)`                   | DataFrame   |
-| Shape of DataFrame            | `df.shape`                             | Tuple       |
-| Select row by label           | `df.loc[0]`                            | Series      |
-| Select row by position        | `df.iloc[2]`                           | Series      |
-| Select subset of rows/columns | `df.loc[[0,2], ['Name','City']]`       | DataFrame   |
+```python
+import pandas as pd
+
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+}
+df = pd.DataFrame(data)
+print(df)
+```
+
+**DataFrame (`df`):**
+
+```
+      Name  Age         City
+0    Alice   25     New York
+1      Bob   30  Los Angeles
+2  Charlie   35      Chicago
+```
 
 ---
 
-### Part 2 Quick Reference
+# 📊 Quick Reference – Part 1
 
-| Action                                  | Code Example                                     | Output Type                  |           |
-| --------------------------------------- | ------------------------------------------------ | ---------------------------- | --------- |
-| Boolean mask (entire DataFrame)         | `df > 0`                                         | DataFrame                    |           |
-| Conditional selection (whole DataFrame) | `df[df > 0]`                                     | DataFrame                    |           |
-| Filter rows (single condition)          | `df[df['Age'] > 25]`                             | DataFrame                    |           |
-| Filter rows (multiple conditions)       | `df[(df['Age'] > 25) & (df['City']=="Chicago")]` | DataFrame                    |           |
-| OR condition                            | `df[(df['Age'] > 25) \| (df['City'] == "New York")]`|  DataFrame | |
-| Filter + select column                  | `df[df['Age'] > 25]['Name']`                     | Series                       |           |
-| Filter + select multiple columns        | `df[df['Age'] > 25][['Name','City']]`            | DataFrame                    |           |
-| Reset index (not inplace)               | `df.reset_index()`                               | DataFrame                    |           |
-| Reset index (permanent)                 | `df.reset_index(inplace=True)`                   | None                         |           |
-| Set column as index                     | `df.set_index('Name')`                           | DataFrame                    |           |
-| Set column as index (permanent)         | `df.set_index('Name', inplace=True)`             | None                         |           |
-
----
-
-### Part 3 Quick Reference
-
-| Action                         | Code Example                                | Output Type |
-| ------------------------------ | ------------------------------------------- | ----------- |
-| Create multi-index from tuples | `pd.MultiIndex.from_tuples(list_of_tuples)` | MultiIndex  |
-| Access outer index             | `df.loc['G1']`                              | DataFrame   |
-| Access inner index             | `df.loc['G1'].loc[1]`                       | Series      |
-| Check index names              | `df.index.names`                            | list        |
-| Set index names                | `df.index.names = ['groups','numb']`        | None        |
-| Access specific value          | `df.loc['G2'].loc[2]['b']`                  | Scalar      |
-| Cross-section outer level      | `df.xs('G1')`                               | DataFrame   |
-| Cross-section inner level      | `df.xs(1, level='numb')`                    | DataFrame   |
+| Action                        | Code Example                           | Output Type | Example Output                                 |
+| ----------------------------- | -------------------------------------- | ----------- | ---------------------------------------------- |
+| Select single column          | `df['Name']`                           | Series      | `0 Alice; 1 Bob; 2 Charlie`                    |
+| Select multiple columns       | `df[['Name','Age']]`                   | DataFrame   | `[['Alice',25],['Bob',30],['Charlie',35]]`     |
+| Check type of selection       | `type(df['Name'])`                     | Series      | `<class 'pandas.core.series.Series'>`          |
+| Add new column                | `df['New'] = df['Age'] + 5`            | DataFrame   | Adds `"New"` column with values `[30, 35, 40]` |
+| Drop column (not inplace)     | `df.drop('New', axis=1)`               | DataFrame   | Returns DataFrame without `"New"`              |
+| Drop column (permanent)       | `df.drop('New', axis=1, inplace=True)` | None        | Removes `"New"` permanently                    |
+| Drop row                      | `df.drop(1, axis=0)`                   | DataFrame   | Removes Bob’s row                              |
+| Shape of DataFrame            | `df.shape`                             | Tuple       | `(3, 3)`                                       |
+| Select row by label           | `df.loc[0]`                            | Series      | Alice row as Series                            |
+| Select row by position        | `df.iloc[2]`                           | Series      | Charlie row as Series                          |
+| Select subset of rows/columns | `df.loc[[0,2], ['Name','City']]`       | DataFrame   | Alice + Charlie, only Name & City              |
 
 ---
 
+# 📊 Quick Reference – Part 2
+
+| Action                                  | Code Example                                       | Output Type | Example Output                            |
+| --------------------------------------- | -------------------------------------------------- | ----------- | ----------------------------------------- |
+| Boolean mask (entire DataFrame)         | `df > 25`                                          | DataFrame   | Shows `True/False` where condition met    |
+| Conditional selection (whole DataFrame) | `df[df['Age'] > 25]`                               | DataFrame   | Bob & Charlie rows                        |
+| Filter rows (multiple conditions)       | `df[(df['Age'] > 25) & (df['City']=="Chicago")]`   | DataFrame   | Charlie only                              |
+| OR condition                            | `df[(df['Age'] > 25) \| (df['City']=="New York")]` | DataFrame   | Alice + Bob + Charlie (since Alice is NY) |
+| Filter + select column                  | `df[df['Age'] > 25]['Name']`                       | Series      | `1 Bob; 2 Charlie`                        |
+| Filter + select multiple columns        | `df[df['Age'] > 25][['Name','City']]`              | DataFrame   | Bob & Charlie with Name + City            |
+| Reset index (not inplace)               | `df.reset_index()`                                 | DataFrame   | Resets to default 0,1,2 index             |
+| Reset index (permanent)                 | `df.reset_index(inplace=True)`                     | None        | Modifies DataFrame index                  |
+| Set column as index                     | `df.set_index('Name')`                             | DataFrame   | Uses `Name` as index                      |
+| Set column as index (permanent)         | `df.set_index('Name', inplace=True)`               | None        | Same but permanent                        |
+
+---
+
+# 📊 Quick Reference – Part 3
+
+(using MultiIndex example)
+
+```python
+import numpy as np
+
+outside = ['G1','G1','G1','G2','G2','G2']
+inside  = [1,2,3,1,2,3]
+hier_index = pd.MultiIndex.from_tuples(list(zip(outside,inside)))
+
+df_multi = pd.DataFrame(np.random.randn(6,2), index=hier_index, columns=['a','b'])
+df_multi.index.names = ['groups','numb']
+print(df_multi)
+```
+
+**DataFrame (`df_multi`):**
+
+```
+              a         b
+groups numb              
+G1     1    0.12     0.34
+       2   -0.56    -1.23
+       3    1.45     0.67
+G2     1   -0.78     0.45
+       2    0.23    -0.12
+       3    0.89     1.34
+```
+
+| Action                         | Code Example                                | Output Type | Example Output                       |
+| ------------------------------ | ------------------------------------------- | ----------- | ------------------------------------ |
+| Create multi-index from tuples | `pd.MultiIndex.from_tuples(list_of_tuples)` | MultiIndex  | `MultiIndex([('G1',1),('G1',2)...])` |
+| Access outer index             | `df_multi.loc['G1']`                        | DataFrame   | Rows under G1 only                   |
+| Access inner index             | `df_multi.loc['G1'].loc[1]`                 | Series      | Row for G1,1                         |
+| Check index names              | `df_multi.index.names`                      | list        | `['groups','numb']`                  |
+| Set index names                | `df_multi.index.names=['groups','numb']`    | None        | Assigns names to levels              |
+| Access specific value          | `df_multi.loc['G2'].loc[2]['b']`            | Scalar      | Single float (e.g., `-0.12`)         |
+| Cross-section outer level      | `df_multi.xs('G1')`                         | DataFrame   | All rows under G1                    |
+| Cross-section inner level      | `df_multi.xs(1, level='numb')`              | DataFrame   | All rows where numb==1               |
+----
 # 📘 Pandas DataFrames – Part 1
 
 ## 🔹 Creating a DataFrame
