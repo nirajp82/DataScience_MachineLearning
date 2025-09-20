@@ -1,41 +1,39 @@
-Perfect 👍 thanks for confirming. Here’s the **final full README** with **Parts 1, 2, and 3** combined, polished, and separated with clear section lines:
-
----
-
-# 📘 Pandas DataFrames (Parts 1–3)
-
 ## 📑 Table of Contents
 
 * [Part 1 – Introduction to DataFrames](#-pandas-dataframes--part-1)
 
-  * Introduction & Key Characteristics
-  * Quick Reference Table
-  * Creating a DataFrame
-  * Selecting Columns
-  * Checking Types
-  * Creating New Columns
-  * Dropping Columns & Rows
-  * Shape of DataFrame
-  * Selecting Rows
-  * Selecting Subsets
-  * Key Takeaways
+  * [Introduction & Key Characteristics](#-introduction)
+  * [Quick Reference Table](#-quick-reference-table)
+  * [Creating a DataFrame](#-creating-a-dataframe)
+  * [Selecting Columns](#-selecting-columns)
+  * [Checking Types](#-checking-types)
+  * [Creating New Columns](#-creating-new-columns)
+  * [Dropping Columns & Rows](#-dropping-columns--rows)
+  * [Shape of DataFrame](#-shape-of-dataframe)
+  * [Selecting Rows](#-selecting-rows)
+  * [Selecting Subsets](#-selecting-subsets)
+  * [Key Takeaways](#-key-takeaways)
+
 * [Part 2 – Conditional Selection & Indexing](#-pandas-dataframes--part-2)
 
-  * Introduction
-  * Conditional Selection
-  * Filtering Rows by Column Values
-  * Multiple Conditions
-  * Resetting & Setting Index
-  * Key Takeaways
+  * [Introduction](#-introduction-1)
+  * [Quick Reference Table](#-quick-reference-table-1)
+  * [Conditional Selection](#-conditional-selection)
+  * [Filtering Rows by Column Values](#-filtering-rows-based-on-column-values)
+  * [Multiple Conditions](#-multiple-conditions)
+  * [Resetting and Setting Index](#-resetting-and-setting-index)
+  * [Key Takeaways](#-key-takeaways-1)
+
 * [Part 3 – Multi-Indexed DataFrames](#-pandas-dataframes--part-3)
 
-  * Introduction
-  * Creating MultiIndex
-  * Accessing Data in MultiIndex
-  * Naming Index Levels
-  * Accessing Specific Values
-  * Cross-Section Method (`xs`)
-  * Key Takeaways
+  * [Introduction](#-introduction-2)
+  * [Quick Reference Table](#-quick-reference-table-2)
+  * [Creating a MultiIndex](#-creating-a-multiindex)
+  * [Accessing Data in MultiIndex](#-accessing-data-in-multiindex)
+  * [Naming Index Levels](#-naming-index-levels)
+  * [Accessing Specific Values](#-accessing-specific-values)
+  * [Cross-Section Method](#-cross-section-method)
+  * [Key Takeaways](#-key-takeaways-2)
 
 ---
 
@@ -73,9 +71,7 @@ It is the primary data structure in the Pandas library for Python, widely used f
 | Select subset of rows/columns | `df.loc[[0,2], ['Name','City']]`       | DataFrame   |
 
 ---
-
-## 📊 Quick Reference Table
-
+#### Part 2
 | Action                                  | Code Example                           | Output Type       |           |
 | --------------------------------------- | -------------------------------------- | ----------------- | --------- |
 | Boolean mask (entire DataFrame)         | `df > 0`                               | DataFrame (bool)  |           |
@@ -91,9 +87,7 @@ It is the primary data structure in the Pandas library for Python, widely used f
 | Set column as index (permanent)         | `df.set_index('States', inplace=True)` | None              |           |
 
 ---
-
-## 📊 Quick Reference Table
-
+#### Part 3
 | Action                         | Code Example                                | Output Type |
 | ------------------------------ | ------------------------------------------- | ----------- |
 | Create multi-index from tuples | `pd.MultiIndex.from_tuples(list_of_tuples)` | MultiIndex  |
