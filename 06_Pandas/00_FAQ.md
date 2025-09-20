@@ -56,5 +56,3 @@ dtype: bool
 * Use `~` instead of `not` → element-wise NOT
 
 ---
-
-Do you want me to also create a **small Quick Reference mini-table** for these (`&`, `|`, `~`) right under this Q\&A so it’s easy to glance at?
