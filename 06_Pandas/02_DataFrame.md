@@ -282,4 +282,315 @@ df.loc[[0,2], ['Name','City']]
 * Subsets via `.loc` with lists.
 
 🔗 [Back to Quick Reference](#part-1-quick-reference)
+---
+
+# 📘 Pandas DataFrames – Part 2
+
+## 🔹 Introduction
+
+In Part 2, we focus on **conditional selection, filtering, and indexing** with a Pandas DataFrame.
+This allows us to extract subsets of rows/columns based on logical conditions and also manage indices.
+
+We continue with our same DataFrame:
+
+```python
+import pandas as pd
+
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+}
+df = pd.DataFrame(data)
+print(df)
+```
+
+<details>
+<summary>Output</summary>
+
+```
+      Name  Age         City
+0    Alice   25     New York
+1      Bob   30  Los Angeles
+2  Charlie   35      Chicago
+```
+
+</details>
+
+---
+
+## 🔹 Conditional Selection
+
+```python
+# Boolean mask (check condition)
+df['Age'] > 28
+```
+
+<details>
+<summary>Output</summary>
+
+```
+0    False
+1     True
+2     True
+Name: Age, dtype: bool
+```
+
+</details>
+
+```python
+# Filter rows where Age > 28
+df[df['Age'] > 28]
+```
+
+<details>
+<summary>Output</summary>
+
+```
+      Name  Age         City
+1      Bob   30  Los Angeles
+2  Charlie   35      Chicago
+```
+
+</details>
+
+---
+
+## 🔹 Multiple Conditions
+
+```python
+# AND condition (Age > 28 AND City == 'Chicago')
+df[(df['Age'] > 28) & (df['City'] == 'Chicago')]
+```
+
+<details>
+<summary>Output</summary>
+
+```
+      Name  Age     City
+2  Charlie   35  Chicago
+```
+
+</details>
+
+```python
+# OR condition (Age < 30 OR City == 'Chicago')
+df[(df['Age'] < 30) | (df['City'] == 'Chicago')]
+```
+
+<details>
+<summary>Output</summary>
+
+```
+      Name  Age     City
+0    Alice   25  New York
+2  Charlie   35  Chicago
+```
+
+</details>
+
+---
+
+## 🔹 Resetting & Setting Index
+
+```python
+# Reset index (creates new index, keeps old as column)
+df_reset = df.reset_index()
+print(df_reset)
+```
+
+<details>
+<summary>Output</summary>
+
+```
+   index     Name  Age         City
+0      0    Alice   25     New York
+1      1      Bob   30  Los Angeles
+2      2  Charlie   35      Chicago
+```
+
+</details>
+
+```python
+# Set 'Name' as index
+df_name_index = df.set_index('Name')
+print(df_name_index)
+```
+
+<details>
+<summary>Output</summary>
+
+```
+         Age         City
+Name                     
+Alice     25     New York
+Bob       30  Los Angeles
+Charlie   35      Chicago
+```
+
+</details>
+
+---
+
+## 🔑 Key Takeaways
+
+* Use **boolean masks** for filtering (`df[df['Age'] > 28]`).
+* Combine conditions with `&` (AND) and `|` (OR).
+* **Reset index** when needed for clean indexing.
+* **Set a column as index** for more meaningful labels.
+
+🔗 [Back to Quick Reference](#-quick-reference-tables)
+
+---
+
+# 📘 Pandas DataFrames – Part 3
+
+## 🔹 Introduction
+
+Part 3 introduces **MultiIndex DataFrames** (hierarchical indexing).
+This allows more complex data organization with multiple levels of indices.
+
+We’ll extend our same dataset to create a **MultiIndex**.
+
+---
+
+## 🔹 Creating MultiIndex
+
+```python
+# Create a MultiIndex from Name and City
+df_multi = df.set_index(['Name', 'City'])
+print(df_multi)
+```
+
+<details>
+<summary>Output</summary>
+
+```
+                 Age
+Name    City        
+Alice   New York   25
+Bob     Los Angeles 30
+Charlie Chicago    35
+```
+
+</details>
+
+---
+
+## 🔹 Accessing Data in MultiIndex
+
+```python
+# Access all data for Alice
+df_multi.loc['Alice']
+```
+
+<details>
+<summary>Output</summary>
+
+```
+          Age
+City         
+New York   25
+```
+
+</details>
+
+```python
+# Access specific value (Charlie's Age in Chicago)
+df_multi.loc[('Charlie', 'Chicago'), 'Age']
+```
+
+<details>
+<summary>Output</summary>
+
+```
+35
+```
+
+</details>
+
+---
+
+## 🔹 Naming Index Levels
+
+```python
+# Check current index names
+print(df_multi.index.names)
+```
+
+<details>
+<summary>Output</summary>
+
+```
+['Name', 'City']
+```
+
+</details>
+
+```python
+# Rename index levels
+df_multi.index.names = ['Person', 'Location']
+print(df_multi)
+```
+
+<details>
+<summary>Output</summary>
+
+```
+                  Age
+Person  Location     
+Alice   New York    25
+Bob     Los Angeles 30
+Charlie Chicago     35
+```
+
+</details>
+
+---
+
+## 🔹 Cross-Section with `xs()`
+
+```python
+# Cross-section by outer level
+df_multi.xs('Alice')
+```
+
+<details>
+<summary>Output</summary>
+
+```
+          Age
+Location     
+New York   25
+```
+
+</details>
+
+```python
+# Cross-section by inner level
+df_multi.xs('Chicago', level='Location')
+```
+
+<details>
+<summary>Output</summary>
+
+```
+         Age
+Person      
+Charlie   35
+```
+
+</details>
+
+---
+
+## 🔑 Key Takeaways
+
+* MultiIndex allows **hierarchical indexing** with multiple levels.
+* Access data with `.loc[()]` using tuples.
+* Index levels can be **renamed** for clarity.
+* `.xs()` is a powerful method to slice by a specific index level.
+
+🔗 [Back to Quick Reference](#-quick-reference-tables)
+
 
