@@ -151,8 +151,6 @@ Chicago     Eva      40     95
             Frank    32     90
 ```
 
-
-```markdown
 | Action                         | Code Example                                      | Output Type | Example Output                                |
 | ------------------------------ | ------------------------------------------------- | ----------- | --------------------------------------------- |
 | Create multi-index from arrays | `pd.MultiIndex.from_arrays(arrays, names=('City','Name'))` | MultiIndex  | `MultiIndex([('New York','Alice'),('New York','Bob')...])` |
@@ -163,7 +161,7 @@ Chicago     Eva      40     95
 | Access specific value          | `df_multi.loc['Los Angeles'].loc['David']['Score']` | Scalar    | `85`                                          |
 | Cross-section outer level      | `df_multi.xs('Chicago')`                          | DataFrame   | All rows under **Chicago** (Eva & Frank)      |
 | Cross-section inner level      | `df_multi.xs('Alice', level='Name')`              | DataFrame   | All rows where **Name = Alice**               |
-```
+
 ---
 
 # 📘 Pandas DataFrames – Part 1
