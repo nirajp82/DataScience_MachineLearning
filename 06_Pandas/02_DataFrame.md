@@ -109,7 +109,7 @@ print(df)
 | Filter rows (multiple conditions)       | `df[(df['Age'] > 25) & (df['City']=="Chicago")]`   | DataFrame   | Charlie only                              |
 | OR condition                            | `df[(df['Age'] > 25) \| (df['City']=="New York")]` | DataFrame   | Alice + Bob + Charlie (since Alice is NY) |
 | Filter + select column                  | `df[df['Age'] > 25]['Name']`                       | Series      | `1 Bob; 2 Charlie`                        |
-| Filter + select multiple columns        | `df[df['Age'] > 25][['Name','City']]`              | DataFrame   | Bob & Charlie with Name + City            |
+| Filter + select multiple columns        | `df[df['Age'] > 25][['Name','City']]`              | DataFrame   | Bob and Charlie rows with only Name + City columns.            |
 | Reset index (not inplace)               | `df.reset_index()`                                 | DataFrame   | Resets to default 0,1,2 index             |
 | Reset index (permanent)                 | `df.reset_index(inplace=True)`                     | None        | Modifies DataFrame index                  |
 | Set column as index                     | `df.set_index('Name')`                             | DataFrame   | Uses `Name` as index                      |
