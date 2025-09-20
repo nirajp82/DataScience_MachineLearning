@@ -1,3 +1,44 @@
+Perfect 👍 thanks for confirming. Here’s the **final full README** with **Parts 1, 2, and 3** combined, polished, and separated with clear section lines:
+
+---
+
+# 📘 Pandas DataFrames (Parts 1–3)
+
+## 📑 Table of Contents
+
+* [Part 1 – Introduction to DataFrames](#-pandas-dataframes--part-1)
+
+  * Introduction & Key Characteristics
+  * Quick Reference Table
+  * Creating a DataFrame
+  * Selecting Columns
+  * Checking Types
+  * Creating New Columns
+  * Dropping Columns & Rows
+  * Shape of DataFrame
+  * Selecting Rows
+  * Selecting Subsets
+  * Key Takeaways
+* [Part 2 – Conditional Selection & Indexing](#-pandas-dataframes--part-2)
+
+  * Introduction
+  * Conditional Selection
+  * Filtering Rows by Column Values
+  * Multiple Conditions
+  * Resetting & Setting Index
+  * Key Takeaways
+* [Part 3 – Multi-Indexed DataFrames](#-pandas-dataframes--part-3)
+
+  * Introduction
+  * Creating MultiIndex
+  * Accessing Data in MultiIndex
+  * Naming Index Levels
+  * Accessing Specific Values
+  * Cross-Section Method (`xs`)
+  * Key Takeaways
+
+---
+
 # 📘 Pandas DataFrames – Part 1
 
 ## 🔹 Introduction
@@ -12,7 +53,9 @@ It is the primary data structure in the Pandas library for Python, widely used f
 * **Heterogeneous data types** → different columns can store different data types (int, float, string, bool, dates, etc.).
 * **Size-mutable** → rows and columns can be added or removed.
 * **Built upon Series** → each column is a Pandas **Series**, all sharing the same index.
+
 ---
+
 ## 📊 Quick Reference Table
 
 | Action                        | Code Example                           | Output Type |
@@ -31,12 +74,44 @@ It is the primary data structure in the Pandas library for Python, widely used f
 
 ---
 
+## 📊 Quick Reference Table
+
+| Action                                  | Code Example                           | Output Type       |           |
+| --------------------------------------- | -------------------------------------- | ----------------- | --------- |
+| Boolean mask (entire DataFrame)         | `df > 0`                               | DataFrame (bool)  |           |
+| Conditional selection (whole DataFrame) | `df[df > 0]`                           | DataFrame         |           |
+| Filter rows (single condition)          | `df[df['W'] > 0]`                      | DataFrame         |           |
+| Filter rows (multiple conditions)       | `df[(df['W'] > 0) & (df['Y'] > 1)]`    | DataFrame         |           |
+| OR condition                            | \`df\[(df\['W'] > 0)                   | (df\['Y'] > 1)]\` | DataFrame |
+| Filter + select column                  | `df[df['W'] > 0]['X']`                 | Series            |           |
+| Filter + select multiple columns        | `df[df['W'] > 0][['Y','X']]`           | DataFrame         |           |
+| Reset index (not inplace)               | `df.reset_index()`                     | DataFrame         |           |
+| Reset index (permanent)                 | `df.reset_index(inplace=True)`         | None              |           |
+| Set column as index                     | `df.set_index('States')`               | DataFrame         |           |
+| Set column as index (permanent)         | `df.set_index('States', inplace=True)` | None              |           |
+
+---
+
+## 📊 Quick Reference Table
+
+| Action                         | Code Example                                | Output Type |
+| ------------------------------ | ------------------------------------------- | ----------- |
+| Create multi-index from tuples | `pd.MultiIndex.from_tuples(list_of_tuples)` | MultiIndex  |
+| Access outer index             | `df.loc['G1']`                              | DataFrame   |
+| Access inner index             | `df.loc['G1'].loc[1]`                       | Series      |
+| Check index names              | `df.index.names`                            | list        |
+| Set index names                | `df.index.names = ['groups','numb']`        | None        |
+| Access specific value          | `df.loc['G2'].loc[2]['b']`                  | Scalar      |
+| Cross-section outer level      | `df.xs('G1')`                               | DataFrame   |
+| Cross-section inner level      | `df.xs(1, level='numb')`                    | DataFrame   |
+
+---
+
 ## 🔹 Creating a DataFrame
 
 ```python
 import pandas as pd
 
-# Create a DataFrame from a dictionary
 data = {
     'Name': ['Alice', 'Bob', 'Charlie'],
     'Age': [25, 30, 35],
@@ -82,9 +157,6 @@ Name: Name, dtype: object
 2  Charlie   35
 ```
 
-⚠️ **Note:** Use **bracket notation** (recommended).
-Dot notation (`df.Name`) works but may conflict with method names.
-
 ---
 
 ## 🔹 Checking Types
@@ -122,38 +194,23 @@ df.drop('Age in 5 Years', axis=1, inplace=True)   # drops column permanently
 df.drop(1, axis=0)                                # drops row with index 1
 ```
 
-**Notes:**
-
-* `axis=0` → rows
-* `axis=1` → columns
-* `inplace=True` → makes the change permanent
-
 ---
 
 ## 🔹 Shape of DataFrame
 
 ```python
-df.shape   # (rows, columns)
+df.shape
 ```
 
-Example: `(3, 3)`
+**Output:** `(3, 3)`
 
 ---
 
 ## 🔹 Selecting Rows
 
 ```python
-df.loc[0]    # by label (index 0)
-df.iloc[2]   # by position (row at index 2)
-```
-
-**Output (row 0):**
-
-```
-Name       Alice
-Age           25
-City    New York
-Name: 0, dtype: object
+df.loc[0]    # by label
+df.iloc[2]   # by position
 ```
 
 ---
@@ -176,14 +233,174 @@ df.loc[[0,2], ['Name','City']]
 
 ## ✅ Key Takeaways
 
-* A **DataFrame** is a **table-like structure** (rows × columns).
-* Each **column is a Series**; can select one (`df['col']`) or multiple (`df[['c1','c2']]`).
-* **New columns** can be created from existing ones.
-* **Drop** rows/columns with `drop()`, using `axis` and `inplace`.
-* **Axis meanings**: `0` = rows, `1` = columns.
-* **Row selection**:
+* A **DataFrame** = table-like structure (rows × columns).
+* Columns are **Series**; one column → Series, multiple → DataFrame.
+* Create new columns from existing ones.
+* Drop rows/columns with `drop()`.
+* Axis: `0` = rows, `1` = columns.
+* Row selection: `.loc` (label), `.iloc` (position).
+* Subsets via `.loc` with lists.
 
-  * `.loc` → by **label**
-  * `.iloc` → by **position**
-* **Subsets**: `.loc` with lists of row/column labels.
+---
 
+# 📘 Pandas DataFrames – Part 2
+
+## 🔹 Introduction
+
+In this section, we explore **conditional selection** and **indexing** in DataFrames:
+
+* Filtering rows/columns with boolean conditions
+* Combining multiple conditions with `&` and `|`
+* Resetting and setting custom indices
+
+---
+
+## 🔹 Conditional Selection
+
+```python
+bool_df = df > 0
+df[bool_df]           # keeps values where True, NaN otherwise
+df[df > 0]            # shorthand
+```
+
+---
+
+## 🔹 Filtering Rows Based on Column Values
+
+```python
+df[df['W'] > 0]       # only rows where W > 0
+df[df['Z'] < 0]       # only rows where Z < 0
+df[df['W'] > 0]['X']  # filter then grab column
+df[df['W'] > 0][['Y','X']] # filter then grab multiple columns
+```
+
+---
+
+## 🔹 Multiple Conditions
+
+```python
+df[(df['W'] > 0) & (df['Y'] > 1)]   # AND
+df[(df['W'] > 0) | (df['Y'] > 1)]   # OR
+```
+
+⚠️ Use `&` and `|`, **not** `and` / `or`. Always wrap conditions in parentheses.
+
+---
+
+## 🔹 Resetting and Setting Index
+
+```python
+df.reset_index()              # reset index (adds old index as a column)
+df.reset_index(inplace=True)  # permanent reset
+
+# Setting new index
+df['States'] = 'CA NY WY OR CO'.split()
+df.set_index('States')                # temporary
+df.set_index('States', inplace=True)  # permanent
+```
+
+---
+
+## ✅ Key Takeaways
+
+* Conditional selection = boolean masks + bracket notation.
+* Filter rows by applying conditions to columns.
+* Combine multiple conditions with `&` (AND), `|` (OR).
+* `reset_index()` → back to default integer index.
+* `set_index(col)` → assign a column as new index.
+
+---
+
+# 📘 Pandas DataFrames – Part 3
+
+## 🔹 Introduction
+
+In this section, we explore **multi-indexed DataFrames (hierarchical indexing)**:
+
+* Creating multi-level indices
+* Accessing data from outer/inner levels
+* Naming index levels
+* Using `.xs()` cross-section method
+
+---
+
+## 🔹 Creating a MultiIndex
+
+```python
+import pandas as pd
+import numpy as np
+
+outside = ['G1','G1','G1','G2','G2','G2']
+inside  = [1,2,3,1,2,3]
+hier_index = pd.MultiIndex.from_tuples(list(zip(outside,inside)))
+
+df = pd.DataFrame(np.random.randn(6,2), index=hier_index, columns=['a','b'])
+print(df)
+```
+
+**Output (example):**
+
+```
+        a         b
+G1 1  0.123  -0.456
+   2  1.234   0.678
+   3 -0.987   0.432
+G2 1  0.555  -0.111
+   2  0.072   0.890
+   3 -1.222   0.333
+```
+
+---
+
+## 🔹 Accessing Data in MultiIndex
+
+```python
+df.loc['G1']         # all rows under G1
+df.loc['G1'].loc[1]  # row 1 under G1
+```
+
+---
+
+## 🔹 Naming Index Levels
+
+```python
+df.index.names       # [None, None]
+df.index.names = ['groups','numb']
+print(df)
+```
+
+**Output:**
+
+```
+groups numb     a     b
+G1     1     0.123 -0.456
+       2     1.234  0.678
+...
+```
+
+---
+
+## 🔹 Accessing Specific Values
+
+```python
+df.loc['G2'].loc[2]['b']   # example: 0.072
+```
+
+---
+
+## 🔹 Cross-Section Method
+
+```python
+df.xs('G1')                  # same as df.loc['G1']
+df.xs(1, level='numb')       # all rows where numb == 1 across groups
+```
+
+---
+
+## ✅ Key Takeaways
+
+* MultiIndex = hierarchical row labels.
+* Build with `pd.MultiIndex.from_tuples`.
+* Access from **outer → inner** using `.loc`.
+* Index levels can be **named**.
+* `.xs()` allows cross-section queries at any index level.
