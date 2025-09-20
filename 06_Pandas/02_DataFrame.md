@@ -118,8 +118,6 @@ print(df)
 ---
 
 # 📊 Quick Reference – Part 3
-
-
 ```python
 import pandas as pd
 
@@ -165,6 +163,15 @@ Chicago     Eva      40     95
 | Access specific value          | `df_multi.loc['Los Angeles'].loc['David']['Score']`        | Scalar      | `85`                                                          |
 | Cross-section outer level      | `df_multi.xs('Chicago')`                                   | DataFrame   | All rows under **Chicago** (Eva & Frank)                      |
 | Cross-section inner level      | `df_multi.xs('Bob', level='Name')`                         | DataFrame   | All rows where **Name = Bob** (2 rows, New York)              |
+
+---
+
+### 🔎 Note on Duplicate Indices
+
+* Pandas **allows duplicate indices** (both in normal Index and MultiIndex).
+* When you call `.loc` with a duplicate key (like `"Bob"`), Pandas will **return all matching rows** instead of a single row.
+* This is different from databases (like SQL) where a primary key must be unique.
+* Duplicates are useful when modeling real-world data (e.g., multiple people with the same name, multiple entries in the same city).
 
 ---
 
