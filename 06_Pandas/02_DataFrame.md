@@ -119,20 +119,21 @@ print(df)
 
 # 📊 Quick Reference – Part 3
 
+
 ```python
 import pandas as pd
 
-# Create hierarchical index from City + Name
+# Create hierarchical index from City + Name (with duplicate Bob in New York)
 arrays = [
-    ['New York','New York','Los Angeles','Los Angeles','Chicago','Chicago'],
-    ['Alice','Bob','Charlie','David','Eva','Frank']
+    ['New York','New York','New York','Los Angeles','Los Angeles','Chicago','Chicago'],
+    ['Alice','Bob','Bob','Charlie','David','Eva','Frank']
 ]
 index = pd.MultiIndex.from_arrays(arrays, names=('City','Name'))
 
 # Create DataFrame
 df_multi = pd.DataFrame({
-    'Age': [25, 30, 35, 28, 40, 32],
-    'Score': [88, 92, 79, 85, 95, 90]
+    'Age': [25, 30, 31, 35, 28, 40, 32],
+    'Score': [88, 92, 85, 79, 85, 95, 90]
 }, index=index)
 
 print(df_multi)
@@ -145,22 +146,25 @@ print(df_multi)
 City        Name              
 New York    Alice    25     88
             Bob      30     92
+            Bob      31     85
 Los Angeles Charlie  35     79
             David    28     85
 Chicago     Eva      40     95
             Frank    32     90
 ```
 
-| Action                         | Code Example                                      | Output Type | Example Output                                |
-| ------------------------------ | ------------------------------------------------- | ----------- | --------------------------------------------- |
-| Create multi-index from arrays | `pd.MultiIndex.from_arrays(arrays, names=('City','Name'))` | MultiIndex  | `MultiIndex([('New York','Alice'),('New York','Bob')...])` |
-| Access outer index             | `df_multi.loc['New York']`                        | DataFrame   | Rows under **New York** only (Alice & Bob)    |
-| Access inner index             | `df_multi.loc['Chicago'].loc['Eva']`              | Series      | `Age 40, Score 95`                            |
-| Check index names              | `df_multi.index.names`                            | list        | `['City','Name']`                             |
-| Set index names                | `df_multi.index.names = ['City','Person']`        | None        | Renames levels to `['City','Person']`         |
-| Access specific value          | `df_multi.loc['Los Angeles'].loc['David']['Score']` | Scalar    | `85`                                          |
-| Cross-section outer level      | `df_multi.xs('Chicago')`                          | DataFrame   | All rows under **Chicago** (Eva & Frank)      |
-| Cross-section inner level      | `df_multi.xs('Alice', level='Name')`              | DataFrame   | All rows where **Name = Alice**               |
+---
+
+| Action                         | Code Example                                               | Output Type | Example Output                                                |
+| ------------------------------ | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------- |
+| Create multi-index from arrays | `pd.MultiIndex.from_arrays(arrays, names=('City','Name'))` | MultiIndex  | `MultiIndex([('New York','Alice'), ('New York','Bob'), ...])` |
+| Access outer index             | `df_multi.loc['New York']`                                 | DataFrame   | Rows under **New York** (Alice & 2×Bob)                       |
+| Access inner index             | `df_multi.loc['Chicago'].loc['Eva']`                       | Series      | `Age 40, Score 95`                                            |
+| Check index names              | `df_multi.index.names`                                     | list        | `['City','Name']`                                             |
+| Set index names                | `df_multi.index.names = ['City','Person']`                 | None        | Renames levels to `['City','Person']`                         |
+| Access specific value          | `df_multi.loc['Los Angeles'].loc['David']['Score']`        | Scalar      | `85`                                                          |
+| Cross-section outer level      | `df_multi.xs('Chicago')`                                   | DataFrame   | All rows under **Chicago** (Eva & Frank)                      |
+| Cross-section inner level      | `df_multi.xs('Bob', level='Name')`                         | DataFrame   | All rows where **Name = Bob** (2 rows, New York)              |
 
 ---
 
