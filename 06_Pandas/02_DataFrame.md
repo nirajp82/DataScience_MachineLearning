@@ -157,6 +157,53 @@ G2     1   -0.78     0.45
 | Cross-section outer level      | `df_multi.xs('G1')`                         | DataFrame   | All rows under G1                    |
 | Cross-section inner level      | `df_multi.xs(1, level='numb')`              | DataFrame   | All rows where numb==1               |
 ----
+```python
+import pandas as pd
+
+# Create hierarchical index from City + Name
+arrays = [
+    ['New York','New York','Los Angeles','Los Angeles','Chicago','Chicago'],
+    ['Alice','Bob','Charlie','David','Eva','Frank']
+]
+index = pd.MultiIndex.from_arrays(arrays, names=('City','Name'))
+
+# Create DataFrame
+df_multi = pd.DataFrame({
+    'Age': [25, 30, 35, 28, 40, 32],
+    'Score': [88, 92, 79, 85, 95, 90]
+}, index=index)
+
+print(df_multi)
+```
+
+**Output:**
+
+```
+                     Age  Score
+City        Name              
+New York    Alice    25     88
+            Bob      30     92
+Los Angeles Charlie  35     79
+            David    28     85
+Chicago     Eva      40     95
+            Frank    32     90
+```
+
+
+```markdown
+| Action                         | Code Example                                      | Output Type | Example Output                                |
+| ------------------------------ | ------------------------------------------------- | ----------- | --------------------------------------------- |
+| Create multi-index from arrays | `pd.MultiIndex.from_arrays(arrays, names=('City','Name'))` | MultiIndex  | `MultiIndex([('New York','Alice'),('New York','Bob')...])` |
+| Access outer index             | `df_multi.loc['New York']`                        | DataFrame   | Rows under **New York** only (Alice & Bob)    |
+| Access inner index             | `df_multi.loc['Chicago'].loc['Eva']`              | Series      | `Age 40, Score 95`                            |
+| Check index names              | `df_multi.index.names`                            | list        | `['City','Name']`                             |
+| Set index names                | `df_multi.index.names = ['City','Person']`        | None        | Renames levels to `['City','Person']`         |
+| Access specific value          | `df_multi.loc['Los Angeles'].loc['David']['Score']` | Scalar    | `85`                                          |
+| Cross-section outer level      | `df_multi.xs('Chicago')`                          | DataFrame   | All rows under **Chicago** (Eva & Frank)      |
+| Cross-section inner level      | `df_multi.xs('Alice', level='Name')`              | DataFrame   | All rows where **Name = Alice**               |
+```
+---
+
 # 📘 Pandas DataFrames – Part 1
 
 ## 🔹 Creating a DataFrame
