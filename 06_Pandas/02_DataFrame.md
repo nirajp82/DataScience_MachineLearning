@@ -617,6 +617,52 @@ Charlie Chicago     35
 
 ## 🔹 Cross-Section with `xs()`
 
+The `.xs()` method is used to **select data at a particular index level** in a MultiIndex DataFrame.
+It is especially useful when you want a **clean, direct way** to access rows or columns without writing verbose `.loc` code.
+
+**Why it's useful:**
+
+* Provides a **shortcut** for slicing along a specific index level.
+* Makes code **cleaner and easier to read** compared to `.loc` with `slice`.
+* Works well when dealing with **hierarchical indices** (MultiIndex).
+
+**Examples:**
+
+```python
+# Get all rows where City = 'Chicago'
+df_multi.xs('Chicago')
+```
+
+```
+         Age  Score
+Name                
+Eva       40     95
+Frank     32     90
+```
+
+```python
+# Get all rows where Name = 'Bob'
+df_multi.xs('Bob', level='Name')
+```
+
+```
+           Age  Score
+City                  
+New York    30     92
+```
+
+**Comparison with `.loc`:**
+
+* Equivalent `.loc` query for the last example:
+
+  ```python
+  df_multi.loc[(slice(None), 'Bob'), :]
+  ```
+* `.xs()` is **shorter and more readable**.
+* `.loc` is more **flexible** (multiple conditions, slices, etc.).
+
+👉 **Rule of thumb**: Use `.xs()` for **quick access by one index level**; use `.loc` for **complex selections**.
+
 ```python
 # Cross-section by outer level
 df_multi.xs('Alice')
