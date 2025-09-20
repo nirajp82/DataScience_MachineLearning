@@ -3,7 +3,9 @@
 * [Part 1 – Introduction to DataFrames](#-pandas-dataframes--part-1)
 
   * [Introduction & Key Characteristics](#-introduction)
-  * [Quick Reference Table](#-quick-reference-table)
+  * [Quick Reference Table (Part 1)](#-part-1-quick-reference)
+  * [Quick Reference Table (Part 2)](#-part-2-quick-reference)
+  * [Quick Reference Table (Part 3)](#-part-3-quick-reference)
   * [Creating a DataFrame](#-creating-a-dataframe)
   * [Selecting Columns](#-selecting-columns)
   * [Checking Types](#-checking-types)
@@ -17,7 +19,7 @@
 * [Part 2 – Conditional Selection & Indexing](#-pandas-dataframes--part-2)
 
   * [Introduction](#-introduction-1)
-  * [Quick Reference Table](#-quick-reference-table-1)
+  * [Quick Reference Table (Part 2)](#-part-2-quick-reference)
   * [Conditional Selection](#-conditional-selection)
   * [Filtering Rows by Column Values](#-filtering-rows-based-on-column-values)
   * [Multiple Conditions](#-multiple-conditions)
@@ -27,7 +29,7 @@
 * [Part 3 – Multi-Indexed DataFrames](#-pandas-dataframes--part-3)
 
   * [Introduction](#-introduction-2)
-  * [Quick Reference Table](#-quick-reference-table-2)
+  * [Quick Reference Table (Part 3)](#-part-3-quick-reference)
   * [Creating a MultiIndex](#-creating-a-multiindex)
   * [Accessing Data in MultiIndex](#-accessing-data-in-multiindex)
   * [Naming Index Levels](#-naming-index-levels)
@@ -53,9 +55,9 @@ It is the primary data structure in the Pandas library for Python, widely used f
 * **Built upon Series** → each column is a Pandas **Series**, all sharing the same index.
 
 ---
-
 ## 📊 Quick Reference Table
 
+#### Part 1 Quick Reference
 | Action                        | Code Example                           | Output Type |
 | ----------------------------- | -------------------------------------- | ----------- |
 | Select single column          | `df['Name']`                           | Series      |
@@ -71,23 +73,25 @@ It is the primary data structure in the Pandas library for Python, widely used f
 | Select subset of rows/columns | `df.loc[[0,2], ['Name','City']]`       | DataFrame   |
 
 ---
-#### Part 2
-| Action                                  | Code Example                           | Output Type       |           |
-| --------------------------------------- | -------------------------------------- | ----------------- | --------- |
-| Boolean mask (entire DataFrame)         | `df > 0`                               | DataFrame (bool)  |           |
-| Conditional selection (whole DataFrame) | `df[df > 0]`                           | DataFrame         |           |
-| Filter rows (single condition)          | `df[df['W'] > 0]`                      | DataFrame         |           |
-| Filter rows (multiple conditions)       | `df[(df['W'] > 0) & (df['Y'] > 1)]`    | DataFrame         |           |
-| OR condition                            | \`df\[(df\['W'] > 0)                   | (df\['Y'] > 1)]\` | DataFrame |
-| Filter + select column                  | `df[df['W'] > 0]['X']`                 | Series            |           |
-| Filter + select multiple columns        | `df[df['W'] > 0][['Y','X']]`           | DataFrame         |           |
-| Reset index (not inplace)               | `df.reset_index()`                     | DataFrame         |           |
-| Reset index (permanent)                 | `df.reset_index(inplace=True)`         | None              |           |
-| Set column as index                     | `df.set_index('States')`               | DataFrame         |           |
-| Set column as index (permanent)         | `df.set_index('States', inplace=True)` | None              |           |
+
+#### Part 2 Quick Reference
+| Action                                  | Code Example                           | Output Type |
+| --------------------------------------- | -------------------------------------- | ----------- |
+| Boolean mask (entire DataFrame)         | `df > 0`                               | DataFrame   |
+| Conditional selection (whole DataFrame) | `df[df > 0]`                           | DataFrame   |
+| Filter rows (single condition)          | `df[df['W'] > 0]`                      | DataFrame   |
+| Filter rows (multiple conditions)       | `df[(df['W'] > 0) & (df['Y'] > 1)]`    | DataFrame   |
+| OR condition                            | `df[(df['W'] > 0) | (df['Y'] > 1)]`    | DataFrame   |
+| Filter + select column                  | `df[df['W'] > 0]['X']`                 | Series      |
+| Filter + select multiple columns        | `df[df['W'] > 0][['Y','X']]`           | DataFrame   |
+| Reset index (not inplace)               | `df.reset_index()`                     | DataFrame   |
+| Reset index (permanent)                 | `df.reset_index(inplace=True)`         | None        |
+| Set column as index                     | `df.set_index('States')`               | DataFrame   |
+| Set column as index (permanent)         | `df.set_index('States', inplace=True)` | None        |
 
 ---
-#### Part 3
+
+#### Part 3 Quick Reference
 | Action                         | Code Example                                | Output Type |
 | ------------------------------ | ------------------------------------------- | ----------- |
 | Create multi-index from tuples | `pd.MultiIndex.from_tuples(list_of_tuples)` | MultiIndex  |
@@ -98,8 +102,7 @@ It is the primary data structure in the Pandas library for Python, widely used f
 | Access specific value          | `df.loc['G2'].loc[2]['b']`                  | Scalar      |
 | Cross-section outer level      | `df.xs('G1')`                               | DataFrame   |
 | Cross-section inner level      | `df.xs(1, level='numb')`                    | DataFrame   |
-
----
+```
 
 ## 🔹 Creating a DataFrame
 
