@@ -119,44 +119,6 @@ print(df)
 
 # 📊 Quick Reference – Part 3
 
-(using MultiIndex example)
-
-```python
-import numpy as np
-
-outside = ['G1','G1','G1','G2','G2','G2']
-inside  = [1,2,3,1,2,3]
-hier_index = pd.MultiIndex.from_tuples(list(zip(outside,inside)))
-
-df_multi = pd.DataFrame(np.random.randn(6,2), index=hier_index, columns=['a','b'])
-df_multi.index.names = ['groups','numb']
-print(df_multi)
-```
-
-**DataFrame (`df_multi`):**
-
-```
-              a         b
-groups numb              
-G1     1    0.12     0.34
-       2   -0.56    -1.23
-       3    1.45     0.67
-G2     1   -0.78     0.45
-       2    0.23    -0.12
-       3    0.89     1.34
-```
-
-| Action                         | Code Example                                | Output Type | Example Output                       |
-| ------------------------------ | ------------------------------------------- | ----------- | ------------------------------------ |
-| Create multi-index from tuples | `pd.MultiIndex.from_tuples(list_of_tuples)` | MultiIndex  | `MultiIndex([('G1',1),('G1',2)...])` |
-| Access outer index             | `df_multi.loc['G1']`                        | DataFrame   | Rows under G1 only                   |
-| Access inner index             | `df_multi.loc['G1'].loc[1]`                 | Series      | Row for G1,1                         |
-| Check index names              | `df_multi.index.names`                      | list        | `['groups','numb']`                  |
-| Set index names                | `df_multi.index.names=['groups','numb']`    | None        | Assigns names to levels              |
-| Access specific value          | `df_multi.loc['G2'].loc[2]['b']`            | Scalar      | Single float (e.g., `-0.12`)         |
-| Cross-section outer level      | `df_multi.xs('G1')`                         | DataFrame   | All rows under G1                    |
-| Cross-section inner level      | `df_multi.xs(1, level='numb')`              | DataFrame   | All rows where numb==1               |
-----
 ```python
 import pandas as pd
 
