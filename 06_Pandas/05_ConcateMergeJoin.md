@@ -26,14 +26,17 @@ In real-world projects, employee and company data often live in **separate table
 
 ## 📊 Quick Reference Table
 
-| Action                 | Code Example                                       | Output Type | Example Output (simplified)                                                           |
-| ---------------------- | -------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------- |
-| Concatenate by rows    | `pd.concat([df1, df2])`                            | DataFrame   | `[['Alice',25,'New York'], ['David',35,'San Francisco']]`                             |
-| Concatenate by columns | `pd.concat([df1, df2], axis=1)`                    | DataFrame   | `[['Alice',25,'New York','David',35,'San Francisco']]`                                |
-| Merge on Name (inner)  | `pd.merge(df1, salary_df, on='Name')`              | DataFrame   | `[['Alice',25,'New York',70000], ['Bob',30,'Chicago',80000]]`                         |
-| Merge on Name (outer)  | `pd.merge(df1, salary_df, on='Name', how='outer')` | DataFrame   | `[['Alice',25,'New York',70000], ['Charlie',28,'Boston',NaN], ['Eva',NaN,NaN,95000]]` |
-| Join on index          | `df1.set_index('Name').join(dept_df)`              | DataFrame   | `[['Alice',25,'New York','HR'], ['Bob',30,'Chicago','Finance']]`                      |
-| Outer join on index    | `df1.set_index('Name').join(dept_df, how='outer')` | DataFrame   | `[['Charlie',28,'Boston','IT'], ['David',NaN,NaN,NaN]]`                               |
+| Action                   | Code Example                                                | Output Type | Example Output (simplified)                                                            |
+| ------------------------ | ----------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| Concatenate by rows      | `pd.concat([df1, df2])`                                     | DataFrame   | <pre>Alice 25 New York<br>David 35 San Francisco</pre>                                |
+| Concatenate by columns   | `pd.concat([df1, df2], axis=1)`                             | DataFrame   | <pre>Alice 25 New York Bob 30 Chicago</pre>                                           |
+| Merge inner join         | `pd.merge(df1, salary_df, on='Name', how='inner')`          | DataFrame   | <pre>Alice 25 New York 70000<br>Bob 30 Chicago 80000</pre>                            |
+| Merge left join          | `pd.merge(df1, salary_df, on='Name', how='left')`           | DataFrame   | <pre>Alice 25 New York 70000<br>Charlie 28 Boston NaN</pre>                           |
+| Merge right join         | `pd.merge(df1, salary_df, on='Name', how='right')`          | DataFrame   | <pre>Bob 30 Chicago 80000<br>Eva NaN NaN 95000</pre>                                  |
+| Merge outer join         | `pd.merge(df1, salary_df, on='Name', how='outer')`          | DataFrame   | <pre>Alice 25 New York 70000<br>Charlie 28 Boston NaN<br>Eva NaN NaN 95000</pre>      |
+| Join left (default)      | `df1.set_index('Name').join(dept_df)`                       | DataFrame   | <pre>Alice 25 New York HR<br>Bob 30 Chicago Finance</pre>                             |
+| Join right               | `df1.set_index('Name').join(dept_df, how='right')`          | DataFrame   | <pre>Alice 25 New York HR<br>Charlie 28 Boston IT</pre>                               |
+| Join outer               | `df1.set_index('Name').join(dept_df, how='outer')`          | DataFrame   | <pre>Alice 25 New York HR<br>Charlie 28 Boston IT<br>David NaN NaN NaN</pre>          |
 
 ---
 
@@ -91,11 +94,13 @@ pd.concat([df1, df2])
 
 ## 🔹 Merging DataFrames
 
+### Inner Join
+
 ```python
-pd.merge(df1, salary_df, on='Name')
+pd.merge(df1, salary_df, on='Name', how='inner')
 ```
 
-**Output (inner merge):**
+**Output:**
 
 ```
     Name  Age     City  Salary
@@ -103,9 +108,59 @@ pd.merge(df1, salary_df, on='Name')
 1    Bob   30  Chicago   80000
 ```
 
+### Left Join
+
+```python
+pd.merge(df1, salary_df, on='Name', how='left')
+```
+
+**Output:**
+
+```
+      Name  Age     City   Salary
+0    Alice   25 New York  70000.0
+1      Bob   30  Chicago  80000.0
+2  Charlie   28   Boston      NaN
+```
+
+### Right Join
+
+```python
+pd.merge(df1, salary_df, on='Name', how='right')
+```
+
+**Output:**
+
+```
+    Name   Age     City  Salary
+0  Alice  25.0 New York   70000
+1    Bob  30.0  Chicago   80000
+2   David   NaN     NaN   90000
+3     Eva   NaN     NaN   95000
+```
+
+### Outer Join
+
+```python
+pd.merge(df1, salary_df, on='Name', how='outer')
+```
+
+**Output:**
+
+```
+      Name   Age     City   Salary
+0    Alice  25.0 New York  70000.0
+1      Bob  30.0  Chicago  80000.0
+2  Charlie  28.0   Boston      NaN
+3    David   NaN     NaN  90000.0
+4      Eva   NaN     NaN  95000.0
+```
+
 ---
 
 ## 🔹 Joining DataFrames
+
+### Left Join (default)
 
 ```python
 df1.set_index('Name').join(dept_df)
@@ -121,6 +176,40 @@ Bob       30  Chicago   Finance           5
 Charlie   28   Boston        IT           3
 ```
 
+### Right Join
+
+```python
+df1.set_index('Name').join(dept_df, how='right')
+```
+
+**Output:**
+
+```
+         Age     City Department  Experience
+Name                                       
+Alice   25.0 New York        HR           2
+Bob     30.0  Chicago   Finance           5
+Charlie 28.0   Boston        IT           3
+```
+
+### Outer Join
+
+```python
+df1.set_index('Name').join(dept_df, how='outer')
+```
+
+**Output:**
+
+```
+          Age          City Department  Experience
+Name                                             
+Alice    25.0      New York        HR         2.0
+Bob      30.0       Chicago   Finance         5.0
+Charlie  28.0        Boston        IT         3.0
+David     NaN          NaN       NaN         NaN
+Eva       NaN          NaN       NaN         NaN
+```
+
 ---
 
 ## 🔹 Difference Between Merge and Join
@@ -128,7 +217,6 @@ Charlie   28   Boston        IT           3
 * **`merge`** → Works on **columns (keys)**, like SQL joins. Example: `pd.merge(df1, df2, on='Name')`
 * **`join`** → Works on **index (row labels)**. Example: `df1.set_index('Name').join(df2)`
 * **Default behavior**:
-
   * `merge` → `inner join` (keeps matching rows only)
   * `join` → `left join` (keeps all rows of the left DataFrame)
 
@@ -141,6 +229,7 @@ Charlie   28   Boston        IT           3
 * Use **Concatenation** to stack datasets.
 * Use **Merge** for column-based joins.
 * Use **Join** for index-based joins.
+* Always specify `how` (`inner`, `left`, `right`, `outer`) to control the type of join.
 
 ---
 
@@ -150,3 +239,4 @@ Charlie   28   Boston        IT           3
 * `pd.merge()` → SQL-style joins on **columns**.
 * `.join()` → joins DataFrames on **indices**.
 * **Merge = column-based**, **Join = index-based**.
+* Always check join type (`inner`, `left`, `right`, `outer`) to avoid data loss.
