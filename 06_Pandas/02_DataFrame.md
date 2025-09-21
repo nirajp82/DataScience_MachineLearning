@@ -67,11 +67,11 @@ data = {
     'Age': [25, 30, 35],
     'City': ['New York', 'Los Angeles', 'Chicago']
 }
-df = pd.DataFrame(data)
-print(df)
+emp_df = pd.DataFrame(data)
+print(emp_df)
 ```
 
-**DataFrame (`df`):**
+**DataFrame (`emp_df`):**
 
 ```
       Name  Age         City
@@ -86,17 +86,17 @@ print(df)
 
 | Action                        | Code Example                           | Output Type | Example Output                                 |
 | ----------------------------- | -------------------------------------- | ----------- | ---------------------------------------------- |
-| Select single column          | `df['Name']`                           | Series      | `0 Alice; 1 Bob; 2 Charlie`                    |
-| Select multiple columns       | `df[['Name','Age']]`                   | DataFrame   | `[['Alice',25],['Bob',30],['Charlie',35]]`     |
-| Check type of selection       | `type(df['Name'])`                     | Series      | `<class 'pandas.core.series.Series'>`          |
-| Add new column                | `df['New'] = df['Age'] + 5`            | DataFrame   | Adds `"New"` column with values `[30, 35, 40]` |
-| Drop column (not inplace)     | `df.drop('New', axis=1)`               | DataFrame   | Returns DataFrame without `"New"`              |
-| Drop column (permanent)       | `df.drop('New', axis=1, inplace=True)` | None        | Removes `"New"` permanently                    |
-| Drop row                      | `df.drop(1, axis=0)`                   | DataFrame   | Removes Bob’s row                              |
-| Shape of DataFrame            | `df.shape`                             | Tuple       | `(3, 3)`                                       |
-| Select row by label           | `df.loc[0]`                            | Series      | Alice row as Series                            |
-| Select row by position        | `df.iloc[2]`                           | Series      | Charlie row as Series                          |
-| Select subset of rows/columns | `df.loc[[0,2], ['Name','City']]`       | DataFrame   | Alice + Charlie, only Name & City              |
+| Select single column          | `emp_df['Name']`                           | Series      | `0 Alice; 1 Bob; 2 Charlie`                    |
+| Select multiple columns       | `emp_df[['Name','Age']]`                   | DataFrame   | `[['Alice',25],['Bob',30],['Charlie',35]]`     |
+| Check type of selection       | `type(emp_df['Name'])`                     | Series      | `<class 'pandas.core.series.Series'>`          |
+| Add new column                | `emp_df['New'] = emp_df['Age'] + 5`            | DataFrame   | Adds `"New"` column with values `[30, 35, 40]` |
+| Drop column (not inplace)     | `emp_df.drop('New', axis=1)`               | DataFrame   | Returns DataFrame without `"New"`              |
+| Drop column (permanent)       | `emp_df.drop('New', axis=1, inplace=True)` | None        | Removes `"New"` permanently                    |
+| Drop row                      | `emp_df.drop(1, axis=0)`                   | DataFrame   | Removes Bob’s row                              |
+| Shape of DataFrame            | `emp_df.shape`                             | Tuple       | `(3, 3)`                                       |
+| Select row by label           | `emp_df.loc[0]`                            | Series      | Alice row as Series                            |
+| Select row by position        | `emp_df.iloc[2]`                           | Series      | Charlie row as Series                          |
+| Select subset of rows/columns | `emp_df.loc[[0,2], ['Name','City']]`       | DataFrame   | Alice + Charlie, only Name & City              |
 
 ---
 
@@ -104,16 +104,16 @@ print(df)
 
 | Action                                  | Code Example                                       | Output Type | Example Output                            |
 | --------------------------------------- | -------------------------------------------------- | ----------- | ----------------------------------------- |
-| Boolean mask (entire DataFrame)         | `df > 25`                                          | DataFrame   | Shows `True/False` where condition met    |
-| Conditional selection (whole DataFrame) | `df[df['Age'] > 25]`                               | DataFrame   | Bob & Charlie rows                        |
-| Filter rows (multiple conditions)       | `df[(df['Age'] > 25) & (df['City']=="Chicago")]`   | DataFrame   | Charlie only                              |
-| OR condition                            | `df[(df['Age'] > 25) \| (df['City']=="New York")]` | DataFrame   | Alice + Bob + Charlie (since Alice is NY) |
-| Filter + select column                  | `df[df['Age'] > 25]['Name']`                       | Series      | `1 Bob; 2 Charlie`                        |
-| Filter + select multiple columns        | `df[df['Age'] > 25][['Name','City']]`              | DataFrame   | Bob and Charlie rows with only Name + City columns.            |
-| Reset index (not inplace)               | `df.reset_index()`                                 | DataFrame   | Resets to default 0,1,2 index             |
-| Reset index (permanent)                 | `df.reset_index(inplace=True)`                     | None        | Modifies DataFrame index                  |
-| Set column as index                     | `df.set_index('Name')`                             | DataFrame   | Uses `Name` as index                      |
-| Set column as index (permanent)         | `df.set_index('Name', inplace=True)`               | None        | Same but permanent                        |
+| Boolean mask (entire DataFrame)         | `emp_df > 25`                                          | DataFrame   | Shows `True/False` where condition met    |
+| Conditional selection (whole DataFrame) | `emp_df[emp_df['Age'] > 25]`                               | DataFrame   | Bob & Charlie rows                        |
+| Filter rows (multiple conditions)       | `emp_df[(emp_df['Age'] > 25) & (emp_df['City']=="Chicago")]`   | DataFrame   | Charlie only                              |
+| OR condition                            | `emp_df[(emp_df['Age'] > 25) \| (emp_df['City']=="New York")]` | DataFrame   | Alice + Bob + Charlie (since Alice is NY) |
+| Filter + select column                  | `emp_df[emp_df['Age'] > 25]['Name']`                       | Series      | `1 Bob; 2 Charlie`                        |
+| Filter + select multiple columns        | `emp_df[emp_df['Age'] > 25][['Name','City']]`              | DataFrame   | Bob and Charlie rows with only Name + City columns.            |
+| Reset index (not inplace)               | `emp_df.reset_index()`                                 | DataFrame   | Resets to default 0,1,2 index             |
+| Reset index (permanent)                 | `emp_df.reset_index(inplace=True)`                     | None        | Modifies DataFrame index                  |
+| Set column as index                     | `emp_df.set_index('Name')`                             | DataFrame   | Uses `Name` as index                      |
+| Set column as index (permanent)         | `emp_df.set_index('Name', inplace=True)`               | None        | Same but permanent                        |
 
 ---
 
@@ -129,12 +129,12 @@ arrays = [
 index = pd.MultiIndex.from_arrays(arrays, names=('City','Name'))
 
 # Create DataFrame
-df_multi = pd.DataFrame({
+emp_df_multi = pd.DataFrame({
     'Age': [25, 30, 31, 35, 28, 40, 32],
     'Score': [88, 92, 85, 79, 85, 95, 90]
 }, index=index)
 
-print(df_multi)
+print(emp_df_multi)
 ```
 
 **Output:**
@@ -156,13 +156,13 @@ Chicago     Eva      40     95
 | Action                         | Code Example                                               | Output Type | Example Output                                                |
 | ------------------------------ | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------- |
 | Create multi-index from arrays | `pd.MultiIndex.from_arrays(arrays, names=('City','Name'))` | MultiIndex  | `MultiIndex([('New York','Alice'), ('New York','Bob'), ...])` |
-| Access outer index             | `df_multi.loc['New York']`                                 | DataFrame   | Rows under **New York** (Alice & 2×Bob)                       |
-| Access inner index             | `df_multi.loc['Chicago'].loc['Eva']`                       | Series      | `Age 40, Score 95`                                            |
-| Check index names              | `df_multi.index.names`                                     | list        | `['City','Name']`                                             |
-| Set index names                | `df_multi.index.names = ['City','Person']`                 | None        | Renames levels to `['City','Person']`                         |
-| Access specific value          | `df_multi.loc['Los Angeles'].loc['David']['Score']`        | Scalar      | `85`                                                          |
-| Cross-section outer level      | `df_multi.xs('Chicago')`                                   | DataFrame   | All rows under **Chicago** (Eva & Frank)                      |
-| Cross-section inner level      | `df_multi.xs('Bob', level='Name')`                         | DataFrame   | All rows where **Name = Bob** (2 rows, New York)              |
+| Access outer index             | `emp_df_multi.loc['New York']`                                 | DataFrame   | Rows under **New York** (Alice & 2×Bob)                       |
+| Access inner index             | `emp_df_multi.loc['Chicago'].loc['Eva']`                       | Series      | `Age 40, Score 95`                                            |
+| Check index names              | `emp_df_multi.index.names`                                     | list        | `['City','Name']`                                             |
+| Set index names                | `emp_df_multi.index.names = ['City','Person']`                 | None        | Renames levels to `['City','Person']`                         |
+| Access specific value          | `emp_df_multi.loc['Los Angeles'].loc['David']['Score']`        | Scalar      | `85`                                                          |
+| Cross-section outer level      | `emp_df_multi.xs('Chicago')`                                   | DataFrame   | All rows under **Chicago** (Eva & Frank)                      |
+| Cross-section inner level      | `emp_df_multi.xs('Bob', level='Name')`                         | DataFrame   | All rows where **Name = Bob** (2 rows, New York)              |
 
 ---
 
@@ -187,8 +187,8 @@ data = {
     'Age': [25, 30, 35],
     'City': ['New York', 'Los Angeles', 'Chicago']
 }
-df = pd.DataFrame(data)
-print(df)
+emp_df = pd.DataFrame(data)
+print(emp_df)
 ```
 
 **Output:**
@@ -205,8 +205,8 @@ print(df)
 ## 🔹 Selecting Columns
 
 ```python
-df['Name']          # Single column → Series
-df[['Name','Age']]  # Multiple columns → DataFrame
+emp_df['Name']          # Single column → Series
+emp_df[['Name','Age']]  # Multiple columns → DataFrame
 ```
 
 **Output (single column):**
@@ -232,8 +232,8 @@ Name: Name, dtype: object
 ## 🔹 Checking Types
 
 ```python
-type(df['Name'])  # pandas.core.series.Series
-type(df)          # pandas.core.frame.DataFrame
+type(emp_df['Name'])  # pandas.core.series.Series
+type(emp_df)          # pandas.core.frame.DataFrame
 ```
 
 **Output:**
@@ -248,8 +248,8 @@ type(df)          # pandas.core.frame.DataFrame
 ## 🔹 Creating New Columns
 
 ```python
-df['Age in 5 Years'] = df['Age'] + 5
-print(df)
+emp_df['Age in 5 Years'] = emp_df['Age'] + 5
+print(emp_df)
 ```
 
 **Output:**
@@ -266,9 +266,9 @@ print(df)
 ## 🔹 Dropping Columns & Rows
 
 ```python
-df.drop('Age in 5 Years', axis=1)                 # drops column (not inplace)
-df.drop('Age in 5 Years', axis=1, inplace=True)   # drops column permanently
-df.drop(1, axis=0)                                # drops row with index 1
+emp_df.drop('Age in 5 Years', axis=1)                 # drops column (not inplace)
+emp_df.drop('Age in 5 Years', axis=1, inplace=True)   # drops column permanently
+emp_df.drop(1, axis=0)                                # drops row with index 1
 ```
 
 **Output (after dropping row index 1):**
@@ -284,7 +284,7 @@ df.drop(1, axis=0)                                # drops row with index 1
 ## 🔹 Shape of DataFrame
 
 ```python
-df.shape
+emp_df.shape
 ```
 
 **Output:**
@@ -298,11 +298,11 @@ df.shape
 ## 🔹 Selecting Rows
 
 ```python
-df.loc[0]    # by label
-df.iloc[2]   # by position
+emp_df.loc[0]    # by label
+emp_df.iloc[2]   # by position
 ```
 
-**Output (`df.loc[0]`):**
+**Output (`emp_df.loc[0]`):**
 
 ```
 Name       Alice
@@ -311,7 +311,7 @@ City    New York
 Name: 0, dtype: object
 ```
 
-**Output (`df.iloc[2]`):**
+**Output (`emp_df.iloc[2]`):**
 
 ```
 Name     Charlie
@@ -325,7 +325,7 @@ Name: 2, dtype: object
 ## 🔹 Selecting Subsets
 
 ```python
-df.loc[[0,2], ['Name','City']]
+emp_df.loc[[0,2], ['Name','City']]
 ```
 
 **Output:**
@@ -368,8 +368,8 @@ data = {
     'Age': [25, 30, 35],
     'City': ['New York', 'Los Angeles', 'Chicago']
 }
-df = pd.DataFrame(data)
-print(df)
+emp_df = pd.DataFrame(data)
+print(emp_df)
 ```
 
 <details>
@@ -390,7 +390,7 @@ print(df)
 
 ```python
 # Boolean mask (check condition)
-df['Age'] > 28
+emp_df['Age'] > 28
 ```
 
 <details>
@@ -407,7 +407,7 @@ Name: Age, dtype: bool
 
 ```python
 # Filter rows where Age > 28
-df[df['Age'] > 28]
+emp_df[emp_df['Age'] > 28]
 ```
 
 <details>
@@ -427,7 +427,7 @@ df[df['Age'] > 28]
 
 ```python
 # AND condition (Age > 28 AND City == 'Chicago')
-df[(df['Age'] > 28) & (df['City'] == 'Chicago')]
+emp_df[(emp_df['Age'] > 28) & (emp_df['City'] == 'Chicago')]
 ```
 
 <details>
@@ -442,7 +442,7 @@ df[(df['Age'] > 28) & (df['City'] == 'Chicago')]
 
 ```python
 # OR condition (Age < 30 OR City == 'Chicago')
-df[(df['Age'] < 30) | (df['City'] == 'Chicago')]
+emp_df[(emp_df['Age'] < 30) | (emp_df['City'] == 'Chicago')]
 ```
 
 <details>
@@ -462,8 +462,8 @@ df[(df['Age'] < 30) | (df['City'] == 'Chicago')]
 
 ```python
 # Reset index (creates new index, keeps old as column)
-df_reset = df.reset_index()
-print(df_reset)
+emp_df_reset = emp_df.reset_index()
+print(emp_df_reset)
 ```
 
 <details>
@@ -480,8 +480,8 @@ print(df_reset)
 
 ```python
 # Set 'Name' as index
-df_name_index = df.set_index('Name')
-print(df_name_index)
+emp_df_name_index = emp_df.set_index('Name')
+print(emp_df_name_index)
 ```
 
 <details>
@@ -501,7 +501,7 @@ Charlie   35      Chicago
 
 ## 🔑 Key Takeaways
 
-* Use **boolean masks** for filtering (`df[df['Age'] > 28]`).
+* Use **boolean masks** for filtering (`emp_df[emp_df['Age'] > 28]`).
 * Combine conditions with `&` (AND) and `|` (OR).
 * **Reset index** when needed for clean indexing.
 * **Set a column as index** for more meaningful labels.
@@ -525,8 +525,8 @@ We’ll extend our same dataset to create a **MultiIndex**.
 
 ```python
 # Create a MultiIndex from Name and City
-df_multi = df.set_index(['Name', 'City'])
-print(df_multi)
+emp_df_multi = emp_df.set_index(['Name', 'City'])
+print(emp_df_multi)
 ```
 
 <details>
@@ -548,7 +548,7 @@ Charlie Chicago    35
 
 ```python
 # Access all data for Alice
-df_multi.loc['Alice']
+emp_df_multi.loc['Alice']
 ```
 
 <details>
@@ -564,7 +564,7 @@ New York   25
 
 ```python
 # Access specific value (Charlie's Age in Chicago)
-df_multi.loc[('Charlie', 'Chicago'), 'Age']
+emp_df_multi.loc[('Charlie', 'Chicago'), 'Age']
 ```
 
 <details>
@@ -582,7 +582,7 @@ df_multi.loc[('Charlie', 'Chicago'), 'Age']
 
 ```python
 # Check current index names
-print(df_multi.index.names)
+print(emp_df_multi.index.names)
 ```
 
 <details>
@@ -596,8 +596,8 @@ print(df_multi.index.names)
 
 ```python
 # Rename index levels
-df_multi.index.names = ['Person', 'Location']
-print(df_multi)
+emp_df_multi.index.names = ['Person', 'Location']
+print(emp_df_multi)
 ```
 
 <details>
@@ -630,7 +630,7 @@ It is especially useful when you want a **clean, direct way** to access rows or 
 
 ```python
 # Get all rows where City = 'Chicago'
-df_multi.xs('Chicago')
+emp_df_multi.xs('Chicago')
 ```
 
 ```
@@ -642,7 +642,7 @@ Frank     32     90
 
 ```python
 # Get all rows where Name = 'Bob'
-df_multi.xs('Bob', level='Name')
+emp_df_multi.xs('Bob', level='Name')
 ```
 
 ```
@@ -656,7 +656,7 @@ New York    30     92
 * Equivalent `.loc` query for the last example:
 
   ```python
-  df_multi.loc[(slice(None), 'Bob'), :]
+  emp_df_multi.loc[(slice(None), 'Bob'), :]
   ```
 * `.xs()` is **shorter and more readable**.
 * `.loc` is more **flexible** (multiple conditions, slices, etc.).
@@ -665,7 +665,7 @@ New York    30     92
 
 ```python
 # Cross-section by outer level
-df_multi.xs('Alice')
+emp_df_multi.xs('Alice')
 ```
 
 <details>
@@ -681,7 +681,7 @@ New York   25
 
 ```python
 # Cross-section by inner level
-df_multi.xs('Chicago', level='Location')
+emp_df_multi.xs('Chicago', level='Location')
 ```
 
 <details>
