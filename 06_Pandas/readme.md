@@ -33,50 +33,16 @@ C    30
 dtype: int64
 ```
 
-### Quick Reference --- Pandas Series
+### Quick Reference — Pandas Series
 
-| Action       | Code Example                                 | Output Type | Example Output |
-|--------------|----------------------------------------------|-------------|----------------|
-| Create from list | `pd.Series([10,20,30])` | Series | ```text
-0    10
-1    20
-2    30
-dtype: int64
-``` |
-| Create with labels | `pd.Series([10,20,30], index=['A','B','C'])` | Series | ```text
-A    10
-B    20
-C    30
-dtype: int64
-``` |
-| Create from dict | `pd.Series({'A':10,'B':20,'C':30})` | Series | ```text
-A    10
-B    20
-C    30
-dtype: int64
-``` |
-| Boolean filter | `s[s>15]` | Series | ```text
-B    20
-C    30
-dtype: int64
-``` |
-| Vectorized ops | `s + pd.Series({'A':1,'C':99})` | Series | ```text
-A     11.0
-B      NaN
-C    129.0
-dtype: float64
-``` |
-| Summary stats | `s.describe()` | Series | ```text
-count     3.0
-mean     20.0
-std      10.0
-min      10.0
-25%      15.0
-50%      20.0
-75%      25.0
-max      30.0
-dtype: float64
-``` |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| Create from list | `pd.Series([10,20,30])` | Series | <pre>0    10<br>1    20<br>2    30<br>dtype: int64</pre> |
+| Create with labels | `pd.Series([10,20,30], index=['A','B','C'])` | Series | <pre>A    10<br>B    20<br>C    30<br>dtype: int64</pre> |
+| Create from dict | `pd.Series({'A':10,'B':20,'C':30})` | Series | <pre>A    10<br>B    20<br>C    30<br>dtype: int64</pre> |
+| Boolean filter | `s[s>15]` | Series | <pre>B    20<br>C    30<br>dtype: int64</pre> |
+| Vectorized ops | `s + pd.Series({'A':1,'C':99})` | Series | <pre>A     11.0<br>B      NaN<br>C    129.0<br>dtype: float64</pre> |
+| Summary stats | `s.describe()` | Series | <pre>count     3.0<br>mean     20.0<br>std      10.0<br>min      10.0<br>25%      15.0<br>50%      20.0<br>75%      25.0<br>max      30.0<br>dtype: float64</pre> |
 
 ------------------------------------------------------------------------
 
@@ -108,332 +74,149 @@ print(emp_df)
 2  Charlie   35      Chicago
 ```
 
-### Quick Reference --- DataFrame
+### Quick Reference — DataFrames
 
-| Action       | Code Example | Output Type | Example Output |
-|--------------|--------------|-------------|----------------|
-| Select single column | `emp_df['Name']` | Series | ```text
-0      Alice
-1        Bob
-2    Charlie
-Name: Name, dtype: object
-``` |
-| Select multiple columns | `emp_df[['Name','Age']]` | DataFrame | ```text
-      Name  Age
-0    Alice   25
-1      Bob   30
-2  Charlie   35
-``` |
-| Add new column | `emp_df['Age+5'] = emp_df['Age'] + 5` | DataFrame | Adds a new column |
-| Drop column | `emp_df.drop('City', axis=1)` | DataFrame | Removes "City" column |
-| Drop row | `emp_df.drop(1, axis=0)` | DataFrame | Removes Bob's row |
-| Shape | `emp_df.shape` | tuple | ```text
-(3, 3)
-``` |
-| Select row by label | `emp_df.loc[0]` | Series | Alice row |
-| Select row by position | `emp_df.iloc[2]` | Series | Charlie row |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| Create from dict | `pd.DataFrame({'A':[1,2],'B':[3,4]})` | DataFrame | <pre>   A  B<br>0  1  3<br>1  2  4</pre> |
+| Select column | `df['A']` | Series | <pre>0    1<br>1    2<br>Name: A, dtype: int64</pre> |
+| Select multiple columns | `df[['A','B']]` | DataFrame | <pre>   A  B<br>0  1  3<br>1  2  4</pre> |
+| Head & Tail | `df.head()` / `df.tail()` | DataFrame | <pre>   A  B<br>0  1  3<br>1  2  4</pre> |
+| Info | `df.info()` | Summary | <pre><class 'pandas.core.frame.DataFrame'><br>RangeIndex: 2 entries, 0 to 1<br>Data columns (total 2 columns):<br> #   Column  Non-Null Count  Dtype<br>---  ------  --------------  -----<br> 0   A       2 non-null      int64<br> 1   B       2 non-null      int64<br>dtypes: int64(2)</pre> |
+| Describe | `df.describe()` | DataFrame | <pre>         A    B<br>count  2.0  2.0<br>mean   1.5  3.5<br>std    0.7  0.7<br>min    1.0  3.0<br>25%    1.2  3.2<br>50%    1.5  3.5<br>75%    1.7  3.7<br>max    2.0  4.0</pre> |
 
 ------------------------------------------------------------------------
 
 ⚡ **Important Notes**  
-- A DataFrame is a 2D table of rows and columns (like Excel).  
-- Columns are `Series` inside the DataFrame.  
-- `.loc` = label-based indexing, `.iloc` = position-based indexing.  
+- DataFrames are 2D labeled structures with rows and columns.  
+- Columns are `Series` objects.  
+- Index alignment works across rows and columns.  
 
 ------------------------------------------------------------------------
 
 ## 🟢 Indexing & Selection
 
-```python
-print(emp_df.loc[0, 'Name'])
-print(emp_df.iloc[1, 1])
-```
-
-**Output:**
-
-```text
-Alice
-30
-```
-
-### Quick Reference --- Indexing
-
-| Action       | Code Example | Example Output |
-|--------------|--------------|----------------|
-| Select cell by label | `emp_df.loc[0,'Name']` | ```text
-Alice
-``` |
-| Select cell by position | `emp_df.iloc[1,1]` | ```text
-30
-``` |
-| Select row range | `emp_df[0:2]` | ```text
-     Name  Age         City
-0  Alice   25     New York
-1    Bob   30  Los Angeles
-``` |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| Select by label | `df.loc[0,'A']` | Scalar | <pre>1</pre> |
+| Select by position | `df.iloc[0,0]` | Scalar | <pre>1</pre> |
+| Slice rows | `df[0:2]` | DataFrame | <pre>   A  B<br>0  1  3<br>1  2  4</pre> |
+| Conditional select | `df[df['A']>1]` | DataFrame | <pre>   A  B<br>1  2  4</pre> |
 
 ------------------------------------------------------------------------
 
 ⚡ **Important Notes**  
-- Use `.loc` for labels, `.iloc` for integer positions.  
-- Slicing rows with `:` works like NumPy.  
+- Use `.loc[]` for label-based indexing.  
+- Use `.iloc[]` for integer position indexing.  
+- Slicing preserves column labels.  
 
 ------------------------------------------------------------------------
 
 ## 🟢 Boolean Filtering
 
-```python
-print(emp_df[emp_df['Age'] > 25])
-```
-
-**Output:**
-
-```text
-      Name  Age      City
-1      Bob   30  Los Angeles
-2  Charlie   35      Chicago
-```
-
-### Quick Reference --- Boolean Filtering
-
-| Action       | Code Example | Example Output |
-|--------------|--------------|----------------|
-| Filter rows | `emp_df[emp_df['Age']>25]` | ```text
-      Name  Age      City
-1      Bob   30  Los Angeles
-2  Charlie   35      Chicago
-``` |
-| Multiple conditions | `emp_df[(emp_df['Age']>25) & (emp_df['City']=='Chicago')]` | Filters only matching rows |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| Simple filter | `df[df['A']>1]` | DataFrame | <pre>   A  B<br>1  2  4</pre> |
+| Multiple conditions | `df[(df['A']>1) & (df['B']<5)]` | DataFrame | <pre>   A  B<br>1  2  4</pre> |
 
 ------------------------------------------------------------------------
 
 ⚡ **Important Notes**  
-- Conditions must be wrapped in parentheses.  
-- Use `&` for AND, `|` for OR.  
+- Use `&` (AND), `|` (OR), `~` (NOT) with parentheses.  
+- Filtering returns a new DataFrame, index preserved.  
 
 ------------------------------------------------------------------------
 
 ## 🟢 Missing Data
 
-```python
-df = pd.DataFrame({
-    'A':[1,2,None],
-    'B':[None,5,6]
-})
-print(df)
-```
-
-**Output:**
-
-```text
-     A    B
-0  1.0  NaN
-1  2.0  5.0
-2  NaN  6.0
-```
-
-### Quick Reference --- Missing Data
-
-| Action       | Code Example | Example Output |
-|--------------|--------------|----------------|
-| Drop rows with NaN | `df.dropna()` | Removes row with NaN |
-| Fill missing values | `df.fillna(0)` | ```text
-     A    B
-0  1.0  0.0
-1  2.0  5.0
-2  0.0  6.0
-``` |
-| Check nulls | `df.isnull()` | Boolean mask |
-| Drop cols if all NaN | `df.dropna(axis=1, how='all')` | Removes empty columns |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| Detect missing | `df.isnull()` | DataFrame | <pre>       A      B<br>0  False  False<br>1  False  False</pre> |
+| Drop rows with NaN | `df.dropna()` | DataFrame | <pre>   A  B<br>0  1  3<br>1  2  4</pre> |
+| Fill missing | `df.fillna(0)` | DataFrame | <pre>   A  B<br>0  1  3<br>1  2  4</pre> |
 
 ------------------------------------------------------------------------
 
 ⚡ **Important Notes**  
-- `NaN` is treated as float.  
-- Always handle missing values before analysis.  
+- `NaN` stands for Not a Number (missing values).  
+- Dropping may lose data, filling replaces intelligently.  
 
 ------------------------------------------------------------------------
 
 ## 🟢 GroupBy & Aggregation
 
-```python
-sales = pd.DataFrame({
-    'Category':['Fruit','Fruit','Veg','Veg'],
-    'Amount':[10,20,15,25]
-})
-print(sales.groupby('Category').sum())
-```
-
-**Output:**
-
-```text
-          Amount
-Category        
-Fruit         30
-Veg           40
-```
-
-### Quick Reference --- GroupBy
-
-| Action       | Code Example | Example Output |
-|--------------|--------------|----------------|
-| Group by col and sum | `sales.groupby('Category').sum()` | ```text
-          Amount
-Category        
-Fruit         30
-Veg           40
-``` |
-| Multiple aggs | `sales.groupby('Category').agg(['sum','mean'])` | Computes multiple aggregates |
-| Group and count | `sales.groupby('Category').count()` | Counts rows per group |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| Group by column | `df.groupby('col').sum()` | DataFrame | <pre>col  value<br>A    10<br>B    20</pre> |
+| Multiple agg | `df.groupby('col').agg({'val':['mean','max']})` | DataFrame | <pre>     val       <br>    mean  max<br>col            <br>A    5.0   9<br>B   20.0  20</pre> |
 
 ------------------------------------------------------------------------
 
 ⚡ **Important Notes**  
-- GroupBy splits data → apply function → combine results.  
-- Supports multiple aggregates via `.agg()`.  
+- GroupBy = Split → Apply → Combine.  
+- Aggregations: `sum`, `mean`, `count`, `max`, etc.  
+- Use `.agg()` for multiple functions at once.  
 
 ------------------------------------------------------------------------
 
 ## 🟢 Merge & Join
 
-```python
-left = pd.DataFrame({'ID':[1,2], 'Name':['Alice','Bob']})
-right = pd.DataFrame({'ID':[1,2], 'Score':[85,90]})
-print(pd.merge(left,right,on='ID'))
-```
-
-**Output:**
-
-```text
-   ID   Name  Score
-0   1  Alice     85
-1   2    Bob     90
-```
-
-### Quick Reference --- Merge & Join
-
-| Action       | Code Example | Example Output |
-|--------------|--------------|----------------|
-| Inner join | `pd.merge(left,right,on='ID')` | Merges only matching keys |
-| Left join | `pd.merge(left,right,on='ID',how='left')` | Keeps all left rows |
-| Right join | `pd.merge(left,right,on='ID',how='right')` | Keeps all right rows |
-| Outer join | `pd.merge(left,right,on='ID',how='outer')` | Keeps all rows |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| Merge on column | `pd.merge(df1, df2, on='key')` | DataFrame | <pre>key  val1  val2<br>1    10    100<br>2    20    200</pre> |
+| Join on index | `df1.join(df2, lsuffix='_L', rsuffix='_R')` | DataFrame | <pre>     val1  val2<br>0      10   100<br>1      20   200</pre> |
 
 ------------------------------------------------------------------------
 
 ⚡ **Important Notes**  
-- Default join type is `inner`.  
-- Use `how` argument to control join type.  
+- `merge` works like SQL joins.  
+- Types: inner, left, right, outer.  
+- `join` works on index alignment.  
 
 ------------------------------------------------------------------------
 
 ## 🟢 Reshaping
 
-```python
-df = pd.DataFrame({
-    'Name':['Alice','Bob'],
-    'Subject':['Math','Math'],
-    'Score':[90,85]
-})
-pivoted = df.pivot(index='Name', columns='Subject', values='Score')
-print(pivoted)
-```
-
-**Output:**
-
-```text
-Subject  Math
-Name          
-Alice       90
-Bob         85
-```
-
-### Quick Reference --- Reshaping
-
-| Action       | Code Example | Example Output |
-|--------------|--------------|----------------|
-| Pivot table | `df.pivot(index='Name',columns='Subject',values='Score')` | Reshapes data |
-| Melt | `pd.melt(pivoted.reset_index(),id_vars='Name')` | Unpivots back |
-| Stack | `pivoted.stack()` | Converts cols to rows |
-| Unstack | `pivoted.stack().unstack()` | Converts rows back to cols |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| Pivot | `df.pivot(index='id', columns='var', values='val')` | DataFrame | <pre>var  A  B<br>id        <br>1   10 NaN<br>2  NaN  20</pre> |
+| Melt | `pd.melt(df, id_vars=['id'])` | DataFrame | <pre>   id variable  value<br>0   1       A     10<br>1   2       B     20</pre> |
 
 ------------------------------------------------------------------------
 
 ⚡ **Important Notes**  
-- `pivot` reshapes long → wide.  
-- `melt` reshapes wide → long.  
+- Pivot: long → wide format.  
+- Melt: wide → long format.  
+- Use `stack`/`unstack` for hierarchical reshaping.  
 
 ------------------------------------------------------------------------
 
 ## 🟢 Time Series
 
-```python
-dates = pd.date_range('2023-01-01', periods=3)
-ts = pd.Series([100,200,300], index=dates)
-print(ts)
-```
-
-**Output:**
-
-```text
-2023-01-01    100
-2023-01-02    200
-2023-01-03    300
-Freq: D, dtype: int64
-```
-
-### Quick Reference --- Time Series
-
-| Action       | Code Example | Example Output |
-|--------------|--------------|----------------|
-| Date range | `pd.date_range('2023-01-01',periods=3)` | ```text
-DatetimeIndex(['2023-01-01','2023-01-02','2023-01-03'],dtype='datetime64[ns]',freq='D')
-``` |
-| Shift | `ts.shift(1)` | Shifts values |
-| Resample | `ts.resample('M').sum()` | Monthly sum |
-| Rolling mean | `ts.rolling(2).mean()` | Windowed mean |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| Create datetime index | `pd.date_range('2025-01-01', periods=3)` | DatetimeIndex | <pre>DatetimeIndex(['2025-01-01', '2025-01-02', '2025-01-03'], dtype='datetime64[ns]', freq='D')</pre> |
+| Resample | `ts.resample('M').mean()` | Series | <pre>2025-01-31    10.0<br>2025-02-28    20.0<br>Freq: M, dtype: float64</pre> |
 
 ------------------------------------------------------------------------
 
 ⚡ **Important Notes**  
-- Pandas has built-in date/time handling.  
-- Use `resample` for time-based grouping.  
+- Pandas handles time series natively with `DatetimeIndex`.  
+- Resampling useful for aggregating (daily → monthly).  
 
 ------------------------------------------------------------------------
 
 ## 🟢 Input & Output
 
-```python
-# CSV
-emp_df.to_csv('data.csv', index=False)
-df2 = pd.read_csv('data.csv')
-print(df2)
-```
-
-**Output (CSV saved and read back):**
-
-```text
-      Name  Age         City
-0    Alice   25     New York
-1      Bob   30  Los Angeles
-2  Charlie   35      Chicago
-```
-
-### Quick Reference --- I/O
-
-| Action       | Code Example |
-|--------------|--------------|
-| Read CSV | `pd.read_csv('file.csv')` |
-| Write CSV | `df.to_csv('file.csv', index=False)` |
-| Read Excel | `pd.read_excel('file.xlsx')` |
-| Write Excel | `df.to_excel('file.xlsx', index=False)` |
-| Read SQL | `pd.read_sql(query, conn)` |
-| Read JSON | `pd.read_json('file.json')` |
+| Action | Code Example | Output Type | Example Output |
+|--------|--------------|-------------|----------------|
+| CSV Read | `pd.read_csv('file.csv')` | DataFrame | <pre>   A  B<br>0  1  3<br>1  2  4</pre> |
+| CSV Write | `df.to_csv('file.csv')` | File | *CSV file written* |
+| Excel Read | `pd.read_excel('file.xlsx')` | DataFrame | <pre>   A  B<br>0  1  3<br>1  2  4</pre> |
+| Excel Write | `df.to_excel('file.xlsx')` | File | *Excel file written* |
 
 ------------------------------------------------------------------------
 
 ⚡ **Important Notes**  
-- Pandas supports many formats (CSV, Excel, SQL, JSON).  
-- Always check encoding when reading external files.  
-
-------------------------------------------------------------------------
+- Pandas supports CSV, Excel, JSON, SQL, Parquet, etc.  
+- Always check separators and encoding when reading text files.  
