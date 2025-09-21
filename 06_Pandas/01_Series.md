@@ -5,6 +5,35 @@
 * It combines features of arrays and dictionaries: **ordered values + an index (labels)**.
 * Series are the building block for `DataFrame` (columns of a DataFrame are Series).
 * Useful features: fast label-based lookup, vectorized ops, automatic alignment by index.
+
+### 📊 Quick Reference – Pandas Series
+
+| Action                           | Code Example                                 | Output Type | Example Output (simplified) |
+| -------------------------------- | -------------------------------------------- | ----------- | --------------------------- |
+| Create from list                 | `pd.Series([10,20,30])`                      | Series      | `0 10; 1 20; 2 30`          |
+| Create with labels               | `pd.Series([10,20,30], index=['A','B','C'])` | Series      | `A 10; B 20; C 30`          |
+| Create from dict                 | `pd.Series({'A':10,'B':20,'C':30})`          | Series      | `A 10; B 20; C 30`          |
+| Access by label                  | `s['A']`                                     | Scalar      | `10`                        |
+| Access by position               | `s[0]` or `s.iloc[0]`                        | Scalar      | `10`                        |
+| Slice by label                   | `s['A':'B']`                                 | Series      | `A 10; B 20`                |
+| Boolean filter                   | `s[s>15]`                                    | Series      | `B 20; C 30`                |
+| Vectorized ops (aligns by index) | `s + pd.Series({'A':1,'C':99})`              | Series      | `A 11; B NaN; C 129`        |
+| Inspect values                   | `s.values`                                   | ndarray     | `[10 20 30]`                |
+| Inspect index                    | `s.index`                                    | Index       | `Index(['A','B','C'])`      |
+| Check dtype                      | `s.dtype`                                    | dtype       | `int64`                     |
+| Count elements                   | `s.size`                                     | int         | `3`                         |
+| Handle missing (fill)            | `s.fillna(0)`                                | Series      | fills NaN with 0            |
+| Drop missing                     | `s.dropna()`                                 | Series      | removes NaN rows            |
+| Reindex                          | `s.reindex(['A','B','C','D'])`               | Series      | adds `D NaN`                |
+| Summary stats                    | `s.describe()`                               | Series      | `count, mean, std, min, …`  |
+| Value counts                     | `s.value_counts()`                           | Series      | `10 1; 20 1; 30 1`          |
+| Sort by index                    | `s.sort_index()`                             | Series      | sorted by labels            |
+| Sort by values                   | `s.sort_values()`                            | Series      | sorted numerically          |
+| Convert dtype                    | `s.astype(float)`                            | Series      | `10.0; 20.0; 30.0`          |
+| To dict                          | `s.to_dict()`                                | dict        | `{'A':10,'B':20,'C':30}`    |
+| Unique values                    | `s.unique()`                                 | ndarray     | `[10 20 30]`                |
+| Number unique                    | `s.nunique()`                                | int         | `3`                         |
+| Head / Tail                      | `s.head(2)` / `s.tail(2)`                    | Series      | first 2 / last 2 rows       |
 ---
 ## 2) Creating Series — code + output
 
