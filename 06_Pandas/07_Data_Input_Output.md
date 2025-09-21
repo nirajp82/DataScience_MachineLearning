@@ -57,14 +57,19 @@ print(df)
 
 ## 📊 Quick Reference Table
 
-| Format | Read Function                                | Write Function                                               |
-| ------ | -------------------------------------------- | ------------------------------------------------------------ |
-| CSV    | `pd.read_csv("file.csv")`                    | `df.to_csv("file.csv", index=False)`                         |
-| Excel  | `pd.read_excel("file.xlsx", sheet_name=...)` | `df.to_excel("file.xlsx", sheet_name="Sheet1", index=False)` |
-| HTML   | `pd.read_html("url")[0]`                     | *(No direct write)*                                          |
-| SQL    | `pd.read_sql("table", engine)`               | `df.to_sql("table", engine, index=False)`                    |
-| JSON   | `pd.read_json("file.json")`                  | `df.to_json("file.json", orient="records", lines=True)`      |
-| Pickle | `pd.read_pickle("file.pkl")`                 | `df.to_pickle("file.pkl")`                                   |
+| Action            | Code Example                                                    | Output Type | Example Output (simplified)                                                                  |
+| ----------------- | --------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------- |
+| **Read CSV**      | `pd.read_csv("employees.csv")`                                  | DataFrame   | <pre>   ID   Name Dept  Salary<br>0 101 Alice   HR   50000<br>1 102   Bob   IT   60000</pre> |
+| **Write CSV**     | `df.to_csv("employees.csv", index=False)`                       | File        | Creates `employees.csv` without index column                                                 |
+| **Read Excel**    | `pd.read_excel("employees.xlsx", sheet_name="Sheet1")`          | DataFrame   | <pre>   ID   Name Dept  Salary<br>0 101 Alice   HR   50000<br>1 102   Bob   IT   60000</pre> |
+| **Write Excel**   | `df.to_excel("output.xlsx", sheet_name="Summary", index=False)` | File        | Creates Excel file with sheet `Summary`                                                      |
+| **Read HTML**     | `pd.read_html("https://example.com/table")[0]`                  | DataFrame   | <pre>   Bank Name   City   State<br>0  ABC Bank   NY   NY</pre>                              |
+| **Write to SQL**  | `df.to_sql("my_table", engine, index=False)`                    | SQL Table   | Stores DataFrame as SQL table                                                                |
+| **Read from SQL** | `pd.read_sql("my_table", engine)`                               | DataFrame   | <pre>   ID   Name Dept  Salary<br>0 101 Alice   HR   50000<br>1 102   Bob   IT   60000</pre> |
+| **Read JSON**     | `pd.read_json("data.json", lines=True)`                         | DataFrame   | <pre>   ID   Name Dept  Salary<br>0 101 Alice   HR   50000</pre>                             |
+| **Write JSON**    | `df.to_json("data.json", orient="records", lines=True)`         | File        | Creates newline-delimited JSON file                                                          |
+| **Read Pickle**   | `pd.read_pickle("data.pkl")`                                    | DataFrame   | Restores DataFrame from pickle                                                               |
+| **Write Pickle**  | `df.to_pickle("data.pkl")`                                      | File        | Saves DataFrame in binary format                                                             |
 
 ---
 
