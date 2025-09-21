@@ -29,13 +29,34 @@ Pandas provides flexible tools to **read and write data** across multiple format
 These operations are essential for real-world data science workflows.
 
 ---
+``python
+import pandas as pd
+
+# Create DataFrame from the employee data
+data = {
+    "ID": [101, 102, 103, 104],
+    "Name": ["Alice", "Bob", "Carol", "Dave"],
+    "Department": ["HR", "IT", "Finance", "IT"],
+    "Salary": [50000, 60000, 70000, 90000]
+}
+
+df = pd.DataFrame(data)
+```
+
+```
+ID,Name,Department,Salary
+101,Alice,HR,50000
+102,Bob,IT,60000
+103,Carol,Finance,70000
+104,Dave,IT,90000
+```
 
 ## 📊 Quick Reference Table
 
 | Action        | Code Example                                            | Output Type | Example Output (simplified)                                                                  |
 | ------------- | ------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------- |
 | Read CSV      | `pd.read_csv('employees.csv')`                          | DataFrame   | <pre>   ID   Name Dept  Salary<br>0 101 Alice   HR   50000<br>1 102   Bob   IT   60000</pre> |
-| Write CSV     | `df.to_csv('output.csv', index=False)`                  | File        | Writes CSV file without index column                                                         |
+| Write CSV     | `df.to_csv("employees.csv", index=False)                | File        | Writes CSV file without index column                                                         |
 | Read Excel    | `pd.read_excel('employees.xlsx', sheet_name='Sheet1')`  | DataFrame   | <pre>   ID   Name Dept  Salary<br>0 101 Alice   HR   50000<br>1 102   Bob   IT   60000</pre> |
 | Write Excel   | `df.to_excel('output.xlsx', sheet_name='Summary')`      | File        | Creates Excel file with custom sheet                                                         |
 | Read HTML     | `pd.read_html('https://example.com/table')[0]`          | DataFrame   | <pre>   Bank Name   City   State<br>0   ABC Bank   NY   NY</pre>                             |
