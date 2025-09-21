@@ -20,26 +20,27 @@
 
 ## 🔹 Introduction
 
-This section reviews essential **operations in Pandas**, including unique values, conditional selection, applying functions, dropping columns, sorting, null checks, and pivot tables. These tools are crucial for everyday data analysis.
+This guide shows how to perform **Pandas operations** using a simple Employee dataset.
+We’ll explore unique values, filtering, applying custom functions, sorting, null checks, and pivot tables — all with real-world employee-related examples.
 
 ---
 
 ## 📊 Quick Reference Table
 
-| Action                | Code Example                                                | Output Type | Example Output                                                                                                                       |
-| --------------------- | ----------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Unique values         | `df['col2'].unique()`                                       | ndarray     | <pre>\[4 5 6]</pre>                                                                                                                  |
-| Number of unique vals | `df['col2'].nunique()`                                      | int         | <pre>3</pre>                                                                                                                         |
-| Value counts          | `df['col2'].value_counts()`                                 | Series      | <pre>4    2<br>5    1<br>6    1<br>Name: col2, dtype: int64</pre>                                                                    |
-| Conditional select    | `df[df['col1'] > 2]`                                        | DataFrame   | <pre>   col1  col2 col3<br>2     3     6    c<br>3     4     4    d</pre>                                                            |
-| Combined condition    | `df[(df['col1'] > 2) & (df['col2']==4)]`                    | DataFrame   | <pre>   col1  col2 col3<br>3     4     4    d</pre>                                                                                  |
-| Apply custom func     | `df['col1'].apply(lambda x: x*2)`                           | Series      | <pre>0    2<br>1    4<br>2    6<br>3    8<br>Name: col1, dtype: int64</pre>                                                          |
-| Drop a column         | `df.drop('col1', axis=1)`                                   | DataFrame   | <pre>   col2 col3<br>0     4    a<br>1     5    b<br>2     6    c<br>3     4    d</pre>                                              |
-| Column names          | `df.columns`                                                | Index       | <pre>Index(\['col1', 'col2', 'col3'], dtype='object')</pre>                                                                          |
-| Index names           | `df.index`                                                  | RangeIndex  | <pre>RangeIndex(start=0, stop=4, step=1)</pre>                                                                                       |
-| Sort values           | `df.sort_values(by='col2')`                                 | DataFrame   | <pre>   col1  col2 col3<br>0     1     4    a<br>3     4     4    d<br>1     2     5    b<br>2     3     6    c</pre>                |
-| Null values check     | `df.isnull()`                                               | DataFrame   | <pre>   col1  col2  col3<br>0  False False False<br>1  False False False<br>2  False False False<br>3  False False False</pre>       |
-| Pivot table           | `df2.pivot_table(values='D', index=['A','B'], columns='C')` | DataFrame   | <pre>C        X     Y<br>A   B            <br>bar 1  30.0   NaN<br>    2   NaN  40.0<br>foo 1  10.0   NaN<br>    2   NaN  20.0</pre> |
+| Action                | Code Example                                                             | Output Type | Example Output                                                                                                                                                                                                              |
+| --------------------- | ------------------------------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unique values         | `df['Department'].unique()`                                              | ndarray     | <pre>\['HR' 'IT' 'Finance']</pre>                                                                                                                                                                                           |
+| Number of unique vals | `df['Department'].nunique()`                                             | int         | <pre>3</pre>                                                                                                                                                                                                                |
+| Value counts          | `df['Department'].value_counts()`                                        | Series      | <pre>IT         2<br>HR         1<br>Finance    1<br>Name: Department, dtype: int64</pre>                                                                                                                                   |
+| Conditional select    | `df[df['Salary'] > 60000]`                                               | DataFrame   | <pre>   EmployeeID   Name Department  Salary<br>2           103  Carol    Finance   70000<br>3           104   Dave        IT   90000</pre>                                                                                 |
+| Combined condition    | `df[(df['Salary'] > 60000) & (df['Department']=="IT")]`                  | DataFrame   | <pre>   EmployeeID  Name Department  Salary<br>3          104  Dave        IT   90000</pre>                                                                                                                                 |
+| Apply custom func     | `df['Salary'].apply(lambda x: x*1.1)`                                    | Series      | <pre>0    55000.0<br>1    66000.0<br>2    77000.0<br>3    99000.0<br>Name: Salary, dtype: float64</pre>                                                                                                                     |
+| Drop a column         | `df.drop('Department', axis=1)`                                          | DataFrame   | <pre>   EmployeeID   Name  Salary<br>0         101   Alice   50000<br>1         102     Bob   60000<br>2         103   Carol   70000<br>3         104    Dave   90000</pre>                                                 |
+| Column names          | `df.columns`                                                             | Index       | <pre>Index(\['EmployeeID', 'Name', 'Department', 'Salary'], dtype='object')</pre>                                                                                                                                           |
+| Index names           | `df.index`                                                               | RangeIndex  | <pre>RangeIndex(start=0, stop=4, step=1)</pre>                                                                                                                                                                              |
+| Sort values           | `df.sort_values(by='Salary')`                                            | DataFrame   | <pre>   EmployeeID   Name Department  Salary<br>0         101  Alice        HR   50000<br>1         102    Bob        IT   60000<br>2         103  Carol   Finance   70000<br>3         104   Dave        IT   90000</pre>  |
+| Null values check     | `df.isnull()`                                                            | DataFrame   | <pre>   EmployeeID   Name  Department  Salary<br>0      False  False      False   False<br>1      False  False      False   False<br>2      False  False      False   False<br>3      False  False      False   False</pre> |
+| Pivot table           | `df2.pivot_table(values='Salary', index='Department', columns='Gender')` | DataFrame   | <pre>Gender       F      M<br>Department             <br>Finance   70000.0    NaN<br>HR        50000.0    NaN<br>IT           NaN  75000.0</pre>                                                                            |
 
 ---
 
@@ -49,9 +50,10 @@ This section reviews essential **operations in Pandas**, including unique values
 import pandas as pd
 
 df = pd.DataFrame({
-    'col1': [1, 2, 3, 4],
-    'col2': [4, 5, 6, 4],
-    'col3': ['a', 'b', 'c', 'd']
+    'EmployeeID': [101, 102, 103, 104],
+    'Name': ['Alice', 'Bob', 'Carol', 'Dave'],
+    'Department': ['HR', 'IT', 'Finance', 'IT'],
+    'Salary': [50000, 60000, 70000, 90000]
 })
 print(df)
 ```
@@ -59,11 +61,11 @@ print(df)
 **Output:**
 
 ```
-   col1  col2 col3
-0     1     4    a
-1     2     5    b
-2     3     6    c
-3     4     4    d
+   EmployeeID   Name Department  Salary
+0         101  Alice        HR   50000
+1         102    Bob        IT   60000
+2         103  Carol   Finance   70000
+3         104   Dave        IT   90000
 ```
 
 ---
@@ -71,9 +73,9 @@ print(df)
 ## 🔹 Finding Unique Values
 
 ```python
-df['col2'].unique()
-df['col2'].nunique()
-df['col2'].value_counts()
+df['Department'].unique()
+df['Department'].nunique()
+df['Department'].value_counts()
 ```
 
 ---
@@ -81,8 +83,11 @@ df['col2'].value_counts()
 ## 🔹 Conditional Selection
 
 ```python
-df[df['col1'] > 2]
-df[(df['col1'] > 2) & (df['col2'] == 4)]
+# Employees earning more than 60k
+df[df['Salary'] > 60000]
+
+# IT employees earning above 60k
+df[(df['Salary'] > 60000) & (df['Department'] == 'IT')]
 ```
 
 ---
@@ -90,12 +95,14 @@ df[(df['col1'] > 2) & (df['col2'] == 4)]
 ## 🔹 Apply Method
 
 ```python
-def times2(x):
-    return x * 2
+# Increase salary by 10%
+df['Salary'].apply(lambda x: x * 1.1)
 
-df['col1'].apply(times2)
-df['col3'].apply(len)
-df['col2'].apply(lambda x: x * 2)
+# Custom function to add bonus
+def add_bonus(salary):
+    return salary + 5000
+
+df['Salary'].apply(add_bonus)
 ```
 
 ---
@@ -103,7 +110,7 @@ df['col2'].apply(lambda x: x * 2)
 ## 🔹 Removing Columns
 
 ```python
-df.drop('col1', axis=1)
+df.drop('Department', axis=1)
 ```
 
 ---
@@ -120,7 +127,7 @@ df.index
 ## 🔹 Sorting and Ordering
 
 ```python
-df.sort_values(by='col2')
+df.sort_values(by='Salary')
 ```
 
 ---
@@ -137,30 +144,30 @@ df.isnull()
 
 ```python
 df2 = pd.DataFrame({
-    'A': ['foo', 'foo', 'bar', 'bar'],
-    'B': [1, 2, 1, 2],
-    'C': ['X', 'Y', 'X', 'Y'],
-    'D': [10, 20, 30, 40]
+    'Name': ['Alice', 'Bob', 'Carol', 'Dave'],
+    'Department': ['HR', 'IT', 'Finance', 'IT'],
+    'Gender': ['F', 'M', 'F', 'M'],
+    'Salary': [50000, 60000, 70000, 90000]
 })
 
-df2.pivot_table(values='D', index=['A', 'B'], columns=['C'])
+df2.pivot_table(values='Salary', index='Department', columns='Gender')
 ```
 
 ---
 
 ## ✅ Conclusion
 
-Pandas offers a wide range of built-in operations to explore, filter, transform, and summarize data efficiently.
+Using an employee dataset, we saw how Pandas operations help explore, filter, transform, and summarize business data. These techniques are widely applicable in HR analytics, payroll systems, and workforce reporting.
 
 ---
 
 ## 📝 Key Takeaways
 
-* `.unique()`, `.nunique()`, `.value_counts()` help explore values.
-* Boolean conditions allow flexible **row filtering**.
-* `.apply()` with custom or lambda functions unlocks advanced transformations.
-* `.drop()` removes columns; `.columns` and `.index` inspect structure.
-* `.sort_values()` reorders rows.
-* `.isnull()` detects missing values.
-* `.pivot_table()` enables Excel-like pivoting.
-
+* `.unique()`, `.nunique()`, `.value_counts()` → explore categorical fields like Departments.
+* Boolean conditions → filter employees based on Salary or Department.
+* `.apply()` → apply salary adjustments or bonuses.
+* `.drop()` → remove unnecessary columns.
+* `.columns` / `.index` → check dataset structure.
+* `.sort_values()` → rank employees by salary.
+* `.isnull()` → find missing employee records.
+* `.pivot_table()` → summarize salary distributions by Department & Gender.
