@@ -1,8 +1,5 @@
 # 📊 Pandas Quick Reference Cheatsheet
 
-This cheatsheet provides a **quick reference guide** for commonly used
-operations in Pandas, complete with code examples and real outputs.
-
 ------------------------------------------------------------------------
 
 ## 🟢 Section 1: Pandas Series
