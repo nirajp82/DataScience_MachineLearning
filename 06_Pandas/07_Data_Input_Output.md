@@ -84,6 +84,18 @@ print(df.head())
 df.to_csv('employees_output.csv', index=False)
 ```
 
+### 🔹 `df.head()`
+
+* By default, it returns the **first 5 rows** of the DataFrame.
+* It’s super useful after loading data (like from CSV, Excel, SQL, etc.) to check that it loaded correctly.
+
+### 🔹 `df.tail()`
+
+* While `.head()` shows the **first rows**,
+* `.tail()` shows the **last rows** of your DataFrame.
+* By default, it also returns **5 rows**.
+
+
 **Example `employees.csv`:**
 
 ```
