@@ -33,7 +33,8 @@ df = pd.DataFrame({
     'EmployeeID': [101, 102, 103, 104],
     'Name': ['Alice', 'Bob', 'Carol', 'Dave'],
     'Department': ['HR', 'IT', 'Finance', 'IT'],
-    'Salary': [50000, 60000, 70000, 90000]
+    'Salary': [50000, 60000, 70000, 90000],
+    'Gender': ['F', 'M', 'F', 'M']
 })
 print(df)
 ```
@@ -41,11 +42,11 @@ print(df)
 **Output:**
 
 ```
-   EmployeeID   Name Department  Salary
-0         101  Alice        HR   50000
-1         102    Bob        IT   60000
-2         103  Carol   Finance   70000
-3         104   Dave        IT   90000
+   EmployeeID   Name Department  Salary Gender
+0         101  Alice        HR   50000      F
+1         102    Bob        IT   60000      M
+2         103  Carol   Finance   70000      F
+3         104   Dave        IT   90000      M
 ```
 ---
 ## 📊 Quick Reference Table
