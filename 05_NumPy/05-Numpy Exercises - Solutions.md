@@ -234,7 +234,3 @@ mat.sum(axis=0)
 ```python
 array([55, 60, 65, 70, 75])
 ```
-
----
-
-Let me know if you'd like it converted to a J
