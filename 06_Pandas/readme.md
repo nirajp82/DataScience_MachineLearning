@@ -96,12 +96,12 @@ print(emp_df)
 
 ## 🟢 Indexing & Selection
 
-| Action | Code Example | Output Type | Example Output |
-|--------|--------------|-------------|----------------|
-| Select by label | `df.loc[0,'A']` | Scalar | <pre>1</pre> |
-| Select by position | `df.iloc[0,0]` | Scalar | <pre>1</pre> |
-| Slice rows | `df[0:2]` | DataFrame | <pre>   A  B<br>0  1  3<br>1  2  4</pre> |
-| Conditional select | `df[df['A']>1]` | DataFrame | <pre>   A  B<br>1  2  4</pre> |
+| **Action**         | **Code Example**             | **Output Type** | **Example Output**                                                            |
+| ------------------ | ---------------------------- | --------------- | ----------------------------------------------------------------------------- |
+| Select by label    | `emp_df.loc[0, 'Name']`      | Scalar          | `'Alice'`                                                                     |
+| Select by position | `emp_df.iloc[1, 2]`          | Scalar          | `'Los Angeles'`                                                               |
+| Slice rows         | `emp_df[0:2]`                | DataFrame       | `Name  Age         City`<br>0 Alice 25 New York<br>1 Bob 30 Los Angeles       |
+| Conditional select | `emp_df[emp_df['Age'] > 25]` | DataFrame       | `Name     Age      City`<br>1 Bob     30  Los Angeles<br>2 Charlie 35 Chicago |
 
 ------------------------------------------------------------------------
 
