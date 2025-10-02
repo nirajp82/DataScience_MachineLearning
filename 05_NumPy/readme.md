@@ -8,6 +8,10 @@
 * **Use separate arguments** when specifying **sequence / range parameters**: `start, stop, step` or `start, stop, num_points`
   Examples: `np.arange(0, 10, 2)`, `np.linspace(0, 1, 5)`.
 
+```python
+import numpy as np
+```
+
 ---
 #### **1. Supports Only 1D Output**
 
