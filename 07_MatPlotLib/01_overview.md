@@ -165,23 +165,33 @@ plt.show()
 
 The OO method gives explicit control over figures and axes, which is essential for complex visualizations.
 
+`fig.add_axes()` places an axes at an **exact position** inside a figure using **fractions of figure size**.
+
+### Syntax
+
+```python
+ax = fig.add_axes([left, bottom, width, height])
+```
+
+### Parameters (fractions 0–1)
+
+* **left** – horizontal start from figure left (0 = left edge, 1 = right edge).
+* **bottom** – vertical start from figure bottom (0 = bottom edge, 1 = top edge).
+* **width** – width of axes (fraction of figure width).
+* **height** – height of axes (fraction of figure height).
+  
 #### Creating a Figure and Axes
 
 ```python
 fig = plt.figure()
-# [left, bottom, width, height] are fractions of the figure size
-ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
-```
-
-#### Plotting with OO Style
-
-```python
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])  # 10% from left/bottom, 80% width/height
 ax.plot(x, y)
-
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
-ax.set_title('Title')
+ax.set_title('Main Plot')
+plt.show()
 ```
+<img width="300" height="150" alt="image" src="https://github.com/user-attachments/assets/1efc202b-292e-4887-a2e4-3005fb3744b7" />
 
 #### Multiple Axes in a Single Figure
 
