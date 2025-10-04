@@ -220,11 +220,17 @@ plt.show()
 <img width="350" height="200" alt="image" src="https://github.com/user-attachments/assets/4420725c-024c-4186-9266-5b63855eaaa6" />
 ---
 
+### Key Takeaways 
+
+* Each `add_axes()` call creates a **new independent axes** on the figure.
+* The `left, bottom, width, height` parameters **control absolute placement on the figure**, not relative to other axes.
+* That’s why the **smaller plots appear “inside” the main plot** — their coordinates fall **within the same figure space**.
+* You can add as many insets as you want; they **don’t split the main axes**, they just **overlay** on the figure.
+
 ## 📚 Summary
 
 * **Figures and Axes:** Every plot lives inside a **Figure** (canvas) with one or more **Axes** (individual plots).
 * **Functional vs. OO:**
-
   * Functional (`plt.plot`) → quick for simple plots.
   * OO (`fig`, `ax`) → best for complex layouts and fine control.
 * **Subplots:** Use `plt.subplot()` (functional) or `fig.add_axes()` (OO) for multiple plots.
@@ -239,5 +245,3 @@ plt.show()
 * **Functional API** → quick plots.
 * **OO API** → precise and customizable.
 * Remember: `add_axes([left, bottom, width, height])` values are **fractions of figure size**, allowing you to position plots exactly where you want them.
-
-```
