@@ -1,4 +1,5 @@
 # 🧾 NumPy Cheatsheet
+
 ---
 
 ## 📌 Tuple vs Arguments (Cheat Box)
@@ -13,55 +14,65 @@ import numpy as np
 ```
 
 ---
+
 #### **1. Supports Only 1D Output**
 
 These functions will always return a **1D array** regardless of the input shape.
 
-| Function        | Example / Code         | Output                                |
-| --------------- | ---------------------- | ------------------------------------- |
-| `np.arange()`   | `np.arange(6)`         | `[0 1 2 3 4 5]`                       |
-|                 | `np.arange(0, 10, 2)`  | ` [0 2 4 6 8]`                        |
-| `np.linspace()` | `np.linspace(0, 1, 5)` | `[0.  0.25  0.5  0.75  1.]`           |
-| `np.logspace()` | `np.logspace(0, 2, 5)` | `[1. 3.16227766 10. 31.6227766 100.]` |
+| Function        | Description                                             | Example / Code         | Output                                |
+| --------------- | ------------------------------------------------------- | ---------------------- | ------------------------------------- |
+| `np.arange()`   | Returns evenly spaced values within a given interval    | `np.arange(6)`         | `[0 1 2 3 4 5]`                       |
+|                 |                                                         | `np.arange(0, 10, 2)`  | `[0 2 4 6 8]`                         |
+| `np.linspace()` | Returns evenly spaced numbers over a specified interval | `np.linspace(0, 1, 5)` | `[0.  0.25  0.5  0.75  1.]`           |
+| `np.logspace()` | Returns numbers spaced evenly on a log scale            | `np.logspace(0, 2, 5)` | `[1. 3.16227766 10. 31.6227766 100.]` |
 
 ---
 
 #### **2. Supports Both 1D and 2D Inputs, Returns 1D or 2D Output**
 
 These functions **support both 1D and 2D inputs** and **return either a 1D or 2D array** depending on the input shape.
-| Function              | Example / Code                     | Output                                                                          |
-| --------------------- | ---------------------------------- | ------------------------------------------------------------------------------- |
-| `np.random.rand()`    | `np.random.rand(3)`                | `[0.5488135 0.71518937 0.60276338]`                                             |
-|                       | `np.random.rand(2, 3)`             | `[[0.37454012 0.95071431 0.73199394] [0.59865848 0.15601864 0.15599452]]`       |
-| `np.random.randn()`   | `np.random.randn(3)`               | `[0.24196227 -1.91328024 -1.72491783]`                                          |
-|                       | `np.random.randn(2, 3)`            | `[[ 0.49671415 -0.1382643   0.64768854] [ 1.52302986 -0.23415337 -0.23413696]]` |
-| `np.random.randint()` | `np.random.randint(0, 10, 3)`      | `[5 0 3]`                                                                       |
-|                       | `np.random.randint(0, 10, (2, 3))` | `[[6 9 2] [6 3 6]]`                                                             |
-| `np.zeros()`          | `np.zeros(5)`                      | `[0. 0. 0. 0. 0.]`                                                              |
-|                       | `np.zeros((2, 3))`                 | `[[0. 0. 0.] [0. 0. 0.]]`                                                       |
-| `np.ones()`           | `np.ones(4)`                       | `[1. 1. 1. 1.]`                                                                 |
-|                       | `np.ones((2, 2))`                  | `[[1. 1.] [1. 1.]]`                                                             |
-| `np.full()`           | `np.full(3, 7)`                    | `[7 7 7]`                                                                       |
-|                       | `np.full((2, 3), 7)`               | `[[7 7 7] [7 7 7]]`                                                             |
-| `np.tile()`           | `np.tile([1, 2], 2)`               | `[1 2 1 2]`                                                                     |
-|                       | `np.tile([[1, 2]], 2)`             | `[[1 2] [1 2]]`                                                                 |
-| `np.repeat()`         | `np.repeat([1, 2], 3)`             | `[1 1 1 2 2 2]`                                                                 |
-|                       | `np.repeat([[1, 2]], 3)`           | `[[1 1 1] [2 2 2]]`                                                             |
-|                       | `np.repeat([1, 2], [3, 2])`        | `[1 1 1 2 2]`                                                                   |
-|       | `np.repeat(np.array([[1, 2], [3, 4]]), 2, axis=0)` | `[[1 2] [1 2] [3 4] [3 4]]`                                                     |
+
+| Function              | Description                                                              | Example / Code                                     | Output                                                                          |
+| --------------------- | ------------------------------------------------------------------------ | -------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `np.random.rand()`    | Returns random floats in [0.0, 1.0) across the specified shape           | `np.random.rand(3)`                                | `[0.5488135 0.71518937 0.60276338]`                                             |
+|                       |                                                                          | `np.random.rand(2, 3)`                             | `[[0.37454012 0.95071431 0.73199394] [0.59865848 0.15601864 0.15599452]]`       |
+| `np.random.randn()`   | Returns samples from a standard normal (Gaussian) distribution           | `np.random.randn(3)`                               | `[0.24196227 -1.91328024 -1.72491783]`                                          |
+|                       |                                                                          | `np.random.randn(2, 3)`                            | `[[ 0.49671415 -0.1382643   0.64768854] [ 1.52302986 -0.23415337 -0.23413696]]` |
+| `np.random.randint()` | Returns random integers from `low` (inclusive) to `high` (exclusive)     | `np.random.randint(0, 10, 3)`                      | `[5 0 3]`                                                                       |
+|                       |                                                                          | `np.random.randint(0, 10, (2, 3))`                 | `[[6 9 2] [6 3 6]]`                                                             |
+| `np.zeros()`          | Returns an array filled with zeros                                       | `np.zeros(5)`                                      | `[0. 0. 0. 0. 0.]`                                                              |
+|                       |                                                                          | `np.zeros((2, 3))`                                 | `[[0. 0. 0.] [0. 0. 0.]]`                                                       |
+| `np.ones()`           | Returns an array filled with ones                                        | `np.ones(4)`                                       | `[1. 1. 1. 1.]`                                                                 |
+|                       |                                                                          | `np.ones((2, 2))`                                  | `[[1. 1.] [1. 1.]]`                                                             |
+| `np.full()`           | Returns a new array of given shape filled with a specified value         | `np.full(3, 7)`                                    | `[7 7 7]`                                                                       |
+|                       |                                                                          | `np.full((2, 3), 7)`                               | `[[7 7 7] [7 7 7]]`                                                             |
+| `np.tile()`           | Constructs an array by repeating `A` the number of times given by `reps` | `np.tile([1, 2], 2)`                               | `[1 2 1 2]`                                                                     |
+|                       |                                                                          | `np.tile([[1, 2]], 2)`                             | `[[1 2] [1 2]]`                                                                 |
+| `np.repeat()`         | Repeats elements of an array                                             | `np.repeat([1, 2], 3)`                             | `[1 1 1 2 2 2]`                                                                 |
+|                       |                                                                          | `np.repeat([[1, 2]], 3)`                           | `[[1 1 1] [2 2 2]]`                                                             |
+|                       |                                                                          | `np.repeat([1, 2], [3, 2])`                        | `[1 1 1 2 2]`                                                                   |
+|                       |                                                                          | `np.repeat(np.array([[1, 2], [3, 4]]), 2, axis=0)` | `[[1 2] [1 2] [3 4] [3 4]]`                                                     |
+
+---
 
 #### **3. Supports Both 1D and 2D Inputs, Returns 1D Flattened Array**
 
 These functions support both **1D and 2D inputs**, but always return a **flattened 1D array**.
 
-| Function       | Example / Code                         | Output              |
-| -------------- | -------------------------------------- | ------------------- |
-| `np.ravel()`   | `np.ravel([1, 2])`                     | `[1 2]`             |
-|                | `np.ravel([[1, 2], [3, 4]])`           | `[1 2 3 4]`         |
-| `np.flatten()` | `np.flatten([1, 2])`                   | `[1 2]`             |
-|                | `np.flatten([[1, 2], [3, 4]])`         | `[1 2 3 4]`         |
-| `np.reshape()` | `np.reshape([1, 2, 3], (1, 3))`        | `[[1 2 3]]`         |
-|                | `np.reshape([[1, 2], [3, 4]], (4, 1))` | `[[1] [2] [3] [4]]` |
+| Function       | Description                                                                                    | Example / Code                         | Output              |
+| -------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------- |
+| `np.ravel()`   | Flattens the input to 1D; returns a **view** if possible (no copy)                             | `np.ravel([1, 2])`                     | `[1 2]`             |
+|                |                                                                                                | `np.ravel([[1, 2], [3, 4]])`           | `[1 2 3 4]`         |
+| `np.flatten()` | Flattens the input to 1D; always returns a **copy** (independent)                              | `np.flatten([1, 2])`                   | `[1 2]`             |
+|                |                                                                                                | `np.flatten([[1, 2], [3, 4]])`         | `[1 2 3 4]`         |
+| `np.reshape()` | Gives a new view or copy reshaped to the specified dimensions; may flatten if shape implies 1D | `np.reshape([1, 2, 3], (1, 3))`        | `[[1 2 3]]`         |
+|                |                                                                                                | `np.reshape([[1, 2], [3, 4]], (4, 1))` | `[[1] [2] [3] [4]]` |
+
+> 🧠 **Notes / Comparisons:**
+>
+> * Use **`ravel()`** when you prefer performance — it returns a view when possible, avoiding data copy.
+> * Use **`flatten()`** when you need a guaranteed independent copy (safe from modifying original).
+> * **`reshape()`** can act more flexibly — it can flatten or reshape to multi-dimensional forms depending on your target shape.
 
 ---
 
@@ -69,41 +80,46 @@ These functions support both **1D and 2D inputs**, but always return a **flatten
 
 These functions **only return 2D arrays**, regardless of whether the input is 1D or 2D.
 
-| Function        | Example / Code   | Output                               |
-| --------------- | ---------------- | ------------------------------------ |
-| `np.eye()`      | `np.eye(3)`      | `[[1. 0. 0.] [0. 1. 0.] [0. 0. 1.]]` |
-| `np.identity()` | `np.identity(3)` | `[[1. 0. 0.] [0. 1. 0.] [0. 0. 1.]]` |
+| Function        | Description                                                                                     | Example / Code   | Output                               |
+| --------------- | ----------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------ |
+| `np.eye()`      | Returns a 2D array with ones on the diagonal (identity matrix, possibly rectangular or shifted) | `np.eye(3)`      | `[[1. 0. 0.] [0. 1. 0.] [0. 0. 1.]]` |
+| `np.identity()` | Returns the square identity matrix (2D)                                                         | `np.identity(3)` | `[[1. 0. 0.] [0. 1. 0.] [0. 0. 1.]]` |
+
+> 🧠 **Note / Comparison:**
+>
+> * `np.eye(N, M=None, k=0, dtype=float)` lets you create **rectangular identity-like** matrices and shift the diagonal with `k`.
+> * `np.identity(N, dtype=None)` is a shorthand for `np.eye(N)` — only square, main diagonal, simpler use.
 
 ---
 
 ### **Matrix Operations & Reductions**
 
-| Function    | Example / Code   | Produces 1D? | Produces 2D? | Output |
-| ----------- | ---------------- | ------------ | ------------ | ------ |
-| `np.dot()`  | `np.dot(a, b)`   | ✅            | ✅            | `32`   |
-| `np.sum()`  | `np.sum(arr2d)`  | ✅            | ❌            | `21`   |
-| `np.prod()` | `np.prod(arr2d)` | ✅            | ❌            | `720`  |
+| Function    | Description                                                      | Produces 1D? | Produces 2D? | Output |
+| ----------- | ---------------------------------------------------------------- | ------------ | ------------ | ------ |
+| `np.dot()`  | Dot (inner) product or matrix multiplication depending on shapes | ✅            | ✅            | `32`   |
+| `np.sum()`  | Sum of array elements over a given axis (or entire array)        | ✅            | ❌            | `21`   |
+| `np.prod()` | Product of array elements over a given axis (or entire array)    | ✅            | ❌            | `720`  |
 
 ---
 
 ### **Array Attributes**
 
-| Function | Example / Code | Produces 1D? | Produces 2D? | Output           |
-| -------- | -------------- | ------------ | ------------ | ---------------- |
-| `.shape` | `arr2d.shape`  | ✅            | ✅            | `(2, 3)`         |
-| `.ndim`  | `arr2d.ndim`   | ✅            | ✅            | `2`              |
-| `.size`  | `arr2d.size`   | ✅            | ✅            | `6`              |
-| `.dtype` | `arr2d.dtype`  | ✅            | ✅            | `dtype('int64')` |
+| Function | Description                                        | Example / Code | Produces 1D? | Produces 2D? | Output           |
+| -------- | -------------------------------------------------- | -------------- | ------------ | ------------ | ---------------- |
+| `.shape` | Returns the dimensions of the array                | `arr2d.shape`  | ✅            | ✅            | `(2, 3)`         |
+| `.ndim`  | Returns the number of array dimensions             | `arr2d.ndim`   | ✅            | ✅            | `2`              |
+| `.size`  | Returns total number of elements in the array      | `arr2d.size`   | ✅            | ✅            | `6`              |
+| `.dtype` | Returns the data type of the elements in the array | `arr2d.dtype`  | ✅            | ✅            | `dtype('int64')` |
 
 ---
 
 ### **Reshape, Flattening, Views**
 
-| Function       | Example / Code     | Produces 1D? | Produces 2D? | Output             |
-| -------------- | ------------------ | ------------ | ------------ | ------------------ |
-| `np.reshape()` | `arr.reshape(2,3)` | ✅            | ✅            | `[[0 1 2][3 4 5]]` |
-| `np.ravel()`   | `arr.ravel()`      | ✅            | ✅            | `[1 2 3 4 5 6]`    |
-| `np.flatten()` | `arr.flatten()`    | ✅            | ❌            | `[1 2 3 4 5 6]`    |
+| Function       | Description                                                             | Example / Code     | Produces 1D? | Produces 2D? | Output              |
+| -------------- | ----------------------------------------------------------------------- | ------------------ | ------------ | ------------ | ------------------- |
+| `np.reshape()` | Reshapes an array to a new shape (view or copy depending on contiguity) | `arr.reshape(2,3)` | ✅            | ✅            | `[[0 1 2] [3 4 5]]` |
+| `np.ravel()`   | Flattens to 1D (view when possible)                                     | `arr.ravel()`      | ✅            | ✅            | `[1 2 3 4 5 6]`     |
+| `np.flatten()` | Flattens to 1D (always copy)                                            | `arr.flatten()`    | ✅            | ❌            | `[1 2 3 4 5 6]`     |
 
 ---
 
@@ -162,7 +178,7 @@ np.linspace(0, 1, 5)
 # Output: [0.   0.25 0.5  0.75 1. ]
 ```
 
-**Note:** `np.eye` is more flexible (see notes below); `np.identity(n)` is a convenience wrapper for the common square-case.
+**Note:** `np.eye` is more flexible (see notes above); `np.identity(n)` is a convenience wrapper for the common square-case.
 
 ---
 
@@ -487,7 +503,7 @@ np.linalg.solve(B, b)   # Output: [-1.  1.]
 
 ## 13. `arange` vs `linspace`
 
-* `np.arange(start, stop, step)` — like Python's `range`, uses `step`. Good when step size is known. always produces 1D array.
+* `np.arange(start, stop, step)` — like Python's `range`, uses `step`. Good when step size is known. Always produces 1D array.
 
   * Example: `np.arange(0,10,2) -> [0 2 4 6 8]`
 * `np.linspace(start, stop, num)` — specify the **number of points** you want evenly spaced from `start` to `stop` (inclusive by default).
@@ -517,5 +533,3 @@ np.linalg.solve(B, b)   # Output: [-1.  1.]
   * `np.eye` with `k` when you need an offset diagonal.
   * `np.stack(..., axis=...)` when you want exact axis semantics.
 * Keep a tiny test script (like the one I used to capture these outputs) to quickly confirm behavior in your local NumPy version — semantics are stable but exact printed formatting / dtype defaults may vary by platform.
-
----
