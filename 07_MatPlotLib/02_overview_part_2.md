@@ -5,7 +5,7 @@
 
 Both methods create **Axes** (the plotting area), but they differ entirely in their purpose and how they position the plot within the **Figure** (the overall container).
 
-| Feature | $\mathbf{plt.subplots()}$ | $\mathbf{figure.add_axes([left, bottom, width, height])}$ |
+| Feature | plt.subplots() | figure.add_axes([left, bottom, width, height]) |
 | :--- | :--- | :--- |
 | **Purpose** | Creates a **Figure** and one or more subplots in a regular **grid**. | Adds an **Axes** at a specific, custom location in an **existing Figure**. |
 | **Returns** | A tuple: `(Figure, Axes or array of Axes)` | The **Axes** object only. |
