@@ -117,10 +117,10 @@ print(emp_df)
 
 ## 🟢 Boolean Filtering
 
-| Action              | Description                                 | Code Example             | Output Type                     | Example Output                |                               |
-| ------------------- | ------------------------------------------- | ------------------------ | ------------------------------- | ----------------------------- | ----------------------------- |
-| Simple filter       | Filter rows where a single condition is met | `df[df['A']>1]`          | DataFrame                       | <pre>   A  B<br>1  2  4</pre> |                               |
-| Multiple conditions | Combine conditions with `&`, `              | `, `~` (use parentheses) | `df[(df['A']>1) & (df['B']<5)]` | DataFrame                     | <pre>   A  B<br>1  2  4</pre> |
+| Action              | Description                                                                | Code Example                        | Output Type | Example Output                |
+| ------------------- | -------------------------------------------------------------------------- | ----------------------------------- | ----------- | ----------------------------- |
+| Simple filter       | Filter rows where a single condition is met                                | `df[df['A'] > 1]`                   | DataFrame   | <pre>   A  B<br>1  2  4</pre> |
+| Multiple conditions | Combine conditions using `&` (AND), `\|` (OR), `~` (NOT). Use parentheses. | `df[(df['A'] > 1) & (df['B'] < 5)]` | DataFrame   | <pre>   A  B<br>1  2  4</pre> |
 
 ---
 
