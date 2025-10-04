@@ -93,14 +93,37 @@ plt.title('Title')
 Use `plt.subplot(rows, cols, index)` to divide the figure into subplots.
 
 ```python
-plt.subplot(1, 2, 1) # 1 row, 2 columns, first plot
-plt.plot(x, y, 'r')  # 'r' = red line
+# The grid blueprint is set as 2 ROWS and 2 COLUMNS (2x2 grid)
+# The R and C parameters (2 and 2) must remain the same for all subplots.
+# 1. Select Position 1 (Top-Left)
+# R=2, C=2, P=1 (Position 1)
+plt.subplot(2, 2, 1) 
+plt.plot(x, y, 'r')
+plt.title('Position 1 (Top-Left)') 
 
-plt.subplot(1, 2, 2) # 1 row, 2 columns, second plot
-plt.plot(y, x, 'b')  # 'b' = blue line
+# 2. Select Position 2 (Top-Right)
+# R=2, C=2, P=2 (Position 2)
+plt.subplot(2, 2, 2) 
+plt.plot(y, x, 'b')
+plt.title('Position 2 (Top-Right)') 
 
+# 3. Select Position 3 (Bottom-Left)
+# R=2, C=2, P=3 (Position 3)
+plt.subplot(2, 2, 3) 
+plt.plot(y, x, 'g')
+plt.title('Position 3 (Bottom-Left)') 
+
+# 4. Select Position 4 (Bottom-Right)
+# R=2, C=2, P=4 (Position 4)
+plt.subplot(2, 2, 4) 
+plt.plot(x, y, 'k') # Changed to black ('k') for contrast
+plt.title('Position 4 (Bottom-Right)') 
+
+# Automatically adjusts subplot parameters for a tight layout
+plt.tight_layout() 
 plt.show()
 ```
+<img width="506" height="371" alt="image" src="https://github.com/user-attachments/assets/4cfb9cfb-200a-465f-930c-8655cfd02875" />
 
 ---
 
