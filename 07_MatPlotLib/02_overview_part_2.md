@@ -28,6 +28,7 @@ axes[1].plot([1, 2, 3], [6, 5, 4])
 # Adjusts spacing to prevent titles and labels from overlapping
 plt.tight_layout() 
 ```
+<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/f01cf625-525c-4979-97fd-6bc36401a5d5" />
 
 ### Example: Using `figure.add_axes` (Custom Inset)
 
@@ -48,6 +49,7 @@ ax2.plot([1, 2, 3], [6, 5, 4], color='red', label="Inset")
 
 ax1.legend()
 ```
+<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/6ef7db30-7dcc-49cd-97a5-f8502e084ede" />
 
 ✅ **Tip:** Use **`plt.subplots`** for most standard plots; reserve **`add_axes`** for advanced layouts, like creating the inset plot above.
 
@@ -61,6 +63,7 @@ ax1.legend()
 fig, axes = plt.subplots()
 axes.plot(x, y)
 ```
+<img width="300" height="150" alt="image" src="https://github.com/user-attachments/assets/524c1fa6-b870-43ea-addd-a294ec8c6fcc" />
 
 ### Multiple Subplots
 
@@ -74,6 +77,7 @@ fig, axes = plt.subplots(nrows=1, ncols=2)
 fig, axes = plt.subplots(nrows=3, ncols=3)
 plt.tight_layout()
 ```
+<img width="602" height="820" alt="image" src="https://github.com/user-attachments/assets/97f25af5-a592-46fb-a988-8d794bc7932b" />
 
 -----
 
