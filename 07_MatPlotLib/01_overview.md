@@ -55,6 +55,7 @@ x = np.linspace(0, 5, 11)
 # Calculate the squared values
 y = x ** 2
 ```
+<img width="716" height="512" alt="image" src="https://github.com/user-attachments/assets/4bfb5eac-ff90-46ee-8e22-4ade731e7ca7" />
 
 ---
 
@@ -85,6 +86,7 @@ plt.xlabel('X Label')
 plt.ylabel('Y Label')
 plt.title('Title')
 ```
+<img width="520" height="343" alt="image" src="https://github.com/user-attachments/assets/84abfbb3-42b6-436f-9c44-aefb9d512af7" />
 
 #### Multiple Plots on the Same Canvas
 
