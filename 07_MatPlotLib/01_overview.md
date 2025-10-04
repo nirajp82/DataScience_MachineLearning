@@ -184,14 +184,14 @@ ax = fig.add_axes([left, bottom, width, height])
 
 ```python
 fig = plt.figure()
-ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])  # 10% from left/bottom, 80% width/height
+ax = fig.add_axes([0.1, 0.1, 0.3, 0.5])  # 10% from left, 50% from bottom, width 30%, height 50%
 ax.plot(x, y)
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
 ax.set_title('Main Plot')
 plt.show()
 ```
-<img width="300" height="150" alt="image" src="https://github.com/user-attachments/assets/1efc202b-292e-4887-a2e4-3005fb3744b7" />
+<img width="236" height="137" alt="image" src="https://github.com/user-attachments/assets/dbe235eb-b909-4ee8-a0a6-22b019eec8cb" />
 
 #### Multiple Axes in a Single Figure
 
