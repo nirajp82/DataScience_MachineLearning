@@ -3,7 +3,7 @@
 ---
 ## 1\. `plt.subplots` vs. `figure.add_axes`
 
-This is the most crucial distinction for Matplotlib users. Both methods create **Axes** (the plotting area), but they differ entirely in their purpose and how they position the plot within the **Figure** (the overall container).
+Both methods create **Axes** (the plotting area), but they differ entirely in their purpose and how they position the plot within the **Figure** (the overall container).
 
 | Feature | $\mathbf{plt.subplots()}$ | $\mathbf{figure.add\_axes([left, bottom, width, height])}$ |
 | :--- | :--- | :--- |
