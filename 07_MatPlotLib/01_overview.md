@@ -200,20 +200,24 @@ This technique allows creating custom layouts, like inset plots:
 ```python
 fig = plt.figure()
 
-# Main axes
-ax1 = fig.add_axes([0.1, 0.1, 0.8, 0.8])
-# Inset axes
-ax2 = fig.add_axes([0.2, 0.5, 0.4, 0.3])
-
+# 1️: Main axes: large plot covering most of the figure
+ax1 = fig.add_axes([0.1, 0.1, 0.8, 0.8])  # [left, bottom, width, height] as fractions
 ax1.plot(x, y)
-ax2.plot(y, x)
+ax1.set_title('Main Plot')  # Clear title for the main plot
 
-ax1.set_title('Larger Plot')
-ax2.set_title('Smaller Plot')
+# 2️: Inset axes: smaller plot inside the main figure
+ax2 = fig.add_axes([0.2, 0.5, 0.4, 0.3])  # Positioned 20% from left, 50% from bottom, width 40%, height 30%
+ax2.plot(y, x)
+ax2.set_title('Inset Plot 1') 
+
+# 3: Additional inset axes: another small plot
+ax3 = fig.add_axes([0.6, 0.2, 0.2, 0.2])  # Positioned 60% from left, 20% from bottom, width 20%, height 20%
+ax3.plot(x, y)
+ax3.set_title('Inset Plot 2') 
 
 plt.show()
 ```
-
+<img width="350" height="200" alt="image" src="https://github.com/user-attachments/assets/4420725c-024c-4186-9266-5b63855eaaa6" />
 ---
 
 ## 📚 Summary
