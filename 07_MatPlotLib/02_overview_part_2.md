@@ -1,9 +1,6 @@
 # Matplotlib Part 2: Object-Oriented Plotting
 
-This guide introduces **object-oriented plotting** in Matplotlib. Mastering this style is essential for creating complex, customized, and production-ready visualizations. You will learn how to manage figures and axes, create subplots, control figure size and DPI, add legends and labels, and save your work.
-
------
-
+---
 ## 1\. `plt.subplots` vs. `figure.add_axes`
 
 This is the most crucial distinction for Matplotlib users. Both methods create **Axes** (the plotting area), but they differ entirely in their purpose and how they position the plot within the **Figure** (the overall container).
