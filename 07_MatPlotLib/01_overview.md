@@ -90,6 +90,42 @@ plt.title('Title')
 
 Use `plt.subplot(rows, cols, index)` to divide the figure into subplots.
 
+`plt.subplot()` is used to place multiple plots (Axes) onto a single figure by organizing them into a **grid**.
+
+### Syntax
+
+```python
+plt.subplot(R, C, P)
+```
+
+### Parameters
+
+1. **R (Rows)** – number of horizontal divisions in the grid.
+
+2. **C (Columns)** – number of vertical divisions in the grid.
+
+   * **Rule:** All subplots in the same figure must use the same R and C values.
+
+3. **P (Position)** – specifies the cell where the next plot will be drawn.
+
+   * Counting starts at **1** from the **top-left corner**, proceeding **left-to-right** across rows.
+
+### Example: 2×3 Grid
+
+```
+P=1   P=2   P=3
+P=4   P=5   P=6
+```
+
+* `plt.subplot(2, 3, 1)` → top-left
+* `plt.subplot(2, 3, 5)` → bottom-middle
+
+### Key Points
+
+* Enables **multiple plots in one figure**.
+* Positions are **1-based** and **row-major order** (top-left → right → next row).
+* Use **consistent R and C** values for all subplots in a figure.
+
 ```python
 # The grid blueprint is set as 2 ROWS and 2 COLUMNS (2x2 grid)
 # The R and C parameters (2 and 2) must remain the same for all subplots.
