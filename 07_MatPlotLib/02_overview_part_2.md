@@ -121,6 +121,27 @@ ax.plot(x, y)
 ```
 <img width="160" height="114" alt="image" src="https://github.com/user-attachments/assets/06e1cff9-e482-4902-a535-d3c8f0278728" />
 
+### **1. Figure Creation**
+
+```python
+fig = plt.figure(figsize=(3, 2), dpi=100)
+```
+
+* `figsize=(3, 2)` → Width = **3 inches**, Height = **2 inches**
+* `dpi=100` → **100 dots (pixels) per inch**
+
+So, total pixel dimensions =
+`width × dpi = 3 × 100 = 300 px`
+`height × dpi = 2 × 100 = 200 px`
+
+✅ **Final figure size on screen or when saved**: **300 × 200 pixels**
+
+This is a **small, low-resolution figure** — good for thumbnails or compact layouts.
+
+To make it high resolution, you have two levers:
+ - Increase dpi → improves clarity (more pixels per inch)
+ - Increase figsize → makes the figure physically larger
+   
 ### Using `subplots`
 
 ```python
