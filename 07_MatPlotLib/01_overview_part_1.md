@@ -91,7 +91,7 @@ plt.title('Title')
 
 Use `plt.subplot(rows, cols, index)` to divide the figure into subplots.
 
-`plt.subplot()` is used to place multiple plots (Axes) onto a single figure by organizing them into a **grid**.
+`plt.subplot()` is used to place multiple plots (Axes, Graph, Chart) onto a single figure by organizing them into a **grid**.
 
 ### Syntax
 
