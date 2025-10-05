@@ -166,7 +166,7 @@ ax.plot(x,y)
 fig.savefig('my_picture.png')
 
 # Saves figure with high resolution (DPI)
-fig.savefig('my_picture.pdf', dpi=300)
+# fig.savefig('my_picture.pdf', dpi=300)
 ```
 <img width="242" height="153" alt="image" src="https://github.com/user-attachments/assets/50af1563-8a07-46aa-845b-f12466ac72b6" />
 <img width="313" height="207" alt="image" src="https://github.com/user-attachments/assets/6b3e21f9-f950-437b-a10b-bddd2b01e7e3" />
