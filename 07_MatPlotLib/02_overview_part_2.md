@@ -119,6 +119,7 @@ fig = plt.figure(figsize=(3, 2), dpi=100)
 ax = fig.add_axes([0, 0, 1, 1]) 
 ax.plot(x, y)
 ```
+<img width="160" height="114" alt="image" src="https://github.com/user-attachments/assets/06e1cff9-e482-4902-a535-d3c8f0278728" />
 
 ### Using `subplots`
 
