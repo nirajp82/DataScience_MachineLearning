@@ -1,6 +1,6 @@
 ## Introduction to Matplotlib (Part 1)
 
-Matplotlib is a powerful Python library for creating static, animated, and interactive visualizations.  
+- Matplotlib is a powerful Python library for creating static, animated, and interactive visualizations.  
 ---
 
 ### Installation
