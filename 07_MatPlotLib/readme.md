@@ -1,6 +1,4 @@
-# Matplotlib: Figures, Axes, Axis, and Plots — Definitive README
-
-A complete, compact, and final summary that explains **Figure**, **Axes**, **Axis**, and **Plot** in Matplotlib's object-oriented API — with examples, important gotchas, layout/layout engines, DPI and saving options, and a practical cheat-sheet.
+# Matplotlib: Figures, Axes, Axis, and Plots
 
 ---
 
