@@ -7,10 +7,12 @@ Both methods create **Axes** (the plotting area), but they differ entirely in th
 
 | Feature | plt.subplots() | figure.add_axes([left, bottom, width, height]) |
 | :--- | :--- | :--- |
+| **Primary Goal** | Automatic Grid Layout | Manual Custom Placement |
+| **Output Objects** | Creates a **new Figure** AND the **Axes** (plot area). | Adds an **Axes** to an **existing Figure**. |
 | **Purpose** | Creates a **Figure** and one or more subplots in a regular **grid**. | Adds an **Axes** at a specific, custom location in an **existing Figure**. |
 | **Returns** | A tuple: `(Figure, Axes or array of Axes)` | The **Axes** object only. |
-| **Layout** | **Automatic grid layout** (standard rows/columns), handling spacing for you. | **Manual positioning** using normalized coordinates (0 to 1). |
-| **Use Case** | Standard single plots, comparing datasets side-by-side in a grid. | **Inset plots**, non-standard arrangements, or when exact placement is needed. |
+| **Positioning** | **Automatic grid layout** (standard rows/columns), handling spacing for you. | **Manual coordinates** `[0.0, 1.0]`, precisely defining location and size. |
+| **Use Case** | Standard plotting, multiple simple charts, quick visualization. | Creating **inset plots**, complex non-grid layouts, or precise coordinate control. |
 
 ### Example: Using `plt.subplots` (Standard Grid)
 
