@@ -103,6 +103,7 @@ axes[1].set_title('Second Plot')
 for current_ax in axes:
     current_ax.grid(True)
 ```
+<img width="205" height="200" alt="image" src="https://github.com/user-attachments/assets/fc75728b-af1d-4196-9e33-8060dcb337d7" />
 
 -----
 
