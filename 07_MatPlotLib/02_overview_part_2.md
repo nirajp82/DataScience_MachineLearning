@@ -164,10 +164,14 @@ ax.set_ylabel('Y Label')
 Legends require setting a `label` in the plot call, then calling `ax.legend()`.
 
 ```python
+fig, ax = plt.subplots() # Use 'ax' for clarity when it's a single plot
 ax.plot(x, x**2, label='x squared')
 ax.plot(x, x**3, label='x cubed')
 ax.legend()
+# plt.tight_layout() is fine here, though often unnecessary for a single subplot
+plt.show()
 ```
+<img width="515" height="380" alt="image" src="https://github.com/user-attachments/assets/652e4e47-1807-45bd-a2ac-ba1dd446d2b5" />
 
 ### Customizing Legend Location
 
@@ -176,11 +180,9 @@ ax.legend(loc=0)            # Automatic best location
 ax.legend(loc=10)           # Location code (e.g., 'center')
 ax.legend(loc=(0.1, 0.1))   # Custom position using normalized coordinates
 ```
-
 -----
 
 ## 7\. Key Takeaways
-
   * **`plt.subplots`** creates axes in a grid layout, easy to manage multiple plots.
   * **`figure.add_axes`** allows manual positioning, useful for insets or custom layouts.
   * **Axes arrays** can be indexed or iterated for multiple plots.
