@@ -185,7 +185,7 @@ ax = fig.add_axes([left, bottom, width, height])
 
 ```python
 fig = plt.figure()
-ax = fig.add_axes([0.1, 0.1, 0.3, 0.5])  # 10% from left, 50% from bottom, width 30%, height 50%
+ax = fig.add_axes([0.1, 0.1, 0.3, 0.5])  # 10% from left, 10% from bottom, width 30%, height 50%
 ax.plot(x, y)
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
