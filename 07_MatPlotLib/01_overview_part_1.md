@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 
 ### Using Matplotlib in Jupyter Notebooks
 
-To display plots directly within a Jupyter Notebook:
+To display plots (Graph/Chart) directly within a Jupyter Notebook:
 
 ```python
 %matplotlib inline
