@@ -159,12 +159,17 @@ plt.tight_layout()
 Save the figure directly from the Figure object (`fig`).
 
 ```python
+fig = plt.figure(figsize=(3,2),dpi=100)
+ax = fig.add_axes([0, 0, 1, 1])
+ax.plot(x,y)
 # Saves figure as a PNG file
 fig.savefig('my_picture.png')
 
 # Saves figure with high resolution (DPI)
 fig.savefig('my_picture.pdf', dpi=300)
 ```
+<img width="242" height="153" alt="image" src="https://github.com/user-attachments/assets/50af1563-8a07-46aa-845b-f12466ac72b6" />
+<img width="313" height="207" alt="image" src="https://github.com/user-attachments/assets/6b3e21f9-f950-437b-a10b-bddd2b01e7e3" />
 
 -----
 
