@@ -129,6 +129,7 @@ axes[0].plot(x, y)
 axes[1].plot(y, x)
 plt.tight_layout()
 ```
+<img width="726" height="165" alt="image" src="https://github.com/user-attachments/assets/71a1043b-5cbc-4cf7-8836-68b0104e77d3" />
 
 -----
 
