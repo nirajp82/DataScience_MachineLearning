@@ -633,6 +633,22 @@ It is especially useful when you want a **clean, direct way** to access rows or 
 emp_df_multi.xs('Chicago')
 ```
 
+Since you did **not specify `level=`**, pandas automatically looks at the **outermost (first) index level**,
+which in your DataFrame is `'City'`.
+
+So pandas interprets it as:
+
+```python
+emp_df_multi.xs('Chicago', level='City')
+```
+
+- It returns all rows where `City == 'Chicago'`.
+- If you wanted to filter by the inner level (Name): You’d specify the `level` explicitly:
+
+```python
+emp_df_multi.xs('Bob', level='Name')
+```
+
 ```
          Age  Score
 Name                
