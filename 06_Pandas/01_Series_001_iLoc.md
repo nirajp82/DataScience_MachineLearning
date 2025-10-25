@@ -157,13 +157,39 @@ dataset.iloc[[0, 2, 4], [0, 2]]
 
 ## 📋 Summary of Key Rules
 
-| 🧩 Pattern | 🔍 Meaning                               | 🧠 Tip                       |
-| ---------- | ---------------------------------------- | ---------------------------- |
-| `iloc`     | Selects by **integer index**, not labels | Think **positions**          |
-| `:`        | Means “**everything in that range**”     | Use to grab all rows/columns |
-| `:-1`      | All except the **last**                  | Useful for `X`               |
-| `-1`       | Refers to the **last one**               | Useful for `y`               |
-| `0:3`      | From index 0 up to (not including) 3     | Upper bound **excluded**     |
+| 🧩 Pattern | 🔍 Meaning | 🧠 Tip |
+|-------------|-------------|-------|
+| `iloc` | Selects by **integer index**, not by column names. | Think in **positions**, not labels — `iloc[0]` means the **first row**, not necessarily the row labeled “0.” |
+| `:` | Means **“everything in that range.”** | Use `:` when you want to grab **all rows or all columns**. Example: `dataset.iloc[:, :]` → selects *everything*. |
+| `:-1` | Selects **all columns except the last**. | ⚙️ The **colon (`:`)** indicates a **range**, and `-1` tells it to go **up to but not including** the last column. Used to form **X (features)**. |
+| `-1` | Selects **only the last column (no range)**. | ⚠️ Since there’s **no colon**, this is **not a range** — it directly selects just one column (the last one). Used to form **y (target)**. |
+| `0:3` | Selects **columns (or rows) from index 0 up to (not including) 3**. | 🧮 Remember: Python slicing **excludes the upper bound**, so this selects indices 0, 1, and 2 only. |
+
+---
+
+### 💡 Quick Visual Memory Trick
+
+| Pattern | Visual Idea | Result |
+|:--|:--|:--|
+| `:` | ➡️ everything | all rows or columns |
+| `:-1` | 🔁 stop right before the last | exclude the last one |
+| `-1` | 🎯 target only last | select single last column |
+| `0:3` | 🎚️ start at 0, stop before 3 | select first 3 (0, 1, 2) |
+
+---
+
+### 🧠  Memory Tip
+
+- `:` → means “**all in range**”  
+- `:-1` → means “**all except last**”  
+- `-1` → means “**just last one**” (since there’s **no range colon**)  
+- `0:3` → means “**from 0 up to but not including 3**”  
+
+🧩 Combine them like this:
+```python
+X = dataset.iloc[:, :-1].values   # all rows, all columns except last
+y = dataset.iloc[:, -1].values    # all rows, only last column
+
 
 ---
 
@@ -189,5 +215,3 @@ y = dataset.iloc[:, -1].values    # last column (target)
 
 `iloc` is one of the most powerful tools in Pandas for **index-based data selection**.
 Once you master how `:` and `-1` work, you can easily extract features and targets from any dataset in seconds.
-
-```
